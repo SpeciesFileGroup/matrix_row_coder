@@ -1,0 +1,24 @@
+{
+  "name": "observation-editor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "1.0.1",
+    "grunt-browserify": "5.0.0",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-contrib-connect": "1.0.2",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-stylus": "1.2.0",
+    "grunt-contrib-watch": "1.0.0",
+    "load-grunt-tasks": "3.5.2",
+    "vue": "2.2.4",
+    "vuex": "2.2.1"
+  }
+}
