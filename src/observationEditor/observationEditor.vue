@@ -1,6 +1,6 @@
 <template>
     <div class="observation-editor">
-        {{ msg }}
+        {{ message }}
     </div>
 </template>
 
@@ -10,7 +10,7 @@
     module.exports = {
         data () {
             return {
-                msg: 'Hello world!'
+                message: this.$store.state.foo
             }
         }
     }
