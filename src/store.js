@@ -5,7 +5,10 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        foo: "bar"
+        message: "bar"
+    },
+    mutations: {
+        bazMessage: state => state.message = "baz"
     }
 });
 

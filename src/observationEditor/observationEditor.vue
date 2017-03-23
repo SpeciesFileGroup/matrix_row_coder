@@ -10,7 +10,7 @@
     module.exports = {
         data () {
             return {
-                message: this.$store.state.foo
+                message: this.$store.state.message
             }
         }
     }
