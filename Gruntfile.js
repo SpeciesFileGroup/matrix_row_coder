@@ -1,6 +1,6 @@
 const BUILD_DIR = "build";
 const SRC_DIR = "src";
-const SRC_JS = `${SRC_DIR}/main.js`;
+const SRC_JS = `${SRC_DIR}/entry.js`;
 const SRC_INDEX = "index.html";
 const BUILD_INDEX = `${BUILD_DIR}/index.html`;
 const BUNDLED_JS = `${BUILD_DIR}/main.js`;
@@ -12,6 +12,7 @@ module.exports = function (grunt) {
         browserify: {
             build: {
                 options: {
+                    transform: ['vueify'],
                     watch: true,
                     browserifyOptions: {
                         debug: true

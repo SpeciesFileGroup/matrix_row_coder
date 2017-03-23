@@ -15,10 +15,11 @@
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-connect": "1.0.2",
     "grunt-contrib-copy": "1.0.0",
-    "grunt-contrib-stylus": "1.2.0",
     "grunt-contrib-watch": "1.0.0",
     "load-grunt-tasks": "3.5.2",
+    "stylus": "0.54.5",
     "vue": "2.2.4",
+    "vueify": "9.4.1",
     "vuex": "2.2.1"
   }
 }
