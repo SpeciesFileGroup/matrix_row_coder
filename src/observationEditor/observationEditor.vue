@@ -3,7 +3,7 @@
         <sub-component></sub-component>
         <div>
             <button
-                v-on:click="doABaz"
+                v-on:click="bazMessage"
                 type="button">
 
                 do a baz
@@ -17,14 +17,14 @@
 <script>
     const subComponent = require('./subComponent/subComponent.vue');
 
+    const methods = require('vuex').mapMutations([
+        'bazMessage'
+    ]);
+
     module.exports = {
         components: {
             subComponent
         },
-        methods: {
-            doABaz: function(event) {
-                this.$store.commit('bazMessage');
-            }
-        }
+        methods
     }
 </script>
