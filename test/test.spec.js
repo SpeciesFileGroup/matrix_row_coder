@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const store = require('../src/store');
+const store = require('../src/store/store');
 
 describe('test store', () => {
     it(`should do something`, () => {
