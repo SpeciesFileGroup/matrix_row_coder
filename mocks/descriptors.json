@@ -1,0 +1,61 @@
+{
+  "otu_id": 1,
+  "otu_tag": "Aus bus",
+  "descriptors": [
+    {
+      "id": 1,
+      "descriptor_tag": "Head color",
+      "type": "Qualitative",
+      "position": 1,
+      "document_description": "The MARKDOWN description of the descriptor.",
+      "character_states": [
+        {
+          "id": 1,
+          "name": "red",
+          "label": "A",
+          "document_description": null,
+          "position": 1
+        },
+        {
+          "id": 2,
+          "name": "blue",
+          "label": "B",
+          "document_description": "Royal blue, not NC State blue.",
+          "position": 2,
+          "notes": [
+            {
+              "id": 44,
+              "text": "Navy blue is the best, fools."
+            }
+          ],
+          "depictions": [
+            {
+              "id": 99,
+              "image_url": "//path/to/foo.jpg",
+              "caption": "The figure caption, could be used for content."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "descriptor_tag": "Big green spine",
+      "document_description": null, 
+      "position": 2,
+      "type": "Presence"
+    },
+    {
+      "id": 100,
+      "descriptor_tag": "Tooth count",
+      "type": "Continuous",
+      "position": 3
+    },
+    {
+      "id": 100,
+      "descriptor_tag": "Weight",
+      "type": "Sample",
+      "position": 4
+    }
+  ]
+}
