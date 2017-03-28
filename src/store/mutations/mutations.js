@@ -1,9 +1,13 @@
 const MutationNames = {
-    SetDescriptors: 'setDescriptors'
+    SetDescriptors: 'setDescriptors',
+    SetTaxonTitle: 'setTaxonTitle',
+    SetTaxonId: 'setTaxonId'
 };
 
 const MutationFunctions = {
-    [MutationNames.SetDescriptors]: require('./setDescriptors')
+    [MutationNames.SetDescriptors]: require('./setDescriptors'),
+    [MutationNames.SetTaxonTitle]: require('./setTaxonTitle'),
+    [MutationNames.SetTaxonId]: require('./setTaxonId')
 };
 
 module.exports = {

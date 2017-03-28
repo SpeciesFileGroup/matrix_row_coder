@@ -7,6 +7,8 @@ describe(`requestDescriptors action`, () => {
         return store.dispatch(actions.ActionNames.RequestDescriptors)
             .then(_ => {
                 expect(store.state.descriptors).to.have.lengthOf(4);
+                expect(store.state.taxonId).to.equal(1);
+                expect(store.state.taxonTitle).to.equal("Aus bus");
             });
     });
 });
