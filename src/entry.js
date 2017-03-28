@@ -1,9 +1,9 @@
 const Vue = require('vue');
-const observationEditor = require('./observationEditor/observationEditor.vue');
+const observationEditor = require('./MatrixRowCoder/MatrixRowCoder.vue');
 const store = require('./store/store');
 
 new Vue({
-    el: 'observation-editor',
+    el: 'matrix-row-coder',
     store,
     render: function (createElement) {
         return createElement(observationEditor)

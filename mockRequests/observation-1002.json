@@ -1,0 +1,17 @@
+{
+    "id": 1002,
+    "otu_id": 1,
+    "descriptor_id": 24,
+    "type": "Continuous",
+    "cached_column_label": "Tooth count",
+    "cached_row_label": "Aus bus",
+    "continuous_value": 22,
+    "continuous_unit": "",
+    "confidence_level_ids": [ 23, 25 ],
+    "notes": [
+        {
+            "id": 234,
+            "text": "This is a detail about an Observation."
+        }
+    ]
+}

@@ -1,5 +1,5 @@
 <template>
-    <div class="observation-editor">
+    <div class="matrix-row-coder">
         <sub-component></sub-component>
         <div>
             <button
@@ -12,7 +12,7 @@
     </div>
 </template>
 
-<style lang="stylus" src="observationEditor.styl"></style>
+<style lang="stylus" src="MatrixRowCoder.styl"></style>
 
 <script>
     const subComponent = require('./subComponent/subComponent.vue');
