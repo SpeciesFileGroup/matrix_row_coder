@@ -10,6 +10,8 @@
             <li
                 class="matrix-row-coder__descriptor-container"
                 v-for="descriptor in descriptors">
+
+                
             </li>
         </ul>
     </div>
@@ -26,10 +28,21 @@
         descriptors: state => state.descriptors
     });
 
+    const continuousDescriptor = require('./ContinuousDescriptor/ContinuousDescriptor.vue');
+    const presenceDescriptor = require('./PresenceDescriptor/PresenceDescriptor.vue');
+    const qualitativeDescriptor = require('./QualitativeDescriptor/QualitativeDescriptor.vue');
+    const sampleDescriptor = require('./SampleDescriptor/SampleDescriptor.vue');
+
     module.exports = {
         mounted: function() {
             this.$store.dispatch(ActionNames.RequestDescriptors);
         },
-        computed
+        computed,
+        components: {
+            continuousDescriptor,
+            presenceDescriptor,
+            qualitativeDescriptor,
+            sampleDescriptor
+        }
     }
 </script>
