@@ -43,6 +43,11 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        mochaTest: {
+            test: {
+                src: ['test/**/*.spec.js']
+            }
+        },
         watch: {
             options: {
                 livereload: true
@@ -51,6 +56,10 @@ module.exports = function (grunt) {
     };
 
     grunt.initConfig(taskConfig);
+
+    grunt.registerTask('test', [
+        'mochaTest:test'
+    ]);
 
     grunt.registerTask('build', [
         'clean',
