@@ -1,13 +1,8 @@
 <template>
     <div class="matrix-row-coder">
-        <sub-component></sub-component>
+        <h1 class="matrix-row-coder__title">{{ title }}</h1>
         <div>
-            <button
-                v-on:click="bazMessage"
-                type="button">
 
-                do a baz
-            </button>
         </div>
     </div>
 </template>
@@ -15,16 +10,17 @@
 <style lang="stylus" src="MatrixRowCoder.styl"></style>
 
 <script>
-    const subComponent = require('./subComponent/subComponent.vue');
+    const vuex = require('vuex');
+    const ActionNames = require('../store/actions/actions').ActionNames;
 
-    const methods = require('vuex').mapMutations([
-        'bazMessage'
-    ]);
+    const computed = vuex.mapState({
+        title: state => state.taxonTitle
+    });
 
     module.exports = {
-        components: {
-            subComponent
+        mounted: function() {
+            this.$store.dispatch(ActionNames.RequestDescriptors);
         },
-        methods
+        computed
     }
 </script>
