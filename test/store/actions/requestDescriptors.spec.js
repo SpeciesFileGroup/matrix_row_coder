@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const store = require('../../../src/store/store').newStore();
-const actions = require('../../../src/store/actions/actions');
+const ActionNames = require('../../../src/store/actions/actions').ActionNames;
 
 const indexOfQualitativeDescriptor = 0;
 
@@ -9,7 +9,7 @@ describe(`requestDescriptors action`, () => {
 
     before(done => {
         store
-            .dispatch(actions.ActionNames.RequestDescriptors)
+            .dispatch(ActionNames.RequestDescriptors)
             .then(_ => qualitativeDescriptor = store.state.descriptors[indexOfQualitativeDescriptor])
             .then(_ => done());
     });
@@ -18,6 +18,19 @@ describe(`requestDescriptors action`, () => {
         expect(store.state.descriptors).to.have.lengthOf(4);
         expect(store.state.taxonId).to.equal(1);
         expect(store.state.taxonTitle).to.equal("Aus bus");
+    });
+
+    it(`should add the id`, () => {
+        const expectedIds = [
+            24,
+            25,
+            26,
+            27
+        ];
+
+        store.state.descriptors.forEach((d, i) => {
+            expect(d.id).to.equal(expectedIds[i]);
+        });
     });
 
     it(`should assign a descriptor component based on the type`, () => {
@@ -59,71 +72,79 @@ describe(`requestDescriptors action`, () => {
         });
     });
 
-    it(`should set up character states for qualitative descriptors`, () => {
-        expect(qualitativeDescriptor.characterStates)
-            .to.be.an('array')
-            .and.have.lengthOf(2);
-    });
-
-    it(`should include a name on each character state`, () => {
-        const expectedNames = [
-            'red',
-            'blue'
-        ];
-
-        qualitativeDescriptor.characterStates.forEach((cs, index) => {
-            expect(cs.name).to.equal(expectedNames[index]);
+    it(`should have an array of observations that belong to that descriptor`, () => {
+        store.state.descriptors.forEach(d => {
+            expect(d.observations).to.be.an('array');
         });
     });
 
-    it(`should include a label on each character state`, () => {
-        const expectedLabels = [
-            'A',
-            'B'
-        ];
-
-        qualitativeDescriptor.characterStates.forEach((cs, index) => {
-            expect(cs.label).to.equal(expectedLabels[index]);
+    describe(`Qualitative Descriptors`, () => {
+        it(`should set up character states for qualitative descriptors`, () => {
+            expect(qualitativeDescriptor.characterStates)
+                .to.be.an('array')
+                .and.have.lengthOf(2);
         });
-    });
 
-    it(`could include a description`, () => {
-        const expectedDescriptions = [
-            null,
-            "Royal blue, not NC State blue."
-        ];
+        it(`should include a name on each character state`, () => {
+            const expectedNames = [
+                'red',
+                'blue'
+            ];
 
-        qualitativeDescriptor.characterStates.forEach((cs, index) => {
-            expect(cs.description).to.equal(expectedDescriptions[index]);
+            qualitativeDescriptor.characterStates.forEach((cs, index) => {
+                expect(cs.name).to.equal(expectedNames[index]);
+            });
         });
-    });
 
-    it(`could include notes`, () => {
-        const expectedNotes = [
-            [],
-            [
-                "Navy blue is the best, fools."
-            ]
-        ];
+        it(`should include a label on each character state`, () => {
+            const expectedLabels = [
+                'A',
+                'B'
+            ];
 
-        qualitativeDescriptor.characterStates.forEach((cs, index) => {
-            expect(cs.notes).to.deep.equal(expectedNotes[index]);
+            qualitativeDescriptor.characterStates.forEach((cs, index) => {
+                expect(cs.label).to.equal(expectedLabels[index]);
+            });
         });
-    });
 
-    it(`could include depictions`, () => {
-        const expectedDepictions = [
-            [],
-            [
-                {
-                    url: "//www.placebacon.net/125/125",
-                    caption: "The figure caption, could be used for content."
-                }
-            ]
-        ];
+        it(`could include a description`, () => {
+            const expectedDescriptions = [
+                null,
+                "Royal blue, not NC State blue."
+            ];
 
-        qualitativeDescriptor.characterStates.forEach((cs, index) => {
-            expect(cs.depictions).to.deep.equal(expectedDepictions[index]);
+            qualitativeDescriptor.characterStates.forEach((cs, index) => {
+                expect(cs.description).to.equal(expectedDescriptions[index]);
+            });
+        });
+
+        it(`could include notes`, () => {
+            const expectedNotes = [
+                [],
+                [
+                    "Navy blue is the best, fools."
+                ]
+            ];
+
+            qualitativeDescriptor.characterStates.forEach((cs, index) => {
+                expect(cs.notes).to.deep.equal(expectedNotes[index]);
+            });
+        });
+
+        it(`could include depictions`, () => {
+            const expectedDepictions = [
+                [],
+                [
+                    {
+                        url: "//www.placebacon.net/125/125",
+                        caption: "The figure caption, could be used for content."
+                    }
+                ]
+            ];
+
+            qualitativeDescriptor.characterStates.forEach((cs, index) => {
+                expect(cs.depictions).to.deep.equal(expectedDepictions[index]);
+            });
         });
     });
 });

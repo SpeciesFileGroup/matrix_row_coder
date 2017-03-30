@@ -11,15 +11,19 @@ module.exports = function({commit}) {
 };
 
 function transformDescriptorForViewmodel(descriptorData) {
-    const descriptor = {
+    const descriptor = makeBaseDescriptor(descriptorData);
+    attemptToAddCharacterStates(descriptorData, descriptor);
+    return descriptor;
+}
+
+function makeBaseDescriptor(descriptorData) {
+    return {
         componentName: getComponentNameForDescriptorType(descriptorData),
         title: descriptorData.descriptor_tag,
-        description: getDescription(descriptorData)
+        description: getDescription(descriptorData),
+        observations: [],
+        id: descriptorData.id
     };
-
-    attemptToAddCharacterStates(descriptorData, descriptor);
-
-    return descriptor;
 }
 
 const ComponentNames = {

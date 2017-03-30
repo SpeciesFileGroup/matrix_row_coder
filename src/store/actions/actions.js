@@ -1,9 +1,11 @@
 const ActionNames = {
-    RequestDescriptors: 'requestDescriptors'
+    RequestDescriptors: 'requestDescriptors',
+    RequestObservation: 'requestObservation'
 };
 
 const ActionFunctions = {
-    [ActionNames.RequestDescriptors]: require('./requestDescriptors')
+    [ActionNames.RequestDescriptors]: require('./requestDescriptors'),
+    [ActionNames.RequestObservation]: require('./requestObservation')
 };
 
 module.exports = {
