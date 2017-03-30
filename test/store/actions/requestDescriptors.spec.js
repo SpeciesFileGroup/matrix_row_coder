@@ -2,10 +2,15 @@ const expect = require('chai').expect;
 const store = require('../../../src/store/store').newStore();
 const actions = require('../../../src/store/actions/actions');
 
+const indexOfQualitativeDescriptor = 0;
+
 describe(`requestDescriptors action`, () => {
+    let qualitativeDescriptor;
+
     before(done => {
         store
             .dispatch(actions.ActionNames.RequestDescriptors)
+            .then(_ => qualitativeDescriptor = store.state.descriptors[indexOfQualitativeDescriptor])
             .then(_ => done());
     });
 
@@ -51,6 +56,74 @@ describe(`requestDescriptors action`, () => {
 
         store.state.descriptors.forEach((d, index) => {
             expect(d.description).to.equal(expectedDescriptions[index]);
+        });
+    });
+
+    it(`should set up character states for qualitative descriptors`, () => {
+        expect(qualitativeDescriptor.characterStates)
+            .to.be.an('array')
+            .and.have.lengthOf(2);
+    });
+
+    it(`should include a name on each character state`, () => {
+        const expectedNames = [
+            'red',
+            'blue'
+        ];
+
+        qualitativeDescriptor.characterStates.forEach((cs, index) => {
+            expect(cs.name).to.equal(expectedNames[index]);
+        });
+    });
+
+    it(`should include a label on each character state`, () => {
+        const expectedLabels = [
+            'A',
+            'B'
+        ];
+
+        qualitativeDescriptor.characterStates.forEach((cs, index) => {
+            expect(cs.label).to.equal(expectedLabels[index]);
+        });
+    });
+
+    it(`could include a description`, () => {
+        const expectedDescriptions = [
+            null,
+            "Royal blue, not NC State blue."
+        ];
+
+        qualitativeDescriptor.characterStates.forEach((cs, index) => {
+            expect(cs.description).to.equal(expectedDescriptions[index]);
+        });
+    });
+
+    it(`could include notes`, () => {
+        const expectedNotes = [
+            [],
+            [
+                "Navy blue is the best, fools."
+            ]
+        ];
+
+        qualitativeDescriptor.characterStates.forEach((cs, index) => {
+            expect(cs.notes).to.deep.equal(expectedNotes[index]);
+        });
+    });
+
+    it(`could include depictions`, () => {
+        const expectedDepictions = [
+            [],
+            [
+                {
+                    url: "//www.placebacon.net/125/125",
+                    caption: "The figure caption, could be used for content."
+                }
+            ]
+        ];
+
+        qualitativeDescriptor.characterStates.forEach((cs, index) => {
+            expect(cs.depictions).to.deep.equal(expectedDepictions[index]);
         });
     });
 });

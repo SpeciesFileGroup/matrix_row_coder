@@ -1,7 +1,7 @@
 const mockRequest = require('../../request/mockRequest');
 const MutationNames = require('../mutations/mutations').MutationNames;
 
-module.exports = function({ commit }) {
+module.exports = function({commit}) {
     return mockRequest.getDescriptors()
         .then(response => {
             commit(MutationNames.SetDescriptors, response.descriptors.map(transformDescriptorForViewmodel));
@@ -11,11 +11,15 @@ module.exports = function({ commit }) {
 };
 
 function transformDescriptorForViewmodel(descriptorData) {
-    return {
+    const descriptor = {
         componentName: getComponentNameForDescriptorType(descriptorData),
         title: descriptorData.descriptor_tag,
         description: getDescription(descriptorData)
     };
+
+    attemptToAddCharacterStates(descriptorData, descriptor);
+
+    return descriptor;
 }
 
 const ComponentNames = {
@@ -31,4 +35,42 @@ function getComponentNameForDescriptorType(descriptorData) {
 
 function getDescription(descriptorData) {
     return descriptorData.document_description || null;
+}
+
+function attemptToAddCharacterStates(descriptorData, descriptor) {
+    if (descriptor.componentName === ComponentNames.Qualitative) {
+        descriptor.characterStates = descriptorData.character_states.map(transformCharacterStateForViewmodel);
+
+    }
+
+    return descriptorData;
+}
+
+function transformCharacterStateForViewmodel(characterStateData) {
+    return {
+        name: characterStateData.name,
+        label: characterStateData.label,
+        description: characterStateData.document_description || null,
+        notes: makeNotes(characterStateData),
+        depictions: makeDepictions(characterStateData)
+    };
+}
+
+function makeNotes(characterStateData) {
+    if (characterStateData.notes)
+        return characterStateData.notes.map(n => n.text);
+    else
+        return [];
+}
+
+function makeDepictions(characterStateData) {
+    if (characterStateData.depictions)
+        return characterStateData.depictions.map(d => {
+            return {
+                url: d.image_url,
+                caption: d.caption
+            };
+        });
+    else
+        return [];
 }
