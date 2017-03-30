@@ -1,7 +1,7 @@
 {
     "id": 1002,
     "otu_id": 1,
-    "descriptor_id": 24,
+    "descriptor_id": 26,
     "type": "Continuous",
     "cached_column_label": "Tooth count",
     "cached_row_label": "Aus bus",
