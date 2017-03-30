@@ -1,6 +1,13 @@
 <template>
     <div>
-        Continuous Descriptor
+        <label>
+            Amount:
+            <input type="number">
+        </label>
+        <label>
+            Unit:
+            <input type="text">
+        </label>
     </div>
 </template>
 
