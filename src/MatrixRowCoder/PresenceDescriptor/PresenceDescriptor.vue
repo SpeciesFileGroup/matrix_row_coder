@@ -1,6 +1,9 @@
 <template>
     <div>
-        Presence Descriptor
+        <label>
+            Present
+            <input type="checkbox" />
+        </label>
     </div>
 </template>
 
