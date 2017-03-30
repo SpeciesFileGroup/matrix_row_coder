@@ -42,16 +42,13 @@ function getDescription(descriptorData) {
 }
 
 function attemptToAddCharacterStates(descriptorData, descriptor) {
-    if (descriptor.componentName === ComponentNames.Qualitative) {
+    if (descriptor.componentName === ComponentNames.Qualitative)
         descriptor.characterStates = descriptorData.character_states.map(transformCharacterStateForViewmodel);
-
-    }
-
-    return descriptorData;
 }
 
 function transformCharacterStateForViewmodel(characterStateData) {
     return {
+        id: characterStateData.id,
         name: characterStateData.name,
         label: characterStateData.label,
         description: characterStateData.document_description || null,

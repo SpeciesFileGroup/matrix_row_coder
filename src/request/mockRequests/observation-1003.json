@@ -1,16 +1,17 @@
 {
-    "id": 1003,
+    "id": 1002,
     "otu_id": 1,
-    "descriptor_id": 27,
-    "type": "Sample",
-    "cached_column_label": "Big green spine",
+    "descriptor_id": 26,
+    "type": "Continuous",
+    "cached_column_label": "Tooth count",
     "cached_row_label": "Aus bus",
-    "sample_n": 1,
-    "sample_min": 23.23,
-    "sample_max": 44.23,
-    "sample_median": 33,
-    "sample_mean": 35.5,
-    "sample_units": "mm",
-    "sample_standard_deviation": 2.3,
-    "sample_standard_error":  15.5
+    "continuous_value": 22,
+    "continuous_unit": "mm",
+    "confidence_level_ids": [ 23, 25 ],
+    "notes": [
+        {
+            "id": 234,
+            "text": "This is a detail about an Observation."
+        }
+    ]
 }

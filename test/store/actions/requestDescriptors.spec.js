@@ -85,6 +85,14 @@ describe(`requestDescriptors action`, () => {
                 .and.have.lengthOf(2);
         });
 
+        it(`should include the character state id`, () => {
+            const expectedIds = [ 33, 34 ];
+
+            qualitativeDescriptor.characterStates.forEach((cs, i) => {
+                expect(cs.id).to.equal(expectedIds[i]);
+            });
+        });
+
         it(`should include a name on each character state`, () => {
             const expectedNames = [
                 'red',

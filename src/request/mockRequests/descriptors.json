@@ -45,14 +45,14 @@
             "document_description": null,
             "position": 2,
             "type": "Presence",
-            "observation_url": "observation-1003.json"
+            "observation_url": "observation-1002.json"
         },
         {
             "id": 26,
             "descriptor_tag": "Tooth count",
             "type": "Continuous",
             "position": 3,
-            "observation_url": "observation-1002.json"
+            "observation_url": "observation-1003.json"
         },
         {
             "id": 27,

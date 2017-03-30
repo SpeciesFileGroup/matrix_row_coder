@@ -19,4 +19,74 @@ describe(`requestObservation action`, () => {
             expect(d.observations).to.have.lengthOf(1);
         });
     });
+
+    it(`could include notes`, () => {
+        const expectedNotes = [
+            [],
+            [],
+            ["This is a detail about an Observation."],
+            []
+        ];
+
+        store.state.descriptors.forEach((d, i) => {
+            expect( d.observations[0].notes ).to.deep.equal(expectedNotes[i]);
+        });
+    });
+
+    describe(`Continuous Observations & Descriptors`, () => {
+        it(`should include value and unit on a continuous descriptor`, () => {
+            const continuousDescriptor = store.state.descriptors[2];
+            store.state.descriptors.forEach((d, i) => {
+                if (d === continuousDescriptor) {
+                    expect(d.observations[0].continuousValue).to.equal(22);
+                    expect(d.observations[0].continuousUnit).to.equal('mm');
+                } else {
+                    expect(d.observations[0].continuousValue).to.not.exist;
+                    expect(d.observations[0].continuousUnit).to.not.exist;
+                }
+            });
+        });
+    });
+
+    describe('Qualitative Observations & Descriptors', _ => {
+        it(`should include the character state id on a qualitative descriptor`, () => {
+            const qualitativeDescriptor = store.state.descriptors[0];
+            store.state.descriptors.forEach((d, i) => {
+                if (d === qualitativeDescriptor) {
+                    expect(d.observations[0].characterStateId).to.equal(33);
+                } else {
+                    expect(d.observations[0].characterStateId).to.not.exist;
+                }
+            });
+        });
+    });
+
+    describe(`Sample Observations & Descriptors`, () => {
+        it(`should include sample properties`, () => {
+            const sampleDescriptor = store.state.descriptors[3];
+
+            const expectedProps = {
+                n: 1,
+                min: 23.23,
+                max: 44.23,
+                median: 33,
+                mean: 35.5,
+                units: 'mm',
+                standardDeviation: 2.3,
+                standardError: 15.5
+            };
+
+            store.state.descriptors.forEach((d, i) => {
+                if (d === sampleDescriptor) {
+                    Object.keys(expectedProps).forEach(prop => {
+                        expect(d.observations[0][prop]).to.equal(expectedProps[prop]);
+                    });
+                } else {
+                    Object.keys(expectedProps).forEach(prop => {
+                        expect(d.observations[0][prop]).to.not.exist;
+                    });
+                }
+            });
+        });
+    });
 });
