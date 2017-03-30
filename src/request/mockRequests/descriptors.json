@@ -36,26 +36,30 @@
             }
           ]
         }
-      ]
+      ],
+      "observation_url": "observation-1001.json"
     },
     {
       "id": 25,
       "descriptor_tag": "Big green spine",
       "document_description": null, 
       "position": 2,
-      "type": "Presence"
+      "type": "Presence",
+      "observation_url": "observation-1003.json"
     },
     {
       "id": 26,
       "descriptor_tag": "Tooth count",
       "type": "Continuous",
-      "position": 3
+      "position": 3,
+      "observation_url": "observation-1002.json"
     },
     {
       "id": 27,
       "descriptor_tag": "Weight",
       "type": "Sample",
-      "position": 4
+      "position": 4,
+      "observation_url": "observation-1004.json"
     }
   ]
 }
