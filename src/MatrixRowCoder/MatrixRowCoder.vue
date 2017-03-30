@@ -3,7 +3,7 @@
         <h1 class="matrix-row-coder__title">{{ title }}</h1>
         <ul class="matrix-row-coder__descriptor-menu">
             <li v-for="descriptor in descriptors">
-                <div>{{ descriptor.descriptor_tag }}</div>
+                <div>{{ descriptor.title }}</div>
             </li>
         </ul>
         <ul class="matrix-row-coder__descriptor-list">
@@ -11,7 +11,7 @@
                 class="matrix-row-coder__descriptor-container"
                 v-for="descriptor in descriptors">
 
-                
+                <div v-bind:is="descriptor.componentName"></div>
             </li>
         </ul>
     </div>
