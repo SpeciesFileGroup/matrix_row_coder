@@ -6,6 +6,7 @@
 
 <script>
     module.exports = {
-        name: 'sample-descriptor'
+        name: 'sample-descriptor',
+        props: ['descriptor']
     };
 </script>

@@ -11,7 +11,8 @@
                 class="matrix-row-coder__descriptor-container"
                 v-for="descriptor in descriptors">
 
-                <div v-bind:is="descriptor.componentName"></div>
+                <h2 class="matrix-row-coder__descriptor-title">{{ descriptor.title }}</h2>
+                <div v-bind:is="descriptor.componentName" :descriptor="descriptor"></div>
             </li>
         </ul>
     </div>

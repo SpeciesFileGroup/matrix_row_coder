@@ -6,6 +6,7 @@
 
 <script>
     module.exports = {
-        name: 'presence-descriptor'
+        name: 'presence-descriptor',
+        props: ['descriptor']
     };
 </script>

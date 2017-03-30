@@ -6,6 +6,7 @@
 
 <script>
     module.exports = {
-        name: 'qualitative-descriptor'
+        name: 'qualitative-descriptor',
+        props: ['descriptor']
     };
 </script>

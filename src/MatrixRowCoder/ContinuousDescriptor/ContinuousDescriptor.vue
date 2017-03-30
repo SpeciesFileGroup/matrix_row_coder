@@ -6,6 +6,7 @@
 
 <script>
     module.exports = {
-        name: 'continuous-descriptor'
+        name: 'continuous-descriptor',
+        props: ['descriptor']
     };
 </script>
