@@ -11,7 +11,16 @@ const ObservationTypes = {
 module.exports = function({ commit }, url) {
     return mockRequest.getObservationAt(url)
         .then(transformObservationForViewmodel)
-        .then(observation => commit(MutationNames.PushObservation, observation));
+        .then(observation => {
+            commit(MutationNames.PushObservation, observation);
+            attemptCheckMatchingCharacterState(observation);
+        });
+
+    function attemptCheckMatchingCharacterState(observation) {
+        const id = getCharacterStateIdThatNeedToBeChecked(observation);
+        if (id)
+            commit(MutationNames.SetCharacterStateCheck, { id, isChecked: true })
+    }
 };
 
 function transformObservationForViewmodel(observationData) {
@@ -45,9 +54,8 @@ function attemptAddContinuousProperties(observationData, observation) {
 }
 
 function attemptAddQualitativeProperties(observationData, observation) {
-    if (observationData.type === ObservationTypes.Qualitative) {
+    if (observationData.type === ObservationTypes.Qualitative)
         observation.characterStateId = observationData.character_state_id;
-    }
 }
 
 function attemptAddSampleProperties(observationData, observation) {
@@ -61,4 +69,8 @@ function attemptAddSampleProperties(observationData, observation) {
         observation.standardDeviation = observationData.sample_standard_deviation;
         observation.standardError = observationData.sample_standard_error;
     }
+}
+
+function getCharacterStateIdThatNeedToBeChecked(observation) {
+    return observation.characterStateId || null;
 }

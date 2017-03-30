@@ -18,11 +18,12 @@ function transformDescriptorForViewmodel(descriptorData) {
 
 function makeBaseDescriptor(descriptorData) {
     return {
+        id: descriptorData.id,
         componentName: getComponentNameForDescriptorType(descriptorData),
         title: descriptorData.descriptor_tag,
         description: getDescription(descriptorData),
         observations: [],
-        id: descriptorData.id
+        observationUrl: descriptorData.observation_url
     };
 }
 
@@ -53,7 +54,8 @@ function transformCharacterStateForViewmodel(characterStateData) {
         label: characterStateData.label,
         description: characterStateData.document_description || null,
         notes: makeNotes(characterStateData),
-        depictions: makeDepictions(characterStateData)
+        depictions: makeDepictions(characterStateData),
+        isChecked: false
     };
 }
 

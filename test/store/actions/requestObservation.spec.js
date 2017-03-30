@@ -59,6 +59,15 @@ describe(`requestObservation action`, () => {
                 }
             });
         });
+
+        it(`should mark character states as checked if an observation exists for them`, () => {
+            const qualitativeDescriptor = store.state.descriptors[0];
+
+            const expectedChecks = [true, false];
+            qualitativeDescriptor.characterStates.forEach((cs, i) => {
+                expect(cs.isChecked).to.equal(expectedChecks[i]);
+            });
+        });
     });
 
     describe(`Sample Observations & Descriptors`, () => {

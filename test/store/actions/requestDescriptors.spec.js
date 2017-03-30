@@ -78,6 +78,19 @@ describe(`requestDescriptors action`, () => {
         });
     });
 
+    it(`should include a url to request observations`, () => {
+        const expectedObservationUrls = [
+            "observation-1001.json",
+            "observation-1002.json",
+            "observation-1003.json",
+            "observation-1004.json"
+        ];
+
+        store.state.descriptors.forEach((d, i) => {
+            expect(d.observationUrl).to.equal(expectedObservationUrls[i]);
+        })
+    });
+
     describe(`Qualitative Descriptors`, () => {
         it(`should set up character states for qualitative descriptors`, () => {
             expect(qualitativeDescriptor.characterStates)
@@ -90,6 +103,12 @@ describe(`requestDescriptors action`, () => {
 
             qualitativeDescriptor.characterStates.forEach((cs, i) => {
                 expect(cs.id).to.equal(expectedIds[i]);
+            });
+        });
+
+        it(`should include whether the character state is checked`, () => {
+            qualitativeDescriptor.characterStates.forEach(cs => {
+                expect(cs.isChecked).to.be.false;
             });
         });
 
