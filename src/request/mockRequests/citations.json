@@ -1,0 +1,14 @@
+[
+    {
+        "id": 9000,
+        "citation_object_type": "Observation",
+        "citation_object_id": 1001,
+        "source_id": 67,
+        "object_tag": "Yoder 2004, A story about big bugs, Journal About Stuff & Things, Page 4, Volume 3 and 4",
+        "source": {
+            "cached": "Yoder 2004, A story about big bugs, Journal About Stuff & Things, Page 4, Volume 3 and 4",
+            "cached_author_string": "Yoder 2004",
+            "nomenclature_date": "2004/12/2"
+        }
+    }
+]

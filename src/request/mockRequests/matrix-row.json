@@ -1,0 +1,91 @@
+{
+    "otu": {
+        "otu_id": 1,
+        "otu_tag": "Aus bus"
+    },
+    "descriptors": [
+        {
+            "id": 24,
+            "descriptor_tag": "Head color",
+            "type": "Qualitative",
+            "position": 1,
+            "document_description": "The MARKDOWN description of the descriptor.",
+            "character_states": [
+                {
+                    "id": 33,
+                    "name": "red",
+                    "label": "A",
+                    "document_description": null,
+                    "position": 1
+                },
+                {
+                    "id": 34,
+                    "name": "blue",
+                    "label": "B",
+                    "document_description": "Royal blue, not NC State blue.",
+                    "position": 2,
+                    "notes": [
+                        {
+                            "id": 201,
+                            "text": "Navy blue is the best, fools."
+                        }
+                    ],
+                    "depictions": [
+                        {
+                            "id": 301,
+                            "caption": "The figure caption, could be used for content.",
+                            "figure_label": "1",
+                            "depiction_object_id": 34,
+                            "depiction_object_type": "CharacterState",
+                            "image": {
+                                "success": true,
+                                "result": {
+                                    "id": 8888,
+                                    "width": 658,
+                                    "height": 700,
+                                    "content_type": "image/png",
+                                    "size": 13238,
+                                    "url": "//www.placebacon.net/658/700",
+                                    "alternatives": {
+                                        "medium": {
+                                            "height": 300,
+                                            "width": 300,
+                                            "url": "//www.placebacon.net/300/300"
+                                        },
+                                        "thumb": {
+                                            "height": 100,
+                                            "width": 100,
+                                            "url": "//www.placebacon.net/100/100"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "observations_url": "observation-1001.json"
+        },
+        {
+            "id": 25,
+            "descriptor_tag": "Big green spine",
+            "document_description": null,
+            "position": 2,
+            "type": "Presence"
+        },
+        {
+            "id": 26,
+            "descriptor_tag": "Tooth count",
+            "type": "Continuous",
+            "position": 3,
+            "observations_url": "observation-1003.json"
+        },
+        {
+            "id": 27,
+            "descriptor_tag": "Weight",
+            "type": "Sample",
+            "position": 4,
+            "observations_url": "observation-1004.json"
+        }
+    ]
+}
