@@ -9,17 +9,19 @@ const ObservationTypes = {
 };
 
 module.exports = function({ commit }, { descriptorId, otuId }) {
-    return mockRequest.getObservation(otuId, descriptorId)
-        .then(transformObservationForViewmodel)
-        .then(observation => {
-            commit(MutationNames.PushObservation, observation);
-            attemptCheckMatchingCharacterState(observation);
+    return mockRequest.getObservations(otuId, descriptorId)
+        .then(observationData => observationData.map(transformObservationForViewmodel))
+        .then(observations => {
+            observations.forEach(o => {
+                commit(MutationNames.PushObservation, o);
+                attemptCheckMatchingCharacterState(o);
+            });
         });
 
     function attemptCheckMatchingCharacterState(observation) {
         const id = getCharacterStateIdThatNeedToBeChecked(observation);
         if (id)
-            commit(MutationNames.SetCharacterStateCheck, { id, isChecked: true })
+            commit(MutationNames.SetCharacterStateCheck, { id, isChecked: true });
     }
 };
 
@@ -35,15 +37,11 @@ function makeBaseObservation(observationData) {
     return {
         id: observationData.id,
         descriptorId: observationData.descriptor_id,
-        notes: makeNotes(observationData)
+        notes: null,
+        depictions: null,
+        confidences: null,
+        citations: null
     };
-}
-
-function makeNotes(observationData) {
-    if (observationData.notes)
-        return observationData.notes.map(n => n.text);
-    else
-        return [];
 }
 
 function attemptAddContinuousProperties(observationData, observation) {

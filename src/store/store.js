@@ -5,16 +5,18 @@ const actions = require('./actions/actions');
 
 Vue.use(Vuex);
 
-const InitialState = {
-    taxonTitle: '',
-    taxonId: null,
-    descriptors: [],
-    observations: []
-};
+function makeInitialState() {
+    return {
+        taxonTitle: '',
+        taxonId: null,
+        descriptors: [],
+        observations: []
+    };
+}
 
 function newStore() {
     return new Vuex.Store({
-        state: Object.assign({}, InitialState),
+        state: makeInitialState(),
         mutations: mutations.MutationFunctions,
         actions: actions.ActionFunctions
     });

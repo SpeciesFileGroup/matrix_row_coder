@@ -4,7 +4,7 @@ module.exports = {
     getMatrixRow(url) {
         return promisify(require(MOCK_REQUEST_DIR + url));
     },
-    getObservation(otuId, descriptorId) {
+    getObservations(otuId, descriptorId) {
         return promisify(require(MOCK_REQUEST_DIR + `observations?otu_id=${otuId}&descriptor_id=${descriptorId}.json`));
     },
     getDescriptorNotes(descriptorId) {

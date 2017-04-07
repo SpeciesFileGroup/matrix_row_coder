@@ -23,6 +23,6 @@ describe(`pushObservation mutation`, () => {
         store.commit(MutationNames.SetDescriptors, mockDescriptors);
         store.commit(MutationNames.PushObservation, mockObservation);
 
-        expect(store.state.descriptors[1].observations[0].id).to.equal(mockObservation.id);
+        expect(store.state.observations[0].id).to.equal(mockObservation.id);
     });
 });
