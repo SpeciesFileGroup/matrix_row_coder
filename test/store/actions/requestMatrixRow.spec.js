@@ -15,7 +15,7 @@ describe(`requestMatrixRow action`, () => {
             .then(_ => done());
     });
 
-    it(`should populate the store with descriptors`, () => {
+    it(`should populate the store with descriptors and taxon information`, () => {
         expect(store.state.descriptors).to.have.lengthOf(4);
         expect(store.state.taxonId).to.equal(1);
         expect(store.state.taxonTitle).to.equal("Aus bus");

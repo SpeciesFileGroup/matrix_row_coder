@@ -7,12 +7,8 @@ const TestHelpers = require('../../testHelpers');
 describe(`requestObservation action`, () => {
     before(done => {
         store.dispatch(ActionNames.RequestMatrixRow, TestDefines.MatrixRowUrl)
-            .then(_ => {
-                return TestHelpers.requestAllObservationsForStore(store);
-            })
-            .then(_ => {
-                done();
-            });
+            .then(_ => TestHelpers.requestAllObservationsForStore(store) )
+            .then(_ => done() );
     });
 
     it(`should grab the observation at the given url and place it in the correct descriptor`, () => {

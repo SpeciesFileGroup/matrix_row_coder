@@ -5,8 +5,12 @@ module.exports = function({commit}, matrixRowUrl) {
     return mockRequest.getMatrixRow(matrixRowUrl)
         .then(response => {
             commit(MutationNames.SetDescriptors, response.descriptors.map(transformDescriptorForViewmodel));
-            commit(MutationNames.SetTaxonId, response.otu_id);
-            commit(MutationNames.SetTaxonTitle, response.otu_tag);
+            const {
+                otu_id,
+                otu_tag
+            } = response.otu;
+            commit(MutationNames.SetTaxonId, otu_id);
+            commit(MutationNames.SetTaxonTitle, otu_tag);
         });
 };
 
