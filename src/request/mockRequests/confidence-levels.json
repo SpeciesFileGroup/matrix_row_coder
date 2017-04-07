@@ -1,26 +1,26 @@
 [
     {
-        "id": 1,
-        "name": "Foo",
-        "definition": "Foo",
+        "id": 5001,
+        "name": "😖",
+        "definition": "Confounded",
         "css_color": "#00FF00"
     },
     {
-        "id": 1,
-        "name": "Foo",
-        "definition": "Foo",
+        "id": 5002,
+        "name": "😐",
+        "definition": "Okay",
         "css_color": "#00FF00"
     },
     {
-        "id": 1,
-        "name": "Foo",
-        "definition": "Foo",
+        "id": 5003,
+        "name": "🙂",
+        "definition": "Good",
         "css_color": "#00FF00"
     },
     {
-        "id": 1,
-        "name": "Foo",
-        "definition": "Foo",
+        "id": 5004,
+        "name": "😀",
+        "definition": "Grin",
         "css_color": "#00FF00"
     }
 ]

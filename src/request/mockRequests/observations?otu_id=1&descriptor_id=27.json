@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1004,
+        "otu_id": 1,
+        "descriptor_id": 25,
+        "type": "Presence",
+        "presence": true
+    }
+]

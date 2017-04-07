@@ -1,0 +1,32 @@
+[
+    {
+        "id": 301,
+        "caption": "The figure caption, could be used for content.",
+        "figure_label": "1",
+        "depiction_object_id": 34,
+        "depiction_object_type": "CharacterState",
+        "image": {
+            "success": true,
+            "result": {
+                "id": 8888,
+                "width": 658,
+                "height": 700,
+                "content_type": "image/png",
+                "size": 13238,
+                "url": "//www.placebacon.net/658/700",
+                "alternatives": {
+                    "medium": {
+                        "height": 300,
+                        "width": 300,
+                        "url": "//www.placebacon.net/300/300"
+                    },
+                    "thumb": {
+                        "height": 100,
+                        "width": 100,
+                        "url": "//www.placebacon.net/100/100"
+                    }
+                }
+            }
+        }
+    }
+]

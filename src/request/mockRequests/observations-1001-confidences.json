@@ -1,15 +1,12 @@
 [
     {
         "confidence_level": {
-            "id": 1,
-            "name": "Foo",
-            "definition": "Foo",
-            "css_color": "#00FF00"
+            "id": 5001
         },
-        "id": 2,
+        "id": 2222,
         "confidence_object_id": 1001,
         "confidence_object_type": "Observation",
         "confidence_level_id": 1,
-        "position": 3
+        "position": 1
     }
 ]

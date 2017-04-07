@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1001,
+        "otu_id": 1,
+        "descriptor_id": 24,
+        "character_state_id": 33,
+        "type": "Qualitative",
+        "cached_column_label": "Head color",
+        "cached_row_label": "Aus bus"
+    }
+]
