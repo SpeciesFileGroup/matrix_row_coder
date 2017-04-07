@@ -36,7 +36,7 @@
 
     module.exports = {
         mounted: function() {
-            this.$store.dispatch(ActionNames.RequestDescriptors);
+            this.$store.dispatch(ActionNames.RequestMatrixRow);
         },
         computed,
         components: {

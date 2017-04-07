@@ -1,8 +1,8 @@
 const mockRequest = require('../../request/mockRequest');
 const MutationNames = require('../mutations/mutations').MutationNames;
 
-module.exports = function({commit}) {
-    return mockRequest.getDescriptors()
+module.exports = function({commit}, matrixRowUrl) {
+    return mockRequest.getMatrixRow(matrixRowUrl)
         .then(response => {
             commit(MutationNames.SetDescriptors, response.descriptors.map(transformDescriptorForViewmodel));
             commit(MutationNames.SetTaxonId, response.otu_id);

@@ -8,8 +8,8 @@ const ObservationTypes = {
     Sample: "Sample"
 };
 
-module.exports = function({ commit }, url) {
-    return mockRequest.getObservationAt(url)
+module.exports = function({ commit }, { descriptorId, otuId }) {
+    return mockRequest.getObservation(otuId, descriptorId)
         .then(transformObservationForViewmodel)
         .then(observation => {
             commit(MutationNames.PushObservation, observation);

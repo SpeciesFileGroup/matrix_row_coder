@@ -1,10 +1,10 @@
 const ActionNames = {
-    RequestDescriptors: 'requestDescriptors',
+    RequestMatrixRow: 'requestMatrixRow',
     RequestObservation: 'requestObservation'
 };
 
 const ActionFunctions = {
-    [ActionNames.RequestDescriptors]: require('./requestDescriptors'),
+    [ActionNames.RequestMatrixRow]: require('./requestMatrixRow'),
     [ActionNames.RequestObservation]: require('./requestObservation')
 };
 

@@ -1,14 +1,15 @@
 const expect = require('chai').expect;
 const store = require('../../../src/store/store').newStore();
 const ActionNames = require('../../../src/store/actions/actions').ActionNames;
+const TestDefines = require('../../testDefines');
+const TestHelpers = require('../../testHelpers');
 
 describe(`requestObservation action`, () => {
     before(done => {
-        store.dispatch(ActionNames.RequestDescriptors)
-            .then(store.dispatch(ActionNames.RequestObservation, 'observation-1001.json'))
-            .then(store.dispatch(ActionNames.RequestObservation, 'observation-1002.json'))
-            .then(store.dispatch(ActionNames.RequestObservation, 'observation-1003.json'))
-            .then(store.dispatch(ActionNames.RequestObservation, 'observation-1004.json'))
+        store.dispatch(ActionNames.RequestMatrixRow, TestDefines.MatrixRowUrl)
+            .then(_ => {
+                return TestHelpers.requestAllObservationsForStore(store);
+            })
             .then(_ => {
                 done();
             });

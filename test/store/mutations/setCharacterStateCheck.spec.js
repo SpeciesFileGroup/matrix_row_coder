@@ -5,7 +5,7 @@ const MutationNames = require('../../../src/store/mutations/mutations').Mutation
 
 describe(`setCharacterStateCheck mutation`, () => {
     before(done => {
-        store.dispatch(ActionNames.RequestDescriptors)
+        store.dispatch(ActionNames.RequestMatrixRow, require('../../testDefines').MatrixRowUrl)
             .then(_ => done());
     });
 

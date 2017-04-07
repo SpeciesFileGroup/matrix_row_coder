@@ -3,13 +3,14 @@ const store = require('../../../src/store/store').newStore();
 const ActionNames = require('../../../src/store/actions/actions').ActionNames;
 
 const indexOfQualitativeDescriptor = 0;
+const MatrixRowUrl = require('../../testDefines').MatrixRowUrl;
 
-describe(`requestDescriptors action`, () => {
+describe(`requestMatrixRow action`, () => {
     let qualitativeDescriptor;
 
     before(done => {
         store
-            .dispatch(ActionNames.RequestDescriptors)
+            .dispatch(ActionNames.RequestMatrixRow, MatrixRowUrl)
             .then(_ => qualitativeDescriptor = store.state.descriptors[indexOfQualitativeDescriptor])
             .then(_ => done());
     });
@@ -76,19 +77,6 @@ describe(`requestDescriptors action`, () => {
         store.state.descriptors.forEach(d => {
             expect(d.observations).to.be.an('array');
         });
-    });
-
-    it(`should include a url to request observations`, () => {
-        const expectedObservationUrls = [
-            "observation-1001.json",
-            "observation-1002.json",
-            "observation-1003.json",
-            "observation-1004.json"
-        ];
-
-        store.state.descriptors.forEach((d, i) => {
-            expect(d.observationUrl).to.equal(expectedObservationUrls[i]);
-        })
     });
 
     describe(`Qualitative Descriptors`, () => {
