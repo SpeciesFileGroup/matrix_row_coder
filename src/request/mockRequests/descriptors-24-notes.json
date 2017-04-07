@@ -1,6 +1,8 @@
 [
     {
         "id": 201,
-        "text": "Navy blue is the best, fools."
+        "text": "Navy blue is the best, fools.",
+        "note_object_id": 34,
+        "note_object_type": "CharacterState"
     }
 ]

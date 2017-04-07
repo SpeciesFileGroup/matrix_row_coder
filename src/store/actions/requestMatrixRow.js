@@ -26,8 +26,8 @@ function makeBaseDescriptor(descriptorData) {
         componentName: getComponentNameForDescriptorType(descriptorData),
         title: descriptorData.descriptor_tag,
         description: getDescription(descriptorData),
-        observations: [],
-        observationUrl: descriptorData.observation_url
+        notes: null,
+        depictions: null
     };
 }
 
@@ -57,27 +57,6 @@ function transformCharacterStateForViewmodel(characterStateData) {
         name: characterStateData.name,
         label: characterStateData.label,
         description: characterStateData.document_description || null,
-        notes: makeNotes(characterStateData),
-        depictions: makeDepictions(characterStateData),
         isChecked: false
     };
-}
-
-function makeNotes(characterStateData) {
-    if (characterStateData.notes)
-        return characterStateData.notes.map(n => n.text);
-    else
-        return [];
-}
-
-function makeDepictions(characterStateData) {
-    if (characterStateData.depictions)
-        return characterStateData.depictions.map(d => {
-            return {
-                url: d.image_url,
-                caption: d.caption
-            };
-        });
-    else
-        return [];
 }

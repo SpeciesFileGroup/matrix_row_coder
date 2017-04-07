@@ -73,9 +73,15 @@ describe(`requestMatrixRow action`, () => {
         });
     });
 
-    it(`should have an array of observations that belong to that descriptor`, () => {
-        store.state.descriptors.forEach(d => {
-            expect(d.observations).to.be.an('array');
+    it(`should initialize the notes as null`, () => {
+        store.state.descriptors.forEach(d => {
+            expect(d.notes).to.equal(null);
+        });
+    });
+
+    it(`should initialize the depictions as null`, () => {
+        store.state.descriptors.forEach(d => {
+            expect(d.depictions).to.equal(null);
         });
     });
 
@@ -130,35 +136,6 @@ describe(`requestMatrixRow action`, () => {
 
             qualitativeDescriptor.characterStates.forEach((cs, index) => {
                 expect(cs.description).to.equal(expectedDescriptions[index]);
-            });
-        });
-
-        it(`could include notes`, () => {
-            const expectedNotes = [
-                [],
-                [
-                    "Navy blue is the best, fools."
-                ]
-            ];
-
-            qualitativeDescriptor.characterStates.forEach((cs, index) => {
-                expect(cs.notes).to.deep.equal(expectedNotes[index]);
-            });
-        });
-
-        it(`could include depictions`, () => {
-            const expectedDepictions = [
-                [],
-                [
-                    {
-                        url: "//www.placebacon.net/125/125",
-                        caption: "The figure caption, could be used for content."
-                    }
-                ]
-            ];
-
-            qualitativeDescriptor.characterStates.forEach((cs, index) => {
-                expect(cs.depictions).to.deep.equal(expectedDepictions[index]);
             });
         });
     });

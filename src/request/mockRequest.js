@@ -8,22 +8,22 @@ module.exports = {
         return promisify(require(MOCK_REQUEST_DIR + `observations?otu_id=${otuId}&descriptor_id=${descriptorId}.json`));
     },
     getDescriptorNotes(descriptorId) {
-        return promisify(require(MOCK_REQUEST_DIR + `descriptors/${descriptorId}/notes.json`));
+        return promisify(require(MOCK_REQUEST_DIR + `descriptors-${descriptorId}-notes.json`));
     },
     getDescriptorDepictions(descriptorId) {
-        return promisify(require(MOCK_REQUEST_DIR + `descriptors/${descriptorId}/depictions.json`));
+        return promisify(require(MOCK_REQUEST_DIR + `descriptors-${descriptorId}-depictions.json`));
     },
     getObservationNotes(observationId) {
-        return promisify(require(MOCK_REQUEST_DIR + `observations/${observationId}/notes.json`));
+        return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-notes.json`));
     },
     getObservationDepictions(observationId) {
-        return promisify(require(MOCK_REQUEST_DIR + `observations/${observationId}/depictions.json`));
+        return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-depictions.json`));
     },
     getObservationConfidences(observationId) {
-        return promisify(require(MOCK_REQUEST_DIR + `observations/${observationId}/confidences.json`));
+        return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-confidences.json`));
     },
     getObservationCitations(observationId) {
-        return promisify(require(MOCK_REQUEST_DIR + `observations/${observationId}/citations.json`));
+        return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-citations.json`));
     },
     getConfidenceLevels() {
         return promisify(require(MOCK_REQUEST_DIR + `confidence_levels.json`));
