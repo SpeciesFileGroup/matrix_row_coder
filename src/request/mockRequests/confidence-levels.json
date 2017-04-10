@@ -3,19 +3,19 @@
         "id": 5001,
         "name": "😖",
         "definition": "Confounded",
-        "css_color": "#00FF00"
+        "css_color": "#FF0000"
     },
     {
         "id": 5002,
         "name": "😐",
         "definition": "Okay",
-        "css_color": "#00FF00"
+        "css_color": "#888800"
     },
     {
         "id": 5003,
         "name": "🙂",
         "definition": "Good",
-        "css_color": "#00FF00"
+        "css_color": "#00AA00"
     },
     {
         "id": 5004,

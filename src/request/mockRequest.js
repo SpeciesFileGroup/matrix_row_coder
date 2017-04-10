@@ -26,7 +26,7 @@ module.exports = {
         return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-citations.json`));
     },
     getConfidenceLevels() {
-        return promisify(require(MOCK_REQUEST_DIR + `confidence_levels.json`));
+        return promisify(require(MOCK_REQUEST_DIR + `confidence-levels.json`));
     }
 };
 

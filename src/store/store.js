@@ -10,7 +10,8 @@ function makeInitialState() {
         taxonTitle: '',
         taxonId: null,
         descriptors: [],
-        observations: []
+        observations: [],
+        confidenceLevels: []
     };
 }
 
