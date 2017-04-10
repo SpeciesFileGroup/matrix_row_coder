@@ -5,7 +5,8 @@ const MutationNames = {
     PushObservation: 'pushObservation',
     SetCharacterStateCheck: 'setCharacterStateCheck',
     SetDescriptorNotes: 'setDescriptorNotes',
-    SetDescriptorDepictions: 'setDescriptorDepictions'
+    SetDescriptorDepictions: 'setDescriptorDepictions',
+    SetObservationNotes: 'setObservationNotes'
 };
 
 const MutationFunctions = {
@@ -15,7 +16,8 @@ const MutationFunctions = {
     [MutationNames.PushObservation]: require('./pushObservation'),
     [MutationNames.SetCharacterStateCheck]: require('./setCharacterStateCheck'),
     [MutationNames.SetDescriptorNotes]: require('./setDescriptorNotes'),
-    [MutationNames.SetDescriptorDepictions]: require('./setDescriptorDepictions')
+    [MutationNames.SetDescriptorDepictions]: require('./setDescriptorDepictions'),
+    [MutationNames.SetObservationNotes]: require('./setObservationNotes')
 };
 
 module.exports = {
