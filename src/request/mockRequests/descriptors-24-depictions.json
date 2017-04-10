@@ -31,7 +31,7 @@
     },
     {
         "id": 303,
-        "caption": "This is an ape though.",
+        "caption": "Bear.",
         "figure_label": "1",
         "depiction_object_id": 34,
         "depiction_object_type": "CharacterState",
@@ -43,17 +43,17 @@
                 "height": 700,
                 "content_type": "image/png",
                 "size": 13238,
-                "url": "//www.placeape.net/700/700",
+                "url": "//www.placebear.net/700/700",
                 "alternatives": {
                     "medium": {
                         "height": 300,
                         "width": 300,
-                        "url": "//www.placeape.net/300/300"
+                        "url": "//www.placebear.net/300/300"
                     },
                     "thumb": {
                         "height": 100,
                         "width": 100,
-                        "url": "//www.placeape.net/100/100"
+                        "url": "//www.placebear.net/100/100"
                     }
                 }
             }

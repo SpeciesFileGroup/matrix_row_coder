@@ -3,7 +3,8 @@ const ActionNames = {
     RequestObservation: 'requestObservation',
     RequestDescriptorNotes: 'requestDescriptorNotes',
     RequestDescriptorDepictions: 'requestDescriptorDepictions',
-    RequestObservationNotes: 'requestObservationNotes'
+    RequestObservationNotes: 'requestObservationNotes',
+    RequestObservationDepictions: 'requestObservationDepictions',
 };
 
 const ActionFunctions = {
@@ -11,7 +12,8 @@ const ActionFunctions = {
     [ActionNames.RequestObservation]: require('./requestObservation'),
     [ActionNames.RequestDescriptorNotes]: require('./requestDescriptorNotes'),
     [ActionNames.RequestDescriptorDepictions]: require('./requestDescriptorDepictions'),
-    [ActionNames.RequestObservationNotes]: require('./requestObservationNotes')
+    [ActionNames.RequestObservationNotes]: require('./requestObservationNotes'),
+    [ActionNames.RequestObservationDepictions]: require('./requestObservationDepictions')
 };
 
 module.exports = {

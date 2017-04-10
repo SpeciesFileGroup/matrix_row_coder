@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "id": 305,
+        "caption": "Bees are flying insects closely related to wasps and ants, known for their role in pollination and, in the case of the best-known bee species, the European honey bee, for producing honey and beeswax.",
+        "figure_label": "1",
+        "depiction_object_id": 1004,
+        "depiction_object_type": "Observation",
+        "image": {
+            "success": true,
+            "result": {
+                "id": 8888,
+                "width": 700,
+                "height": 700,
+                "content_type": "image/png",
+                "size": 13238,
+                "url": "//placebacon.net/700/700",
+                "alternatives": {
+                    "medium": {
+                        "height": 300,
+                        "width": 300,
+                        "url": "//placebacon.net/300/300"
+                    },
+                    "thumb": {
+                        "height": 100,
+                        "width": 100,
+                        "url": "//placebacon.net/100/100"
+                    }
+                }
+            }
+        }
+    }
+]
