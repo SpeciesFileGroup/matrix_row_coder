@@ -1,7 +1,7 @@
 const ActionNames = {
     RequestMatrixRow: 'requestMatrixRow',
     RequestConfidenceLevels: 'requestConfidenceLevels',
-    RequestObservation: 'requestObservation',
+    RequestObservations: 'requestObservation',
     RequestDescriptorNotes: 'requestDescriptorNotes',
     RequestDescriptorDepictions: 'requestDescriptorDepictions',
     RequestObservationNotes: 'requestObservationNotes',
@@ -13,7 +13,7 @@ const ActionNames = {
 const ActionFunctions = {
     [ActionNames.RequestMatrixRow]: require('./requestMatrixRow'),
     [ActionNames.RequestConfidenceLevels]: require('./requestConfidenceLevels'),
-    [ActionNames.RequestObservation]: require('./requestObservation'),
+    [ActionNames.RequestObservations]: require('./requestObservations'),
     [ActionNames.RequestDescriptorNotes]: require('./requestDescriptorNotes'),
     [ActionNames.RequestDescriptorDepictions]: require('./requestDescriptorDepictions'),
     [ActionNames.RequestObservationNotes]: require('./requestObservationNotes'),

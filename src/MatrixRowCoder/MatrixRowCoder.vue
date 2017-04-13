@@ -36,7 +36,8 @@
 
     module.exports = {
         mounted: function() {
-            this.$store.dispatch(ActionNames.RequestMatrixRow);
+            this.$store.dispatch(ActionNames.RequestMatrixRow, `matrix-row.json`);
+            this.$store.dispatch(ActionNames.RequestConfidenceLevels);
         },
         computed,
         components: {

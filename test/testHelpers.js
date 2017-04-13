@@ -8,7 +8,7 @@ module.exports = {
     requestAllObservationsForStore(store) {
         const otuId = store.state.taxonId;
         return Promise.all(store.state.descriptors.map(d => {
-            return store.dispatch(ActionNames.RequestObservation, {
+            return store.dispatch(ActionNames.RequestObservations, {
                 descriptorId: d.id,
                 otuId
             });

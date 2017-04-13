@@ -1,5 +1,9 @@
 const MOCK_REQUEST_DIR = `./mockRequests/`;
 
+require('./mockRequests/matrix-row.json');
+require('./mockRequests/confidence-levels.json');
+require('./mockRequests/observations?otu_id=1&descriptor_id=26.json');
+
 module.exports = {
     getMatrixRow(url) {
         return promisify(require(MOCK_REQUEST_DIR + url));

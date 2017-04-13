@@ -23,7 +23,9 @@
         name: 'qualitative-descriptor',
         props: ['descriptor'],
         created: function() {
-            this.$store.dispatch(ActionNames.RequestObservation, this.$props.descriptor.observationUrl);
+            const descriptorId = this.$props.descriptor.id;
+            const otuId = this.$store.state.taxonId;
+            this.$store.dispatch(ActionNames.RequestObservations, { descriptorId, otuId });
         },
         methods: {
             test: function(something) {
