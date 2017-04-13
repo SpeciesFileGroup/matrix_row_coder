@@ -2,7 +2,12 @@ const MOCK_REQUEST_DIR = `./mockRequests/`;
 
 require('./mockRequests/matrix-row.json');
 require('./mockRequests/confidence-levels.json');
+require('./mockRequests/observations?otu_id=1&descriptor_id=24.json');
+require('./mockRequests/observations?otu_id=1&descriptor_id=25.json');
 require('./mockRequests/observations?otu_id=1&descriptor_id=26.json');
+require('./mockRequests/descriptors-26-depictions.json');
+require('./mockRequests/descriptors-26-notes.json');
+require('./mockRequests/observations?otu_id=1&descriptor_id=27.json');
 
 module.exports = {
     getMatrixRow(url) {

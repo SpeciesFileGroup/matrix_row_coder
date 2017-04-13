@@ -1,15 +1,28 @@
 <template>
-    <div>
-        <label>
-            Amount:
-            <input type="number" :value="continuousValue">
-        </label>
-        <label>
-            Unit:
-            <input type="text" :value="continuousUnit">
-        </label>
+    <div class="continuous-descriptor">
+        <div v-if="!isZoomed">
+            <h2 class="continuous-descriptor__title">{{ descriptor.title }}</h2>
+            <p>
+                <button @click="toggleZoom" type="button">Zoom</button>
+            </p>
+            <label>
+                Amount:
+                <input type="number" :value="continuousValue">
+            </label>
+            <label>
+                Unit:
+                <input type="text" :value="continuousUnit">
+            </label>
+        </div>
+
+        <div v-if="isZoomed">
+            <button @click="toggleZoom" type="button">Return</button>
+            ZOOM VIEW
+        </div>
     </div>
 </template>
+
+<style lang="stylus" src="ContinuousDescriptor.styl"></style>
 
 <script>
     const ActionNames = require('../../store/actions/actions').ActionNames;
@@ -17,14 +30,22 @@
 
     module.exports = {
         created: function() {
-            const requestObservationArgs = {
-                descriptorId: this.$props.descriptor.id,
-                otuId: this.$store.state.taxonId
-            };
+            const descriptorId = this.$props.descriptor.id;
+            const otuId = this.$store.state.taxonId;
 
-            console.log(requestObservationArgs);
-
-            this.$store.dispatch(ActionNames.RequestObservations, requestObservationArgs);
+            this.$store.dispatch(ActionNames.RequestDescriptorDepictions, descriptorId);
+            this.$store.dispatch(ActionNames.RequestDescriptorNotes, descriptorId);
+            this.$store.dispatch(ActionNames.RequestObservations, {descriptorId, otuId});
+        },
+        data: function () {
+            return {
+                isZoomed: false
+            }
+        },
+        methods: {
+            toggleZoom: function() {
+                this.isZoomed = !this.isZoomed;
+            }
         },
         name: 'continuous-descriptor',
         props: ['descriptor'],
