@@ -1,6 +1,6 @@
 <template>
     <div class="continuous-descriptor">
-        <div v-if="!isZoomed">
+        <div>
             <h2 class="continuous-descriptor__title">{{ descriptor.title }}</h2>
             <p>
                 <button @click="toggleZoom" type="button">Zoom</button>
@@ -15,10 +15,12 @@
             </label>
         </div>
 
-        <div v-if="isZoomed">
-            <button @click="toggleZoom" type="button">Return</button>
-            ZOOM VIEW
-        </div>
+        <transition name="continuous-descriptor__zoomed-view-transition">
+            <div class="continuous-descriptor__zoomed-view" v-if="isZoomed">
+                <button @click="toggleZoom" type="button">Return</button>
+                ZOOM VIEW
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -35,7 +37,11 @@
 
             this.$store.dispatch(ActionNames.RequestDescriptorDepictions, descriptorId);
             this.$store.dispatch(ActionNames.RequestDescriptorNotes, descriptorId);
-            this.$store.dispatch(ActionNames.RequestObservations, {descriptorId, otuId});
+            this.$store.dispatch(ActionNames.RequestObservations, {descriptorId, otuId})
+                .then(_ => {
+                    //if there is an observation then
+                    //get observation notes, confidences, citations, and depictions
+                });
         },
         data: function () {
             return {
