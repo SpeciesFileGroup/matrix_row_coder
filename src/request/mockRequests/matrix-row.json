@@ -2,7 +2,8 @@
     "otu": {
         "otu_id": 1,
         "name": null,
-        "object_tag": "Aus bus"
+        "object_tag": "Aus bus",
+        "url": "//otus/24.json"
     },
     "descriptors": [
         {
@@ -11,18 +12,21 @@
             "type": "Qualitative",
             "position": 1,
             "description": "The MARKDOWN description of the descriptor.",
+            "url": "//descriptors/24.json",
             "character_states": [
                 {
                     "id": 33,
                     "name": "red",
                     "label": "A",
-                    "position": 1
+                    "position": 1,
+                    "url": "//character_states/33.json"
                 },
                 {
                     "id": 34,
                     "name": "blue",
                     "label": "B",
-                    "position": 2
+                    "position": 2,
+                    "url": "//character_states/34.json"
                 }
             ]
         },
@@ -31,19 +35,22 @@
             "object_tag": "Big green spine",
             "description": null,
             "position": 2,
-            "type": "Presence"
+            "type": "Presence",
+            "url": "//otus/25.json"
         },
         {
             "id": 26,
             "object_tag": "Tooth count",
             "type": "Continuous",
-            "position": 3
+            "position": 3,
+            "url": "//otus/26.json"
         },
         {
             "id": 27,
             "object_tag": "Weight",
             "type": "Sample",
-            "position": 4
+            "position": 4,
+            "url": "//otus/27.json"
         }
     ]
 }
