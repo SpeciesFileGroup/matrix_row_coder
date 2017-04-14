@@ -1,12 +1,13 @@
 {
     "otu": {
         "otu_id": 1,
-        "otu_tag": "Aus bus"
+        "name": null,
+        "object_tag": "Aus bus"
     },
     "descriptors": [
         {
             "id": 24,
-            "descriptor_tag": "Head color",
+            "object_tag": "Head color",
             "type": "Qualitative",
             "position": 1,
             "document_description": "The MARKDOWN description of the descriptor.",
@@ -15,34 +16,32 @@
                     "id": 33,
                     "name": "red",
                     "label": "A",
-                    "document_description": null,
                     "position": 1
                 },
                 {
                     "id": 34,
                     "name": "blue",
                     "label": "B",
-                    "document_description": "Royal blue, not NC State blue.",
                     "position": 2
                 }
             ]
         },
         {
             "id": 25,
-            "descriptor_tag": "Big green spine",
+            "object_tag": "Big green spine",
             "document_description": null,
             "position": 2,
             "type": "Presence"
         },
         {
             "id": 26,
-            "descriptor_tag": "Tooth count",
+            "object_tag": "Tooth count",
             "type": "Continuous",
             "position": 3
         },
         {
             "id": 27,
-            "descriptor_tag": "Weight",
+            "object_tag": "Weight",
             "type": "Sample",
             "position": 4
         }
