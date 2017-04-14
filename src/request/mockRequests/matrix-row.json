@@ -1,50 +1,56 @@
 {
     "otu": {
         "otu_id": 1,
-        "otu_tag": "Aus bus"
+        "name": null,
+        "object_tag": "Aus bus",
+        "url": "//otus/24.json"
     },
     "descriptors": [
         {
             "id": 24,
-            "descriptor_tag": "Head color",
+            "object_tag": "Head color",
             "type": "Qualitative",
             "position": 1,
-            "document_description": "The MARKDOWN description of the descriptor.",
+            "description": "The MARKDOWN description of the descriptor.",
+            "url": "//descriptors/24.json",
             "character_states": [
                 {
                     "id": 33,
                     "name": "red",
                     "label": "A",
-                    "document_description": null,
-                    "position": 1
+                    "position": 1,
+                    "url": "//character_states/33.json"
                 },
                 {
                     "id": 34,
                     "name": "blue",
                     "label": "B",
-                    "document_description": "Royal blue, not NC State blue.",
-                    "position": 2
+                    "position": 2,
+                    "url": "//character_states/34.json"
                 }
             ]
         },
         {
             "id": 25,
-            "descriptor_tag": "Big green spine",
-            "document_description": null,
+            "object_tag": "Big green spine",
+            "description": null,
             "position": 2,
-            "type": "Presence"
+            "type": "Presence",
+            "url": "//otus/25.json"
         },
         {
             "id": 26,
-            "descriptor_tag": "Tooth count",
+            "object_tag": "Tooth count",
             "type": "Continuous",
-            "position": 3
+            "position": 3,
+            "url": "//otus/26.json"
         },
         {
             "id": 27,
-            "descriptor_tag": "Weight",
+            "object_tag": "Weight",
             "type": "Sample",
-            "position": 4
+            "position": 4,
+            "url": "//otus/27.json"
         }
     ]
 }
