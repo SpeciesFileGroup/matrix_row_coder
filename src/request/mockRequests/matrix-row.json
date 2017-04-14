@@ -10,7 +10,7 @@
             "object_tag": "Head color",
             "type": "Qualitative",
             "position": 1,
-            "document_description": "The MARKDOWN description of the descriptor.",
+            "description": "The MARKDOWN description of the descriptor.",
             "character_states": [
                 {
                     "id": 33,
@@ -29,7 +29,7 @@
         {
             "id": 25,
             "object_tag": "Big green spine",
-            "document_description": null,
+            "description": null,
             "position": 2,
             "type": "Presence"
         },
