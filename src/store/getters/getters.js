@@ -1,9 +1,13 @@
 const GetterNames = {
-    GetObservationsForDescriptorId: 'getObservationsForDescriptorId'
+    GetObservationsFor: 'getObservationsFor',
+    GetContinuousValueFor: 'getContinuousValueFor',
+    GetContinuousUnitFor: 'getContinuousUnitFor'
 };
 
 const GetterFunctions = {
-    [GetterNames.GetObservationsForDescriptorId]: require('./getObservationsForDescriptorId')
+    [GetterNames.GetObservationsFor]: require('./getObservationsFor'),
+    [GetterNames.GetContinuousValueFor]: require('./getContinuousValueFor'),
+    [GetterNames.GetContinuousUnitFor]: require('./getContinuousUnitFor')
 };
 
 module.exports = {

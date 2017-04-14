@@ -43,7 +43,7 @@
                     //get observation notes, confidences, citations, and depictions
                 });
         },
-        data: function () {
+        data: function() {
             return {
                 isZoomed: false
             }
@@ -57,18 +57,10 @@
         props: ['descriptor'],
         computed: {
             continuousValue: function() {
-                const observations = this.$store.getters[GetterNames.GetObservationsForDescriptorId](this.$props.descriptor.id);
-                if (observations.length > 0) {
-                    return observations[0].continuousValue;
-                }
-                return null;
+                return this.$store.getters[GetterNames.GetContinuousValueFor](this.$props.descriptor.id);
             },
             continuousUnit: function() {
-                const observations = this.$store.getters[GetterNames.GetObservationsForDescriptorId](this.$props.descriptor.id);
-                if (observations.length > 0) {
-                    return observations[0].continuousUnit;
-                }
-                return null;
+                return this.$store.getters[GetterNames.GetContinuousUnitFor](this.$props.descriptor.id);
             }
         }
     };

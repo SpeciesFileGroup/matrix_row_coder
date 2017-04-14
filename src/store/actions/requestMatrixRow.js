@@ -1,5 +1,6 @@
 const mockRequest = require('../../request/mockRequest');
 const MutationNames = require('../mutations/mutations').MutationNames;
+const ComponentNames = require('../helpers/ComponentNames');
 
 module.exports = function({commit}, matrixRowUrl) {
     return mockRequest.getMatrixRow(matrixRowUrl)
@@ -30,13 +31,6 @@ function makeBaseDescriptor(descriptorData) {
         depictions: null
     };
 }
-
-const ComponentNames = {
-    Qualitative: `qualitative-descriptor`,
-    Presence: `presence-descriptor`,
-    Continuous: `continuous-descriptor`,
-    Sample: `sample-descriptor`
-};
 
 function getComponentNameForDescriptorType(descriptorData) {
     return ComponentNames[descriptorData.type];
