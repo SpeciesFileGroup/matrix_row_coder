@@ -6,5 +6,5 @@ module.exports = function(state, args) {
 function transformConfidenceForViewmodel(confidenceData) {
     return {
         confidenceLevelId: confidenceData.confidence_level_id
-    }
+    };
 }

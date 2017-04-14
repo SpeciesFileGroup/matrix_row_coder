@@ -29,7 +29,10 @@
                     </div>
                 </div>
                 <div class="continuous-descriptor__observation-details">
-                    <confidence-levels></confidence-levels>
+                    <confidence-levels
+                        v-bind:selected-ids="selectedConfidences"
+                        v-on:set-confidence="setConfidenceId">
+                    </confidence-levels>
                 </div>
             </div>
         </transition>
@@ -70,6 +73,9 @@
         methods: {
             toggleZoom: function() {
                 this.isZoomed = !this.isZoomed;
+            },
+            setConfidenceId: function({ confidenceId, value }) {
+
             }
         },
         name: 'continuous-descriptor',
@@ -80,6 +86,11 @@
             },
             continuousUnit: function() {
                 return this.$store.getters[GetterNames.GetContinuousUnitFor](this.$props.descriptor.id);
+            },
+            selectedConfidences: function() {
+                const observations = this.$store.getters[GetterNames.GetObservationsFor](this.$props.descriptor.id);
+                const confidences = (observations.length > 0 && observations[0].confidences) ? observations[0].confidences : [];
+                return confidences.map(c => c.confidenceLevelId);
             }
         },
         components: {

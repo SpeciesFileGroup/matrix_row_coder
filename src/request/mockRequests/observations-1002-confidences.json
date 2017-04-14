@@ -1,10 +1,12 @@
 [
     {
-        "id": 5001,
+        "id": 2224,
+        "confidence_level_id": 5001,
         "position": 2
     },
     {
-        "id": 5003,
+        "id": 2223,
+        "confidence_level_id": 5003,
         "position": 1
     }
 ]
