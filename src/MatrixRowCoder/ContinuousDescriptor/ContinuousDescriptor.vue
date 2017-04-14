@@ -17,8 +17,20 @@
 
         <transition name="continuous-descriptor__zoomed-view-transition">
             <div class="continuous-descriptor__zoomed-view" v-if="isZoomed">
-                <button @click="toggleZoom" type="button">Return</button>
-                ZOOM VIEW
+                <button class="continuous-descriptor__zoom-close-button" @click="toggleZoom" type="button">Return</button>
+                <div class="continuous-descriptor__descriptor-details">
+                    <h2>{{ descriptor.title }}</h2>
+                    <p>{{ descriptor.description }}</p>
+                    <div class="continuous-descriptor__descriptor-depictions">
+                        <img v-for="depiction in descriptor.depictions" :src="depiction.thumbSrc" :alt="depiction.caption">
+                    </div>
+                    <div class="continuous-descriptor__descriptor-notes">
+                        <p v-for="note in descriptor.notes">{{ note.text }}</p>
+                    </div>
+                </div>
+                <div class="continuous-descriptor__observation-details">
+                    <confidence-levels></confidence-levels>
+                </div>
             </div>
         </transition>
     </div>
@@ -30,6 +42,8 @@
     const ActionNames = require('../../store/actions/actions').ActionNames;
     const GetterNames = require('../../store/getters/getters').GetterNames;
 
+    const confidenceLevels = require('../ConfidenceLevels/ConfidenceLevels.vue');
+
     module.exports = {
         created: function() {
             const descriptorId = this.$props.descriptor.id;
@@ -39,8 +53,13 @@
             this.$store.dispatch(ActionNames.RequestDescriptorNotes, descriptorId);
             this.$store.dispatch(ActionNames.RequestObservations, {descriptorId, otuId})
                 .then(_ => {
-                    //if there is an observation then
-                    //get observation notes, confidences, citations, and depictions
+                    const observations = this.$store.getters[GetterNames.GetObservationsFor](descriptorId);
+                    observations.forEach(o => {
+                        this.$store.dispatch(ActionNames.RequestObservationCitations, o.id);
+                        this.$store.dispatch(ActionNames.RequestObservationConfidences, o.id);
+                        this.$store.dispatch(ActionNames.RequestObservationDepictions, o.id);
+                        this.$store.dispatch(ActionNames.RequestObservationNotes, o.id);
+                    });
                 });
         },
         data: function() {
@@ -62,6 +81,9 @@
             continuousUnit: function() {
                 return this.$store.getters[GetterNames.GetContinuousUnitFor](this.$props.descriptor.id);
             }
+        },
+        components: {
+            confidenceLevels
         }
     };
 </script>

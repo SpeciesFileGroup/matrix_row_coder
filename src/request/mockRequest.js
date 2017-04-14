@@ -7,6 +7,10 @@ require('./mockRequests/observations?otu_id=1&descriptor_id=25.json');
 require('./mockRequests/observations?otu_id=1&descriptor_id=26.json');
 require('./mockRequests/descriptors-26-depictions.json');
 require('./mockRequests/descriptors-26-notes.json');
+require('./mockRequests/observations-1002-citations.json');
+require('./mockRequests/observations-1002-confidences.json');
+require('./mockRequests/observations-1002-depictions.json');
+require('./mockRequests/observations-1002-notes.json');
 require('./mockRequests/observations?otu_id=1&descriptor_id=27.json');
 
 module.exports = {

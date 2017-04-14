@@ -34,7 +34,7 @@
     const sampleDescriptor = require('./SampleDescriptor/SampleDescriptor.vue');
 
     module.exports = {
-        mounted: function() {
+        created: function() {
             this.$store.dispatch(ActionNames.RequestMatrixRow, `matrix-row.json`);
             this.$store.dispatch(ActionNames.RequestConfidenceLevels);
         },

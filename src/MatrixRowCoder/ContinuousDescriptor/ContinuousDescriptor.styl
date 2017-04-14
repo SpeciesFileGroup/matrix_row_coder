@@ -2,13 +2,20 @@
     border 2px dotted black
     padding 2vmin
 
+    &__zoom-close-button
+        position absolute
+        right 24px
+        top 24px
+
     &__title
         margin 0 0 1vmin 0
 
     &__zoomed-view
         background-color white
         bottom 0
+        display flex
         left 0
+        padding 2vmin
         position absolute
         top 0
         right 0
@@ -31,3 +38,7 @@
 
             &-to
                 opacity 0
+
+    &__descriptor-details
+    &__observation-details
+        flex 1 1 0
