@@ -43,6 +43,10 @@
                     <depictions
                         v-bind:depictions="observation.depictions">
                     </depictions>
+
+                    <citations
+                        v-bind:citations="observation.citations">
+                    </citations>
                 </div>
             </div>
         </transition>
@@ -58,6 +62,7 @@
     const confidenceLevels = require('../ConfidenceLevels/ConfidenceLevels.vue');
     const notes = require('../Notes/Notes.vue');
     const depictions = require('../Depictions/Depictions.vue');
+    const citations = require('../Citations/Citations.vue');
 
     module.exports = {
         created: function() {
@@ -108,7 +113,8 @@
         components: {
             confidenceLevels,
             notes,
-            depictions
+            depictions,
+            citations
         }
     };
 </script>
