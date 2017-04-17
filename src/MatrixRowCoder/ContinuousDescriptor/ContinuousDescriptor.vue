@@ -1,10 +1,9 @@
 <template>
     <div class="continuous-descriptor">
-        <div>
-            <h2 class="continuous-descriptor__title">{{ descriptor.title }}</h2>
-            <p>
-                <button @click="toggleZoom" type="button">Zoom</button>
-            </p>
+        <summary-view
+            v-bind:title="descriptor.title"
+            v-on:toggleZoom="toggleZoom()">
+
             <label>
                 Amount:
                 <input type="number" :value="continuousValue">
@@ -13,7 +12,7 @@
                 Unit:
                 <input type="text" :value="continuousUnit">
             </label>
-        </div>
+        </summary-view>
 
         <transition name="continuous-descriptor__zoomed-view-transition">
             <div class="continuous-descriptor__zoomed-view" v-if="isZoomed">
@@ -39,6 +38,7 @@
     const ActionNames = require('../../store/actions/actions').ActionNames;
     const GetterNames = require('../../store/getters/getters').GetterNames;
 
+    const summaryView = require('../SummaryView/SummaryView.vue');
     const observationDetails = require('../ObservationDetails/ObservationDetails.vue');
     const descriptorDetails = require('../DescriptorDetails/DescriptorDetails.vue');
 
@@ -89,6 +89,7 @@
             }
         },
         components: {
+            summaryView,
             observationDetails,
             descriptorDetails
         }
