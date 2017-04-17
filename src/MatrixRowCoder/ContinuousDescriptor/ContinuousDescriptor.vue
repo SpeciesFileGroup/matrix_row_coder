@@ -35,6 +35,10 @@
                     <confidence-levels
                         v-bind:observation="observation">
                     </confidence-levels>
+
+                    <notes
+                        v-bind:notes="observation.notes">
+                    </notes>
                 </div>
             </div>
         </transition>
@@ -48,6 +52,7 @@
     const GetterNames = require('../../store/getters/getters').GetterNames;
 
     const confidenceLevels = require('../ConfidenceLevels/ConfidenceLevels.vue');
+    const notes = require('../Notes/Notes.vue');
 
     module.exports = {
         created: function() {
@@ -96,7 +101,8 @@
             }
         },
         components: {
-            confidenceLevels
+            confidenceLevels,
+            notes
         }
     };
 </script>
