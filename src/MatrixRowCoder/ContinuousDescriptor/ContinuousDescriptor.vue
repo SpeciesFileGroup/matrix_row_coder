@@ -21,12 +21,12 @@
                 <div class="continuous-descriptor__descriptor-details">
                     <h2>{{ descriptor.title }}</h2>
                     <p>{{ descriptor.description }}</p>
-                    <div class="continuous-descriptor__descriptor-depictions">
-                        <img v-for="depiction in descriptor.depictions" :src="depiction.thumbSrc" :alt="depiction.caption">
-                    </div>
-                    <div class="continuous-descriptor__descriptor-notes">
-                        <p v-for="note in descriptor.notes">{{ note.text }}</p>
-                    </div>
+                    <notes
+                        v-bind:notes="descriptor.notes">
+                    </notes>
+                    <depictions
+                        v-bind:depictions="descriptor.depictions">
+                    </depictions>
                 </div>
                 <div
                     v-if="observation"
