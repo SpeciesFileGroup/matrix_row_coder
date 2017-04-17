@@ -28,10 +28,10 @@
         descriptors: state => state.descriptors
     });
 
-    const continuousDescriptor = require('./ContinuousDescriptor/ContinuousDescriptor.vue');
-    const presenceDescriptor = require('./PresenceDescriptor/PresenceDescriptor.vue');
+    const continuousDescriptor = require('./SingleObservationDescriptor/ContinuousDescriptor/ContinuousDescriptor.vue');
+    const presenceDescriptor = require('./SingleObservationDescriptor/PresenceDescriptor/PresenceDescriptor.vue');
     const qualitativeDescriptor = require('./QualitativeDescriptor/QualitativeDescriptor.vue');
-    const sampleDescriptor = require('./SampleDescriptor/SampleDescriptor.vue');
+    const sampleDescriptor = require('./SingleObservationDescriptor/SampleDescriptor/SampleDescriptor.vue');
 
     module.exports = {
         created: function() {
