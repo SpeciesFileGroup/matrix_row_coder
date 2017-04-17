@@ -67,9 +67,6 @@
         name: 'continuous-descriptor',
         props: ['descriptor'],
         computed: {
-            observation: function() {
-                return this.$store.getters[GetterNames.GetObservationsFor](this.$props.descriptor.id)[0];
-            },
             continuousValue: function() {
                 return this.$store.getters[GetterNames.GetContinuousValueFor](this.$props.descriptor.id);
             },
