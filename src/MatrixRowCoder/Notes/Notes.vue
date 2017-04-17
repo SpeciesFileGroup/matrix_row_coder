@@ -3,8 +3,8 @@
         <div class="notes__header">Notes</div>
         <ul class="notes__list">
             <li
-                    class="notes__item"
-                    v-for="note in notes">
+                class="notes__item"
+                v-for="note in notes">
 
                 {{ note.text }}
             </li>

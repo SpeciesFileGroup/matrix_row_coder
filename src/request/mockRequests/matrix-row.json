@@ -42,6 +42,7 @@
         {
             "id": 26,
             "object_tag": "Tooth count",
+            "description": "Describes the number of teeth present on this specimen.",
             "type": "Continuous",
             "position": 3,
             "url": "//otus/26.json"

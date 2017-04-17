@@ -74,17 +74,22 @@
             this.$store.dispatch(ActionNames.RequestObservations, {descriptorId, otuId})
                 .then(_ => {
                     const observations = this.$store.getters[GetterNames.GetObservationsFor](descriptorId);
-                    observations.forEach(o => {
-                        this.$store.dispatch(ActionNames.RequestObservationCitations, o.id);
-                        this.$store.dispatch(ActionNames.RequestObservationConfidences, o.id);
-                        this.$store.dispatch(ActionNames.RequestObservationDepictions, o.id);
-                        this.$store.dispatch(ActionNames.RequestObservationNotes, o.id);
-                    });
+                    if (observations.length > 1) {
+                        throw 'A continuous descriptor cannot have more than one observation!';
+                    } else if (observations.length === 1) {
+                        const observation = observations[0];
+                        this.observation = observation;
+                        this.$store.dispatch(ActionNames.RequestObservationCitations, observation.id);
+                        this.$store.dispatch(ActionNames.RequestObservationConfidences, observation.id);
+                        this.$store.dispatch(ActionNames.RequestObservationDepictions, observation.id);
+                        this.$store.dispatch(ActionNames.RequestObservationNotes, observation.id);
+                    }
                 });
         },
         data: function() {
             return {
-                isZoomed: false
+                isZoomed: false,
+                observation: null
             }
         },
         methods: {
@@ -103,11 +108,6 @@
             },
             continuousUnit: function() {
                 return this.$store.getters[GetterNames.GetContinuousUnitFor](this.$props.descriptor.id);
-            },
-            selectedConfidences: function() {
-                const observations = this.$store.getters[GetterNames.GetObservationsFor](this.$props.descriptor.id);
-                const confidences = (observations.length > 0 && observations[0].confidences) ? observations[0].confidences : [];
-                return confidences.map(c => c.confidenceLevelId);
             }
         },
         components: {

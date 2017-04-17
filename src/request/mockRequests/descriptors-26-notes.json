@@ -1,6 +1,10 @@
 [
     {
         "id": 9999,
-        "text": "Describes the number of teeth present on this specimen."
+        "text": "A tooth (plural teeth) is a hard, calcified structure found in the jaws (or mouths) of many vertebrates and used to break down food."
+    },
+    {
+        "id": 9998,
+        "text": "Some animals, particularly carnivores, also use teeth for hunting or for defensive purposes."
     }
 ]
