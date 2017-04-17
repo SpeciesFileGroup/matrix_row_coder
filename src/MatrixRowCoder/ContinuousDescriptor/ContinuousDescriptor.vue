@@ -14,21 +14,19 @@
             </label>
         </summary-view>
 
-        <transition name="continuous-descriptor__zoomed-view-transition">
-            <div class="continuous-descriptor__zoomed-view" v-if="isZoomed">
-                <button class="continuous-descriptor__zoom-close-button" @click="toggleZoom" type="button">Return</button>
-                <div class="continuous-descriptor__descriptor-details">
-                    <h2>{{ descriptor.title }}</h2>
-                    <descriptor-details v-bind:descriptor="descriptor"></descriptor-details>
-                </div>
-                <div
-                    v-if="observation"
-                    class="continuous-descriptor__observation-details">
+        <zoomed-view
+            v-bind:descriptor="descriptor"
+            v-bind:observation="observation"
+            v-bind:isZoomed="isZoomed"
+            v-on:toggleZoom="toggleZoom()">
 
-                    <observation-details v-bind:observation="observation"></observation-details>
-                </div>
-            </div>
-        </transition>
+            <dl>
+                <dt>Amount:</dt>
+                <dd>{{ continuousValue }}</dd>
+                <dt>Unit</dt>
+                <dd>{{ continuousUnit }}</dd>
+            </dl>
+        </zoomed-view>
     </div>
 </template>
 
@@ -39,8 +37,7 @@
     const GetterNames = require('../../store/getters/getters').GetterNames;
 
     const summaryView = require('../SummaryView/SummaryView.vue');
-    const observationDetails = require('../ObservationDetails/ObservationDetails.vue');
-    const descriptorDetails = require('../DescriptorDetails/DescriptorDetails.vue');
+    const zoomedView = require('../ZoomedView/ZoomedView.vue');
 
     module.exports = {
         created: function() {
@@ -90,8 +87,7 @@
         },
         components: {
             summaryView,
-            observationDetails,
-            descriptorDetails
+            zoomedView
         }
     };
 </script>
