@@ -3,7 +3,10 @@ const ActionNames = require('../src/store/actions/actions').ActionNames;
 
 module.exports = {
     requestMatrixRowForStore(store) {
-        return store.dispatch(ActionNames.RequestMatrixRow, TestDefines.MatrixRowUrl)
+        return store.dispatch(ActionNames.RequestMatrixRow, TestDefines.MatrixRowUrl);
+    },
+    requestConfidenceLevelsForStore(store) {
+        return store.dispatch(ActionNames.RequestConfidenceLevels);
     },
     requestAllObservationsForStore(store) {
         const otuId = store.state.taxonId;

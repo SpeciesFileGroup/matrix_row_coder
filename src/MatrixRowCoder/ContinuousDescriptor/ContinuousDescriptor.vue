@@ -28,10 +28,12 @@
                         <p v-for="note in descriptor.notes">{{ note.text }}</p>
                     </div>
                 </div>
-                <div class="continuous-descriptor__observation-details">
+                <div
+                    v-if="observation"
+                    class="continuous-descriptor__observation-details">
+
                     <confidence-levels
-                        v-bind:selected-ids="selectedConfidences"
-                        v-on:set-confidence="setConfidenceId">
+                        v-bind:observation="observation">
                     </confidence-levels>
                 </div>
             </div>
@@ -73,14 +75,14 @@
         methods: {
             toggleZoom: function() {
                 this.isZoomed = !this.isZoomed;
-            },
-            setConfidenceId: function({ confidenceId, value }) {
-
             }
         },
         name: 'continuous-descriptor',
         props: ['descriptor'],
         computed: {
+            observation: function() {
+                return this.$store.getters[GetterNames.GetObservationsFor](this.$props.descriptor.id)[0];
+            },
             continuousValue: function() {
                 return this.$store.getters[GetterNames.GetContinuousValueFor](this.$props.descriptor.id);
             },

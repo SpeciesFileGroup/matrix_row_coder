@@ -8,7 +8,7 @@ describe('store', () => {
             taxonId: null,
             descriptors: [],
             observations: [],
-            confidenceLevels: []
+            confidenceLevels: null
         };
 
         expect(store.state).to.deep.equal(expectedEmptyState);
