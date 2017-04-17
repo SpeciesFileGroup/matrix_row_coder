@@ -27,6 +27,7 @@ function makeBaseDescriptor(descriptorData) {
         componentName: getComponentNameForDescriptorType(descriptorData),
         title: descriptorData.object_tag,
         description: getDescription(descriptorData),
+        isZoomed: false,
         notes: null,
         depictions: null
     };

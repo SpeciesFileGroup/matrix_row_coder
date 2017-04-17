@@ -1,7 +1,7 @@
 <template>
     <transition name="zoomed-view__transition">
-        <div class="zoomed-view" v-if="isZoomed">
-            <button class="zoomed-view__close-button" @click="toggleZoom" type="button">Return</button>
+        <div class="zoomed-view" v-if="descriptor.isZoomed">
+            <button class="zoomed-view__close-button" @click="closeZoom" type="button">Return</button>
             <div class="zoomed-view__descriptor-details">
                 <h2>{{ descriptor.title }}</h2>
                 <slot></slot>
@@ -20,15 +20,19 @@
 <style src="ZoomedView.styl" lang="stylus"></style>
 
 <script>
+    const MutationNames = require('../../store/mutations/mutations').MutationNames;
     const observationDetails = require('../ObservationDetails/ObservationDetails.vue');
     const descriptorDetails = require('../DescriptorDetails/DescriptorDetails.vue');
 
     module.exports = {
         name: "zoomed-view",
-        props: ['isZoomed', 'descriptor', 'observation'],
+        props: ['descriptor', 'observation'],
         methods: {
-            toggleZoom: function() {
-                this.$emit('toggleZoom');
+            closeZoom: function() {
+                this.$store.commit(MutationNames.SetDescriptorZoom, {
+                    descriptorId: this.descriptor.id,
+                    isZoomed: false
+                });
             }
         },
         components: {

@@ -64,7 +64,7 @@ describe(`requestMatrixRow action`, () => {
         const expectedDescriptions = [
             "The MARKDOWN description of the descriptor.",
             null,
-            null,
+            "Describes the number of teeth present on this specimen.",
             null
         ];
 
@@ -82,6 +82,12 @@ describe(`requestMatrixRow action`, () => {
     it(`should initialize the depictions as null`, () => {
         store.state.descriptors.forEach(d => {
             expect(d.depictions).to.equal(null);
+        });
+    });
+
+    it(`should initialize isZoomed to false`, () => {
+        store.state.descriptors.forEach(d => {
+            expect(d.isZoomed).to.be.false;
         });
     });
 

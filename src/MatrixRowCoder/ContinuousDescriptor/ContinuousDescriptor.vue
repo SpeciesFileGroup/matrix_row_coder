@@ -1,8 +1,7 @@
 <template>
     <div class="continuous-descriptor">
         <summary-view
-            v-bind:title="descriptor.title"
-            v-on:toggleZoom="toggleZoom()">
+            v-bind:descriptor="descriptor">
 
             <label>
                 Amount:
@@ -16,9 +15,7 @@
 
         <zoomed-view
             v-bind:descriptor="descriptor"
-            v-bind:observation="observation"
-            v-bind:isZoomed="isZoomed"
-            v-on:toggleZoom="toggleZoom()">
+            v-bind:observation="observation">
 
             <dl>
                 <dt>Amount:</dt>
@@ -65,11 +62,6 @@
             return {
                 isZoomed: false,
                 observation: null
-            }
-        },
-        methods: {
-            toggleZoom: function() {
-                this.isZoomed = !this.isZoomed;
             }
         },
         name: 'continuous-descriptor',

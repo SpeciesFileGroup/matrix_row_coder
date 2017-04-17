@@ -1,8 +1,8 @@
 <template>
     <div class="summary-view">
-        <h2 class="summary-view__title">{{ title }}</h2>
+        <h2 class="summary-view__title">{{ descriptor.title }}</h2>
         <p>
-            <button @click="toggleZoom" type="button">Zoom</button>
+            <button @click="zoomIn" type="button">Zoom</button>
         </p>
         <div>
             <slot></slot>
@@ -13,12 +13,17 @@
 <style src="SummaryView.styl" lang="stylus"></style>
 
 <script>
+    const MutationNames = require('../../store/mutations/mutations').MutationNames;
+
     module.exports = {
         name: "summary-view",
-        props: ['title'],
+        props: ['descriptor'],
         methods: {
-            toggleZoom: function(event) {
-                this.$emit('toggleZoom');
+            zoomIn: function(event) {
+                this.$store.commit(MutationNames.SetDescriptorZoom, {
+                    descriptorId: this.descriptor.id,
+                    isZoomed: true
+                });
             }
         }
     };
