@@ -60,7 +60,6 @@
         },
         data: function() {
             return {
-                isZoomed: false,
                 observation: null
             }
         },
