@@ -26,7 +26,8 @@
                     "name": "blue",
                     "label": "B",
                     "position": 2,
-                    "url": "//character_states/34.json"
+                    "url": "//character_states/34.json",
+                    "description": "Royal blue, not NC State blue."
                 }
             ]
         },

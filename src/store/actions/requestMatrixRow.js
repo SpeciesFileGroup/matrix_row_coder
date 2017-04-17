@@ -8,10 +8,10 @@ module.exports = function({commit}, matrixRowUrl) {
             commit(MutationNames.SetDescriptors, response.descriptors.map(transformDescriptorForViewmodel));
             const {
                 otu_id,
-                otu_tag
+                object_tag
             } = response.otu;
             commit(MutationNames.SetTaxonId, otu_id);
-            commit(MutationNames.SetTaxonTitle, otu_tag);
+            commit(MutationNames.SetTaxonTitle, object_tag);
         });
 };
 
@@ -25,7 +25,7 @@ function makeBaseDescriptor(descriptorData) {
     return {
         id: descriptorData.id,
         componentName: getComponentNameForDescriptorType(descriptorData),
-        title: descriptorData.descriptor_tag,
+        title: descriptorData.object_tag,
         description: getDescription(descriptorData),
         notes: null,
         depictions: null
@@ -37,7 +37,7 @@ function getComponentNameForDescriptorType(descriptorData) {
 }
 
 function getDescription(descriptorData) {
-    return descriptorData.document_description || null;
+    return descriptorData.description || null;
 }
 
 function attemptToAddCharacterStates(descriptorData, descriptor) {
@@ -50,7 +50,7 @@ function transformCharacterStateForViewmodel(characterStateData) {
         id: characterStateData.id,
         name: characterStateData.name,
         label: characterStateData.label,
-        description: characterStateData.document_description || null,
+        description: characterStateData.description || null,
         isChecked: false
     };
 }
