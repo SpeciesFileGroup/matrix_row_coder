@@ -3,7 +3,7 @@
         <div class="zoomed-view" v-if="descriptor.isZoomed">
             <button class="zoomed-view__close-button" @click="closeZoom" type="button">Return</button>
             <div class="zoomed-view__descriptor-details">
-                <h2>{{ descriptor.title }}</h2>
+                <h2 class="zoomed-view__descriptor-title">{{ descriptor.title }}</h2>
                 <slot></slot>
                 <descriptor-details v-bind:descriptor="descriptor"></descriptor-details>
             </div>

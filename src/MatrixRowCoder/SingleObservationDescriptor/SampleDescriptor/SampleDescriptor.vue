@@ -29,6 +29,8 @@
     </div>
 </template>
 
+<style src="SampleDescriptor.styl" lang="stylus"></style>
+
 <script>
     const SingleObservationDescriptor = require('../SingleObservationDescriptor');
 
