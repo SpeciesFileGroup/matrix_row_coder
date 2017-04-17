@@ -20,33 +20,13 @@
                 <button class="continuous-descriptor__zoom-close-button" @click="toggleZoom" type="button">Return</button>
                 <div class="continuous-descriptor__descriptor-details">
                     <h2>{{ descriptor.title }}</h2>
-                    <p>{{ descriptor.description }}</p>
-                    <notes
-                        v-bind:notes="descriptor.notes">
-                    </notes>
-                    <depictions
-                        v-bind:depictions="descriptor.depictions">
-                    </depictions>
+                    <descriptor-details v-bind:descriptor="descriptor"></descriptor-details>
                 </div>
                 <div
                     v-if="observation"
                     class="continuous-descriptor__observation-details">
 
-                    <confidence-levels
-                        v-bind:observation="observation">
-                    </confidence-levels>
-
-                    <notes
-                        v-bind:notes="observation.notes">
-                    </notes>
-
-                    <depictions
-                        v-bind:depictions="observation.depictions">
-                    </depictions>
-
-                    <citations
-                        v-bind:citations="observation.citations">
-                    </citations>
+                    <observation-details v-bind:observation="observation"></observation-details>
                 </div>
             </div>
         </transition>
@@ -59,10 +39,8 @@
     const ActionNames = require('../../store/actions/actions').ActionNames;
     const GetterNames = require('../../store/getters/getters').GetterNames;
 
-    const confidenceLevels = require('../ConfidenceLevels/ConfidenceLevels.vue');
-    const notes = require('../Notes/Notes.vue');
-    const depictions = require('../Depictions/Depictions.vue');
-    const citations = require('../Citations/Citations.vue');
+    const observationDetails = require('../ObservationDetails/ObservationDetails.vue');
+    const descriptorDetails = require('../DescriptorDetails/DescriptorDetails.vue');
 
     module.exports = {
         created: function() {
@@ -111,10 +89,8 @@
             }
         },
         components: {
-            confidenceLevels,
-            notes,
-            depictions,
-            citations
+            observationDetails,
+            descriptorDetails
         }
     };
 </script>
