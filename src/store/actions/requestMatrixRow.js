@@ -62,8 +62,7 @@ function transformCharacterStateForViewmodel(characterStateData) {
         id: characterStateData.id,
         name: characterStateData.name,
         label: characterStateData.label,
-        description: characterStateData.description || null,
-        isChecked: false
+        description: characterStateData.description || null
     };
 }
 
@@ -71,7 +70,7 @@ const DescriptorsToObservations = {
     [ComponentNames.Qualitative]: ObservationTypes.Qualitative,
     [ComponentNames.Continuous]: ObservationTypes.Continuous,
     [ComponentNames.Sample]: ObservationTypes.Sample,
-    [ComponentNames.Presence]: ObservationTypes.Sample
+    [ComponentNames.Presence]: ObservationTypes.Presence
 };
 
 function makeEmptyObservationsForDescriptors(descriptors) {
@@ -88,7 +87,7 @@ function makeEmptyObservationsForDescriptors(descriptors) {
         if (descriptor.componentName === ComponentNames.Qualitative) {
             descriptor.characterStates.forEach(characterState => {
                 const emptyCharacterStateObservationData = Object.assign({}, emptyObservationData, { characterStateId: characterState.id });
-                observations.push(emptyCharacterStateObservationData);
+                observations.push(makeObservation(emptyCharacterStateObservationData));
             });
         } else
             observations.push(makeObservation(emptyObservationData));
