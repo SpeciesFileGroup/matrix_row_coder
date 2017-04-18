@@ -11,10 +11,6 @@ describe(`requestObservations action`, () => {
             .then(_ => done() );
     });
 
-    it(`should grab the observation for the descriptor and place it in the store`, () => {
-        expect(store.state.observations).to.have.lengthOf(4);
-    });
-
     it(`should include the related descriptor id`, () => {
         const expectedDescriptorIds = {
             1001: 24,

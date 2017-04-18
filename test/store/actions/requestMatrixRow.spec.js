@@ -1,11 +1,12 @@
 const expect = require('chai').expect;
 const store = require('../../../src/store/store').newStore();
 const ActionNames = require('../../../src/store/actions/actions').ActionNames;
+const ComponentNames = require('../../../src/store/helpers/ComponentNames');
 
 const indexOfQualitativeDescriptor = 0;
 const MatrixRowUrl = require('../../testDefines').MatrixRowUrl;
 
-describe(`requestMatrixRow action`, () => {
+describe.only(`requestMatrixRow action`, () => {
     let qualitativeDescriptor;
 
     before(done => {
@@ -104,6 +105,48 @@ describe(`requestMatrixRow action`, () => {
     it(`should initialize isZoomed to false`, () => {
         store.state.descriptors.forEach(d => {
             expect(d.isZoomed).to.be.false;
+        });
+    });
+
+    describe('with Observations', () => {
+        it(`should create an empty observation for each non-qualitative descriptor and character state`, () => {
+            //6 Non-qualitative descriptors and 5 character states
+            expect(store.state.observations).to.have.lengthOf(6 + 5);
+        });
+
+        it(`should create empty observations with the matching descriptor id`, () => {
+            const expectedMatchingObservations = {
+                24: 2,
+                25: 1,
+                26: 1,
+                27: 1,
+                28: 1,
+                29: 3,
+                30: 1,
+                31: 1
+            };
+
+            const actualMatchingObservations = {};
+            store.state.observations.forEach(o => {
+                const descriptorId = o.descriptorId;
+                if (actualMatchingObservations[descriptorId])
+                    actualMatchingObservations[descriptorId]++;
+                else
+                    actualMatchingObservations[descriptorId] = 1;
+            });
+
+            expect(actualMatchingObservations).to.deep.equal(expectedMatchingObservations);
+        });
+
+        it(`should create empty observations with the matching character state id if a qualitative descriptor`, () => {
+            store.state.descriptors.forEach(d => {
+                if (d.componentName === ComponentNames.Qualitative) {
+                    d.characterStates.forEach(cs => {
+                        const matchingObservation = store.state.observations.findIndex(o => o.characterStateId === cs.id) > -1;
+                        expect(matchingObservation).to.be.true;
+                    });
+                }
+            });
         });
     });
 
