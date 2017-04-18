@@ -39,6 +39,12 @@ describe(`SetObservationDepictions mutation`, () => {
                 normalSrc: "//placebacon.net/700/700",
                 mediumSrc: "//placebacon.net/300/300",
                 thumbSrc: "//placebacon.net/100/100"
+            },
+            {
+                caption: "Bacon.",
+                normalSrc: "//placebacon.net/700/700",
+                mediumSrc: "//placebacon.net/300/300",
+                thumbSrc: "//placebacon.net/100/100"
             }
         ]);
     });

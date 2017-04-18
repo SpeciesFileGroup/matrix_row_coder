@@ -3,7 +3,7 @@
         "otu_id": 1,
         "name": null,
         "object_tag": "Aus bus",
-        "url": "//otus/24.json"
+        "url": "//api.com/otus/24.json"
     },
     "descriptors": [
         {
@@ -12,21 +12,21 @@
             "type": "Qualitative",
             "position": 1,
             "description": "The MARKDOWN description of the descriptor.",
-            "url": "//descriptors/24.json",
+            "url": "//api.com/descriptors/24.json",
             "character_states": [
                 {
                     "id": 33,
                     "name": "red",
                     "label": "A",
                     "position": 1,
-                    "url": "//character_states/33.json"
+                    "url": "//api.com/character_states/33.json"
                 },
                 {
                     "id": 34,
                     "name": "blue",
                     "label": "B",
                     "position": 2,
-                    "url": "//character_states/34.json",
+                    "url": "//api.com/character_states/34.json",
                     "description": "Royal blue, not NC State blue."
                 }
             ]
@@ -37,7 +37,7 @@
             "description": null,
             "position": 2,
             "type": "Presence",
-            "url": "//otus/25.json"
+            "url": "//api.com/otus/25.json"
         },
         {
             "id": 26,
@@ -45,14 +45,65 @@
             "description": "Describes the number of teeth present on this specimen.",
             "type": "Continuous",
             "position": 3,
-            "url": "//otus/26.json"
+            "url": "//api.com/otus/26.json"
         },
         {
             "id": 27,
             "object_tag": "Weight",
             "type": "Sample",
             "position": 4,
-            "url": "//otus/27.json"
+            "url": "//api.com/otus/27.json"
+        },
+        {
+            "id": 28,
+            "object_tag": "Hit Points",
+            "description": "Health is usually measured in hit points or health points, often shortened as HP. When the HP of a player character reaches zero, the player may lose a life or their character might become incapacitated or die.",
+            "type": "Continuous",
+            "position": 5,
+            "url": "//api.com//otus/28.json"
+        },
+        {
+            "id": 29,
+            "object_tag": "Race",
+            "type": "Qualitative",
+            "position": 6,
+            "character_states": [
+                {
+                    "id": 35,
+                    "name": "Protoss",
+                    "label": "P",
+                    "position": 1,
+                    "url": "//api.com/character_states/35.json"
+                },
+                {
+                    "id": 36,
+                    "name": "Terran",
+                    "label": "T",
+                    "position": 1,
+                    "url": "//api.com/character_states/36.json"
+                },
+                {
+                    "id": 37,
+                    "name": "Zerg",
+                    "label": "Z",
+                    "position": 1,
+                    "url": "//api.com/character_states/37.json"
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "object_tag": "Fast Expand",
+            "description": "Fast Expand is also referred to as FE. It is used to describe when a player of any race takes their Natural Expansion fairly quickly, or in some rare cases taking their mineral only expansion.",
+            "type": "Presence",
+            "position": 7
+        },
+        {
+            "id": 31,
+            "object_tag": "Psionic Blades",
+            "description": "A psionic blade (or psi blade) is a type of energy blade manifested through the use of psionic powers.",
+            "type": "Sample",
+            "position": 8
         }
     ]
 }

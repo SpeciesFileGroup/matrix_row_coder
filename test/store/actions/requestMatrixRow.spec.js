@@ -16,7 +16,7 @@ describe(`requestMatrixRow action`, () => {
     });
 
     it(`should populate the store with descriptors and taxon information`, () => {
-        expect(store.state.descriptors).to.have.lengthOf(4);
+        expect(store.state.descriptors).to.have.lengthOf(8);
         expect(store.state.taxonId).to.equal(1);
         expect(store.state.taxonTitle).to.equal("Aus bus");
     });
@@ -26,7 +26,11 @@ describe(`requestMatrixRow action`, () => {
             24,
             25,
             26,
-            27
+            27,
+            28,
+            29,
+            30,
+            31
         ];
 
         store.state.descriptors.forEach((d, i) => {
@@ -39,6 +43,10 @@ describe(`requestMatrixRow action`, () => {
             `qualitative-descriptor`,
             `presence-descriptor`,
             `continuous-descriptor`,
+            `sample-descriptor`,
+            `continuous-descriptor`,
+            `qualitative-descriptor`,
+            `presence-descriptor`,
             `sample-descriptor`
         ];
 
@@ -52,7 +60,11 @@ describe(`requestMatrixRow action`, () => {
             "Head color",
             "Big green spine",
             "Tooth count",
-            "Weight"
+            "Weight",
+            "Hit Points",
+            "Race",
+            "Fast Expand",
+            "Psionic Blades"
         ];
 
         store.state.descriptors.forEach((d, index) => {
@@ -65,7 +77,11 @@ describe(`requestMatrixRow action`, () => {
             "The MARKDOWN description of the descriptor.",
             null,
             "Describes the number of teeth present on this specimen.",
-            null
+            null,
+            "Health is usually measured in hit points or health points, often shortened as HP. When the HP of a player character reaches zero, the player may lose a life or their character might become incapacitated or die.",
+            null,
+            "Fast Expand is also referred to as FE. It is used to describe when a player of any race takes their Natural Expansion fairly quickly, or in some rare cases taking their mineral only expansion.",
+            "A psionic blade (or psi blade) is a type of energy blade manifested through the use of psionic powers."
         ];
 
         store.state.descriptors.forEach((d, index) => {

@@ -16,7 +16,7 @@ describe(`RequestObservationDepictions action`, () => {
         return store.dispatch(ActionNames.RequestObservationDepictions, observationId)
             .then(_ => {
                 const observation = store.state.observations.find(o => o.id === observationId);
-                expect(observation.depictions).to.have.lengthOf(1);
+                expect(observation.depictions).to.have.lengthOf(2);
             });
     });
 });
