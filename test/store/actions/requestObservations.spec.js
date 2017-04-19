@@ -103,4 +103,13 @@ describe(`requestObservations action`, () => {
             });
         });
     });
+
+    describe(`Presence Observations`, () => {
+        it(`should mark the matching observation as checked if the observation exists`, () => {
+            const presenceObservation = store.state.observations
+                .find(o => o.descriptorId === 25);
+
+            expect(presenceObservation.isChecked).to.be.true;
+        });
+    });
 });
