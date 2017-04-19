@@ -11,7 +11,7 @@ module.exports = function({commit}, matrixRowUrl) {
             commit(MutationNames.SetDescriptors, descriptors);
 
             const emptyObservations = makeEmptyObservationsForDescriptors(descriptors);
-            emptyObservations.forEach(o => commit(MutationNames.PushObservation, o));
+            emptyObservations.forEach(o => commit(MutationNames.SetObservation, o));
 
             addOtuToState();
 
