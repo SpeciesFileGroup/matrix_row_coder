@@ -13,14 +13,14 @@ module.exports = function(state, observation) {
     if (observation.type === ObservationTypes.Qualitative && !observation.characterStateId)
         throw `Qualitative Observations must have a character state id!`;
 
-    let indexOfObservation;
+    let existingObservation;
     if (observation.type !== ObservationTypes.Qualitative)
-        indexOfObservation = state.observations.findIndex(o => o.descriptorId === observation.descriptorId);
+        existingObservation = state.observations.find(o => o.descriptorId === observation.descriptorId);
     else
-        indexOfObservation = state.observations.findIndex(o => o.descriptorId === observation.descriptorId && o.characterStateId === observation.characterStateId);
+        existingObservation = state.observations.find(o => o.descriptorId === observation.descriptorId && o.characterStateId === observation.characterStateId);
 
-    if (indexOfObservation > -1)
-        state.observations[indexOfObservation] = observation;
+    if (existingObservation)
+        Object.assign(existingObservation, observation);
     else
         state.observations.push(observation);
 };

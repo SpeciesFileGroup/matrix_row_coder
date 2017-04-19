@@ -11,6 +11,14 @@ describe(`requestObservations action`, () => {
             .then(_ => done() );
     });
 
+    it(`should include the correct observation ids`, () => {
+        expect(store.state.observations.filter(o => o.id === 1001)).to.have.lengthOf(1);
+        expect(store.state.observations.filter(o => o.id === 1002)).to.have.lengthOf(1);
+        expect(store.state.observations.filter(o => o.id === 1003)).to.have.lengthOf(1);
+        expect(store.state.observations.filter(o => o.id === 1004)).to.have.lengthOf(1);
+        expect(store.state.observations.filter(o => !o.id)).to.have.lengthOf(7);
+    });
+
     it(`should include the related descriptor id`, () => {
         const expectedDescriptorIds = {
             1001: 24,

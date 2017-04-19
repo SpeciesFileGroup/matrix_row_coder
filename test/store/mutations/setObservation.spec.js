@@ -11,6 +11,10 @@ const mockDescriptors = [
     {
         id: 21,
         observations: []
+    },
+    {
+        id: 22,
+        observations: []
     }
 ];
 
@@ -69,16 +73,21 @@ describe(`SetObservation mutation`, () => {
     });
 
     describe(`Continuous, Presence, and Sample Observations`, () => {
-        it(`should replace the observation if one with the same descriptorId already exists`, () => {
+        it(`should merge the observation data if one with the same descriptorId already exists`, () => {
             const types = [ObservationTypes.Continuous, ObservationTypes.Presence, ObservationTypes.Sample];
-            types.forEach(type => {
-                const firstObservation = Object.assign({}, mockObservation, { type });
-                const secondObservation = Object.assign({}, mockObservation, { type });
+            types.forEach((type, index) => {
+                const firstObservation = {
+                    descriptorId: index + 20,
+                    type
+                };
+                const secondObservation = Object.assign({}, firstObservation, { id: index + 1 });
                 store.commit(MutationNames.SetObservation, firstObservation);
                 store.commit(MutationNames.SetObservation, secondObservation);
-                expect(store.state.observations.find(o => o === firstObservation)).to.not.exist;
-                expect(store.state.observations.find(o => o === secondObservation)).to.equal(secondObservation);
             });
+            expect(store.state.observations).to.have.lengthOf(3);
+            expect(store.state.observations.filter(o => o.id === 1)).to.have.lengthOf(1);
+            expect(store.state.observations.filter(o => o.id === 2)).to.have.lengthOf(1);
+            expect(store.state.observations.filter(o => o.id === 3)).to.have.lengthOf(1);
         });
     });
 
@@ -103,15 +112,19 @@ describe(`SetObservation mutation`, () => {
             expect(store.state.observations).to.have.lengthOf(3);
         });
 
-        it(`should replace observations with the same character state and descriptor id`, () => {
-            const firstObservation = Object.assign({}, mockObservation, { type: ObservationTypes.Qualitative, characterStateId: 2 });
-            const secondObservation = Object.assign({}, firstObservation);
+        it(`should merge the observation with the same character state and descriptor id`, () => {
+            const firstObservation = {
+                descriptorId: 20,
+                type: ObservationTypes.Qualitative,
+                characterStateId: 2
+            };
+            const secondObservation = Object.assign({}, firstObservation, { id: 1005 });
 
             store.commit(MutationNames.SetObservation, firstObservation);
             store.commit(MutationNames.SetObservation, secondObservation);
 
-            expect(store.state.observations.findIndex(o => o === firstObservation)).to.equal(-1);
-            expect(store.state.observations.findIndex(o => o === secondObservation)).to.equal(0);
+            expect(store.state.observations).to.have.lengthOf(1);
+            expect(store.state.observations[0].id).to.equal(1005);
         });
     });
 });
