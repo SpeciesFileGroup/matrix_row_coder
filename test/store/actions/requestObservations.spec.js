@@ -62,7 +62,8 @@ describe(`requestObservations action`, () => {
     describe('Qualitative Observations', _ => {
         it(`should mark character states as checked if an observation exists for them`, () => {
             const qualitativeObservations = store.state.observations
-                .filter(o => o.id === 1001);
+                .filter(o => o.descriptorId === 24);
+            console.log(qualitativeObservations);
             const expectedisChecked = {
                 33: true,
                 34: false

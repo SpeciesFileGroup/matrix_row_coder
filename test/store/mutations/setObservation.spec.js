@@ -20,7 +20,7 @@ const mockObservation = {
     type: ObservationTypes.Continuous
 };
 
-describe.only(`SetObservation mutation`, () => {
+describe(`SetObservation mutation`, () => {
     let store;
 
     beforeEach(done => {
