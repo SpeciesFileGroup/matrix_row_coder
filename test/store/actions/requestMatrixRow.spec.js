@@ -6,7 +6,7 @@ const ComponentNames = require('../../../src/store/helpers/ComponentNames');
 const indexOfQualitativeDescriptor = 0;
 const MatrixRowUrl = require('../../testDefines').MatrixRowUrl;
 
-describe.only(`requestMatrixRow action`, () => {
+describe(`requestMatrixRow action`, () => {
     let qualitativeDescriptor;
 
     before(done => {

@@ -82,8 +82,6 @@ function makeEmptyObservationsForDescriptors(descriptors) {
             type: DescriptorsToObservations[descriptor.componentName]
         };
 
-        console.log(emptyObservationData);
-
         if (descriptor.componentName === ComponentNames.Qualitative) {
             descriptor.characterStates.forEach(characterState => {
                 const emptyCharacterStateObservationData = Object.assign({}, emptyObservationData, { characterStateId: characterState.id });

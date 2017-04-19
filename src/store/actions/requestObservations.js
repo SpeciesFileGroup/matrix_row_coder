@@ -1,28 +1,12 @@
 const mockRequest = require('../../request/mockRequest');
 const MutationNames = require('../mutations/mutations').MutationNames;
-
-const ObservationTypes = {
-    Qualitative: "Qualitative",
-    Presence: "Presence",
-    Continuous: "Continuous",
-    Sample: "Sample"
-};
+const ObservationTypes = require('../helpers/ObservationTypes');
+const makeObservation = require('../helpers/makeObservation');
 
 module.exports = function({ commit }, { descriptorId, otuId }) {
     return mockRequest.getObservations(otuId, descriptorId)
-        .then(observationData => observationData.map(transformObservationForViewmodel))
-        .then(observations => {
-            observations.forEach(o => {
-                commit(MutationNames.PushObservation, o);
-                attemptCheckMatchingCharacterState(o);
-            });
-        });
-
-    function attemptCheckMatchingCharacterState(observation) {
-        const id = getCharacterStateIdThatNeedToBeChecked(observation);
-        if (id)
-            commit(MutationNames.SetCharacterStateCheck, { id, isChecked: true });
-    }
+        .then(observationData => observationData.map(makeObservation))
+        .then(observations => console.log(observations));
 };
 
 function transformObservationForViewmodel(observationData) {

@@ -4,7 +4,7 @@ const ActionNames = require('../../../src/store/actions/actions').ActionNames;
 const TestDefines = require('../../testDefines');
 const TestHelpers = require('../../testHelpers');
 
-describe(`requestObservations action`, () => {
+describe.only(`requestObservations action`, () => {
     before(done => {
         store.dispatch(ActionNames.RequestMatrixRow, TestDefines.MatrixRowUrl)
             .then(_ => TestHelpers.requestAllObservationsForStore(store) )
@@ -21,31 +21,32 @@ describe(`requestObservations action`, () => {
 
         store.state.observations.forEach((o, i) => {
             expect(o.descriptorId).to.exist;
-            expect(o.descriptorId).to.equal(expectedDescriptorIds[o.id]);
+            if (expectedDescriptorIds[o.id])
+                expect(o.descriptorId).to.equal(expectedDescriptorIds[o.id]);
         });
     });
 
-    it(`should initialize notes as null`, () => {
+    it(`should initialize notes as []`, () => {
         store.state.observations.forEach(o => {
-            expect( o.notes ).to.equal(null);
+            expect( o.notes ).to.deep.equal([]);
         });
     });
 
-    it(`should initialize depictions as null`, () => {
+    it(`should initialize depictions as []`, () => {
         store.state.observations.forEach(o => {
-            expect( o.depictions ).to.equal(null);
+            expect( o.depictions ).to.deep.equal([]);
         });
     });
 
-    it(`should initialize confidences as null`, () => {
+    it(`should initialize confidences as []`, () => {
         store.state.observations.forEach(o => {
-            expect( o.confidences ).to.equal(null);
+            expect( o.confidences ).to.deep.equal([]);
         });
     });
 
-    it(`should initialize citations as null`, () => {
+    it(`should initialize citations as []`, () => {
         store.state.observations.forEach(o => {
-            expect( o.citations ).to.equal(null);
+            expect( o.citations ).to.deep.equal([]);
         });
     });
 
@@ -53,37 +54,21 @@ describe(`requestObservations action`, () => {
         it(`should include value and unit on a continuous descriptor`, () => {
             const continuousObservation = store.state.observations
                 .find(o => o.id === 1002);
-            store.state.observations.forEach(o => {
-                if (o === continuousObservation) {
-                    expect(o.continuousValue).to.equal(22);
-                    expect(o.continuousUnit).to.equal('mm');
-                } else {
-                    expect(o.continuousValue).to.not.exist;
-                    expect(o.continuousUnit).to.not.exist;
-                }
-            });
+            expect(continuousObservation.continuousValue).to.equal(22);
+            expect(continuousObservation.continuousUnit).to.equal('mm');
         });
     });
 
     describe('Qualitative Observations', _ => {
-        it(`should include the character state id on a qualitative descriptor`, () => {
-            const qualitativeObservation = store.state.observations
-                .find(o => o.id === 1001);
-            store.state.observations.forEach(o => {
-                if (o === qualitativeObservation) {
-                    expect(o.characterStateId).to.equal(33);
-                } else {
-                    expect(o.characterStateId).to.not.exist;
-                }
-            });
-        });
-
         it(`should mark character states as checked if an observation exists for them`, () => {
-            const qualitativeDescriptor = store.state.descriptors[0];
-
-            const expectedChecks = [true, false];
-            qualitativeDescriptor.characterStates.forEach((cs, i) => {
-                expect(cs.isChecked).to.equal(expectedChecks[i]);
+            const qualitativeObservations = store.state.observations
+                .filter(o => o.id === 1001);
+            const expectedisChecked = {
+                33: true,
+                34: false
+            };
+            qualitativeObservations.forEach(o => {
+                expect(o.isChecked).to.equal(expectedisChecked[o.characterStateId]);
             });
         });
     });
@@ -104,16 +89,8 @@ describe(`requestObservations action`, () => {
                 standardError: 15.5
             };
 
-            store.state.observations.forEach(o => {
-                if (o === sampleObservation) {
-                    Object.keys(expectedProps).forEach(prop => {
-                        expect(o[prop]).to.equal(expectedProps[prop]);
-                    });
-                } else {
-                    Object.keys(expectedProps).forEach(prop => {
-                        expect(o[prop]).to.not.exist;
-                    });
-                }
+            Object.keys(expectedProps).forEach(prop => {
+                expect(sampleObservation[prop]).to.equal(expectedProps[prop]);
             });
         });
     });
