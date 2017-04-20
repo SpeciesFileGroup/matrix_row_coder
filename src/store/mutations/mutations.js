@@ -12,7 +12,8 @@ const MutationNames = {
     SetObservationCitations: 'setObservationCitations',
     SetDescriptorZoom: 'setDescriptorZoom',
     SetContinuousValue: 'setContinuousValue',
-    SetContinuousUnit: 'setContinuousUnit'
+    SetContinuousUnit: 'setContinuousUnit',
+    SetPresence: 'setPresence'
 };
 
 const MutationFunctions = {
@@ -29,7 +30,8 @@ const MutationFunctions = {
     [MutationNames.SetObservationCitations]: require('./setObservationCitations'),
     [MutationNames.SetDescriptorZoom]: require('./setDescriptorZoom'),
     [MutationNames.SetContinuousValue]: require('./setContinuousValue'),
-    [MutationNames.SetContinuousUnit]: require('./setContinuousUnit')
+    [MutationNames.SetContinuousUnit]: require('./setContinuousUnit'),
+    [MutationNames.SetPresence]: require('./setPresence')
 };
 
 module.exports = {
