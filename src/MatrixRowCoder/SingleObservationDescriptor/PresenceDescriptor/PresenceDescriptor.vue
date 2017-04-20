@@ -3,7 +3,7 @@
         <summary-view v-bind:descriptor="descriptor">
             <label>
                 Present
-                <input type="checkbox" />
+                <input type="checkbox" :checked="isPresent" />
             </label>
         </summary-view>
 
@@ -19,9 +19,15 @@
 
 <script>
     const SingleObservationDescriptor = require('../SingleObservationDescriptor');
+    const GetterNames = require('../../../store/getters/getters').GetterNames;
 
     module.exports = {
         mixins: [SingleObservationDescriptor],
-        name: 'presence-descriptor'
+        name: 'presence-descriptor',
+        computed: {
+            isPresent() {
+                return this.$store.getters[GetterNames.GetPresenceFor](this.$props.descriptor.id);
+            }
+        }
     };
 </script>
