@@ -1,11 +1,18 @@
 const Vue = require('vue');
-const observationEditor = require('./MatrixRowCoder/MatrixRowCoder.vue');
+const MatrixRowCoder = require('./MatrixRowCoder/MatrixRowCoder.vue');
 const store = require('./store/store').newStore();
 
 new Vue({
-    el: 'matrix-row-coder',
+    el: 'app',
     store,
     render: function (createElement) {
-        return createElement(observationEditor)
+        return createElement(MatrixRowCoder, {
+            props: {
+                matrixId: 'foo',
+                otuId: 'bar',
+                apiBase: 'baz',
+                apiParams: { qux: 'quz' }
+            }
+        })
     }
 });
