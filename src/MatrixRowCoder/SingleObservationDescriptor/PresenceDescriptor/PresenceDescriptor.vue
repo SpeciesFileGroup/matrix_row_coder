@@ -7,11 +7,11 @@
             </label>
         </summary-view>
 
-        <zoomed-view
+        <single-observation-zoomed-view
             v-bind:descriptor="descriptor"
             v-bind:observation="observation">
 
-        </zoomed-view>
+        </single-observation-zoomed-view>
     </div>
 </template>
 

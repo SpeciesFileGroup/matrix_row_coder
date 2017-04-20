@@ -2,7 +2,7 @@ const ActionNames = require('../../store/actions/actions').ActionNames;
 const GetterNames = require('../../store/getters/getters').GetterNames;
 
 const summaryView = require('../SummaryView/SummaryView.vue');
-const zoomedView = require('../ZoomedView/ZoomedView.vue');
+const singleObservationZoomedView = require('../ZoomedView/SingleObservationZoomedView/SingleObservationZoomedView.vue');
 
 module.exports = {
     created: function() {
@@ -37,6 +37,6 @@ module.exports = {
     props: ['descriptor'],
     components: {
         summaryView,
-        zoomedView
+        singleObservationZoomedView
     }
 };

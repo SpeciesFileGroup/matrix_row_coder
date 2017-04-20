@@ -13,7 +13,7 @@
             </label>
         </summary-view>
 
-        <zoomed-view
+        <single-observation-zoomed-view
             v-bind:descriptor="descriptor"
             v-bind:observation="observation">
 
@@ -23,7 +23,7 @@
                 <dt>Unit</dt>
                 <dd>{{ continuousUnit }}</dd>
             </dl>
-        </zoomed-view>
+        </single-observation-zoomed-view>
     </div>
 </template>
 
