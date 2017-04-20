@@ -88,7 +88,7 @@ describe(`requestObservations action`, () => {
                 .find(o => o.id === 1003);
 
             const expectedProps = {
-                n: 1,
+                n: 100,
                 min: 23.23,
                 max: 44.23,
                 median: 33,

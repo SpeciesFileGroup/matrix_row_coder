@@ -6,7 +6,7 @@
         "type": "Sample",
         "cached_column_label": "Big green spine",
         "cached_row_label": "Aus bus",
-        "sample_n": 1,
+        "sample_n": 100,
         "sample_min": 23.23,
         "sample_max": 44.23,
         "sample_median": 33,
