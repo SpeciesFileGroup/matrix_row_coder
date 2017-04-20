@@ -13,7 +13,8 @@ const MutationNames = {
     SetDescriptorZoom: 'setDescriptorZoom',
     SetContinuousValue: 'setContinuousValue',
     SetContinuousUnit: 'setContinuousUnit',
-    SetPresence: 'setPresence'
+    SetPresence: 'setPresence',
+    SetCharacterStateChecked: 'setCharacterStateChecked'
 };
 
 const MutationFunctions = {
@@ -31,7 +32,8 @@ const MutationFunctions = {
     [MutationNames.SetDescriptorZoom]: require('./setDescriptorZoom'),
     [MutationNames.SetContinuousValue]: require('./setContinuousValue'),
     [MutationNames.SetContinuousUnit]: require('./setContinuousUnit'),
-    [MutationNames.SetPresence]: require('./setPresence')
+    [MutationNames.SetPresence]: require('./setPresence'),
+    [MutationNames.SetCharacterStateChecked]: require('./setCharacterStateChecked')
 };
 
 module.exports = {
