@@ -11,6 +11,25 @@
                 </label>
             </li>
         </summary-view>
+
+        <zoomed-view v-bind:descriptor="descriptor">
+            <div class="qualitative-descriptor__descriptor-details">
+                <descriptor-details v-bind:descriptor="descriptor"></descriptor-details>
+            </div>
+            <div class="qualitative-descriptor__character-state-list">
+                <div
+                    class="qualitative-descriptor__character-state"
+                    v-for="characterState in descriptor.characterStates">
+
+                    <div class="qualitative-descriptor__character-state-details">
+                        {{ characterState.name }}
+                    </div>
+                    <div class="qualitative-descriptor__observation-details">
+                        <observation-details v-bind:observation="getCharacterStateObservation(characterState.id)"></observation-details>
+                    </div>
+                </div>
+            </div>
+        </zoomed-view>
     </div>
 </template>
 
@@ -23,6 +42,9 @@
 
     const summaryView = require('../SummaryView/SummaryView.vue');
     const zoomedView = require('../ZoomedView/ZoomedView.vue');
+
+    const observationDetails = require('../ObservationDetails/ObservationDetails.vue');
+    const descriptorDetails = require('../DescriptorDetails/DescriptorDetails.vue');
 
     module.exports = {
         name: 'qualitative-descriptor',
@@ -57,10 +79,17 @@
                     descriptorId: this.descriptor.id,
                     characterStateId
                 });
+            },
+            getCharacterStateObservation(characterStateId) {
+                const observations = this.$store.getters[GetterNames.GetObservationsFor](this.$props.descriptor.id);
+                return observations.find(o => o.characterStateId === characterStateId);
             }
         },
         components: {
-            summaryView
+            summaryView,
+            zoomedView,
+            observationDetails,
+            descriptorDetails
         }
     };
 </script>
