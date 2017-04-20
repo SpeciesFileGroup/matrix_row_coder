@@ -4,14 +4,17 @@ const ActionNames = require('../../../src/store/actions/actions').ActionNames;
 const ComponentNames = require('../../../src/store/helpers/ComponentNames');
 
 const indexOfQualitativeDescriptor = 0;
-const MatrixRowUrl = require('../../testDefines').MatrixRowUrl;
+const TestDefines = require('../../testDefines');
 
 describe(`requestMatrixRow action`, () => {
     let qualitativeDescriptor;
 
     before(done => {
         store
-            .dispatch(ActionNames.RequestMatrixRow, MatrixRowUrl)
+            .dispatch(ActionNames.RequestMatrixRow, {
+                matrixId: TestDefines.MatrixId,
+                otuId: TestDefines.OtuId
+            })
             .then(_ => qualitativeDescriptor = store.state.descriptors[indexOfQualitativeDescriptor])
             .then(_ => done());
     });

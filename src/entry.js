@@ -8,10 +8,8 @@ new Vue({
     render: function (createElement) {
         return createElement(MatrixRowCoder, {
             props: {
-                matrixId: 'foo',
-                otuId: 'bar',
-                apiBase: 'baz',
-                apiParams: { qux: 'quz' }
+                matrixId: 5,
+                otuId: 1
             }
         })
     }
