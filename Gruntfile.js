@@ -45,6 +45,9 @@ module.exports = function (grunt) {
         },
         mochaTest: {
             test: {
+                options: {
+                    bail: true
+                },
                 src: ['test/**/*.spec.js']
             }
         },

@@ -19,10 +19,13 @@ module.exports = {
                 } else if (observations.length === 1) {
                     const observation = observations[0];
                     this.observation = observation;
-                    this.$store.dispatch(ActionNames.RequestObservationCitations, observation.id);
-                    this.$store.dispatch(ActionNames.RequestObservationConfidences, observation.id);
-                    this.$store.dispatch(ActionNames.RequestObservationDepictions, observation.id);
-                    this.$store.dispatch(ActionNames.RequestObservationNotes, observation.id);
+
+                    if (this.observation.id) {
+                        this.$store.dispatch(ActionNames.RequestObservationCitations, observation.id);
+                        this.$store.dispatch(ActionNames.RequestObservationConfidences, observation.id);
+                        this.$store.dispatch(ActionNames.RequestObservationDepictions, observation.id);
+                        this.$store.dispatch(ActionNames.RequestObservationNotes, observation.id);
+                    }
                 }
             });
     },

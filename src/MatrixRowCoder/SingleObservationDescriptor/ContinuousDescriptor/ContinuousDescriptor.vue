@@ -5,11 +5,11 @@
 
             <label>
                 Amount:
-                <input type="number" :value="continuousValue">
+                <input type="number" :value="continuousValue" @input="updateContinuousValue">
             </label>
             <label>
                 Unit:
-                <input type="text" :value="continuousUnit">
+                <input type="text" :value="continuousUnit" @input="updateContinuousUnit">
             </label>
         </summary-view>
 
@@ -42,6 +42,14 @@
             },
             continuousUnit: function() {
                 return this.$store.getters[GetterNames.GetContinuousUnitFor](this.$props.descriptor.id);
+            }
+        },
+        methods: {
+            updateContinuousValue(event) {
+                console.log(event.target.value);
+            },
+            updateContinuousUnit(event) {
+                console.log(event.target.value);
             }
         }
     };

@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 const store = require('../../../src/store/store').newStore();
 const ActionNames = require('../../../src/store/actions/actions').ActionNames;
+const ComponentNames = require('../../../src/store/helpers/ComponentNames');
 
 const indexOfQualitativeDescriptor = 0;
 const MatrixRowUrl = require('../../testDefines').MatrixRowUrl;
@@ -107,6 +108,119 @@ describe(`requestMatrixRow action`, () => {
         });
     });
 
+    describe('with Observations', () => {
+        it(`should create an empty observation for each non-qualitative descriptor and character state`, () => {
+            //6 Non-qualitative descriptors and 5 character states
+            expect(store.state.observations).to.have.lengthOf(6 + 5);
+        });
+
+        it(`should create empty observations with the matching descriptor id`, () => {
+            const expectedMatchingObservations = {
+                24: 2,
+                25: 1,
+                26: 1,
+                27: 1,
+                28: 1,
+                29: 3,
+                30: 1,
+                31: 1
+            };
+
+            const actualMatchingObservations = {};
+            store.state.observations.forEach(o => {
+                const descriptorId = o.descriptorId;
+                if (actualMatchingObservations[descriptorId])
+                    actualMatchingObservations[descriptorId]++;
+                else
+                    actualMatchingObservations[descriptorId] = 1;
+            });
+
+            expect(actualMatchingObservations).to.deep.equal(expectedMatchingObservations);
+        });
+
+        it(`should create empty observations with notes, citations, depictions, and confidences as []`, () => {
+            store.state.observations.forEach(o => {
+                expect(o.notes).to.deep.equal([]);
+                expect(o.citations).to.deep.equal([]);
+                expect(o.depictions).to.deep.equal([]);
+                expect(o.confidences).to.deep.equal([]);
+            });
+        });
+
+        describe('with Qualitative Descriptors', () => {
+            it(`should create empty observations with the matching character state id if a qualitative descriptor`, () => {
+                store.state.descriptors.forEach(d => {
+                    if (d.componentName === ComponentNames.Qualitative) {
+                        d.characterStates.forEach(cs => {
+                            const matchingObservation = store.state.observations.findIndex(o => o.characterStateId === cs.id) > -1;
+                            expect(matchingObservation).to.be.true;
+                        });
+                    }
+                });
+            });
+
+            it(`should set isChecked on those observations to false`, () => {
+                store.state.descriptors.forEach(d => {
+                    if (d.componentName === ComponentNames.Qualitative) {
+                        d.characterStates.forEach(cs => {
+                            const matchingObservation = store.state.observations.find(o => o.characterStateId === cs.id);
+                            expect(matchingObservation.isChecked).to.be.false;
+                        });
+                    }
+                });
+            });
+        });
+
+        describe(`with Continuous Descriptors`, () => {
+            it(`should have the continuous value set to zero`, () => {
+                store.state.descriptors.forEach(d => {
+                    if (d.componentName === ComponentNames.Continuous) {
+                        const observation = store.state.observations.find(o => o.descriptorId === d.id);
+                        expect(observation.continuousValue).to.equal(0);
+                    }
+                });
+            });
+
+            it(`should have the continuous unit set to null`, () => {
+                store.state.descriptors.forEach(d => {
+                    if (d.componentName === ComponentNames.Continuous) {
+                        const observation = store.state.observations.find(o => o.descriptorId === d.id);
+                        expect(observation.continuousUnit).to.be.a.null;
+                    }
+                });
+            });
+        });
+
+        describe(`with Presence Descriptors`, () => {
+            it(`should have an isChecked set to false`, () => {
+                store.state.descriptors.forEach(d => {
+                    if (d.componentName === ComponentNames.Presence) {
+                        const observation = store.state.observations.find(o => o.descriptorId === d.id);
+                        expect(observation.isChecked).to.be.false;
+                    }
+                });
+            });
+        });
+
+        describe(`with Sample Descriptors`, () => {
+            it(`should start with the sample properties empty`, () => {
+                store.state.descriptors.forEach(d => {
+                    if (d.componentName === ComponentNames.Sample) {
+                        const observation = store.state.observations.find(o => o.descriptorId === d.id);
+                        expect(observation.n).to.be.null;
+                        expect(observation.min).to.be.null;
+                        expect(observation.max).to.be.null;
+                        expect(observation.median).to.be.null;
+                        expect(observation.mean).to.be.null;
+                        expect(observation.units).to.be.null;
+                        expect(observation.standardDeviation).to.be.null;
+                        expect(observation.standardError).to.be.null;
+                    }
+                });
+            });
+        });
+    });
+
     describe(`Qualitative Descriptors`, () => {
         it(`should set up character states for qualitative descriptors`, () => {
             expect(qualitativeDescriptor.characterStates)
@@ -119,12 +233,6 @@ describe(`requestMatrixRow action`, () => {
 
             qualitativeDescriptor.characterStates.forEach((cs, i) => {
                 expect(cs.id).to.equal(expectedIds[i]);
-            });
-        });
-
-        it(`should include whether the character state is checked`, () => {
-            qualitativeDescriptor.characterStates.forEach(cs => {
-                expect(cs.isChecked).to.be.false;
             });
         });
 
