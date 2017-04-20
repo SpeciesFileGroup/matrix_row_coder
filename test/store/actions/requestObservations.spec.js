@@ -1,12 +1,11 @@
 const expect = require('chai').expect;
 const store = require('../../../src/store/store').newStore();
 const ActionNames = require('../../../src/store/actions/actions').ActionNames;
-const TestDefines = require('../../testDefines');
 const TestHelpers = require('../../testHelpers');
 
 describe(`requestObservations action`, () => {
     before(done => {
-        store.dispatch(ActionNames.RequestMatrixRow, TestDefines.MatrixRowUrl)
+        TestHelpers.requestMatrixRowForStore(store)
             .then(_ => TestHelpers.requestAllObservationsForStore(store) )
             .then(_ => done() );
     });

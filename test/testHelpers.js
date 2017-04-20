@@ -3,7 +3,10 @@ const ActionNames = require('../src/store/actions/actions').ActionNames;
 
 module.exports = {
     requestMatrixRowForStore(store) {
-        return store.dispatch(ActionNames.RequestMatrixRow, TestDefines.MatrixRowUrl);
+        return store.dispatch(ActionNames.RequestMatrixRow, {
+            matrixId: TestDefines.MatrixId,
+            otuId: TestDefines.OtuId
+        });
     },
     requestConfidenceLevelsForStore(store) {
         return store.dispatch(ActionNames.RequestConfidenceLevels);

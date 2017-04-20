@@ -1,6 +1,6 @@
 const MOCK_REQUEST_DIR = `./mockRequests/`;
 
-require('./mockRequests/matrix-row.json');
+require('./mockRequests/matrices-5-row?otu_id=1.json');
 require('./mockRequests/confidence-levels.json');
 require('./mockRequests/observations?otu_id=1&descriptor_id=24.json');
 require('./mockRequests/observations?otu_id=1&descriptor_id=25.json');
@@ -44,8 +44,8 @@ require('./mockRequests/observations-1003-notes.json');
 require('./mockRequests/observations-1004-notes.json');
 
 module.exports = {
-    getMatrixRow(url) {
-        return promisify(require(MOCK_REQUEST_DIR + url));
+    getMatrixRow(matrixId, otuId) {
+        return promisify(require(MOCK_REQUEST_DIR + `matrices-${matrixId}-row?otu_id=${otuId}.json`));
     },
     getObservations(otuId, descriptorId) {
         return promisify(require(MOCK_REQUEST_DIR + `observations?otu_id=${otuId}&descriptor_id=${descriptorId}.json`));

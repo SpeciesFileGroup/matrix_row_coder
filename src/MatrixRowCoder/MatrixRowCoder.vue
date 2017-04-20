@@ -35,8 +35,18 @@
 
     module.exports = {
         created: function() {
-            this.$store.dispatch(ActionNames.RequestMatrixRow, `matrix-row.json`);
+            this.$store.dispatch(ActionNames.RequestMatrixRow, {
+                matrixId: this.$props.matrixId,
+                otuId: this.$props.otuId
+            });
             this.$store.dispatch(ActionNames.RequestConfidenceLevels);
+        },
+        name: 'matrix-row-coder',
+        props: {
+            matrixId: Number,
+            otuId: Number,
+            apiBase: String,
+            apiParams: Object
         },
         computed,
         components: {

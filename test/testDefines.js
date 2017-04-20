@@ -1,3 +1,4 @@
 module.exports = {
-    MatrixRowUrl: 'matrix-row.json'
+    MatrixId: 5,
+    OtuId: 1
 };
