@@ -4,7 +4,8 @@
             <li v-for="characterState in descriptor.characterStates">
                 <label>
                     <input
-                        type="checkbox" />
+                        type="checkbox"
+                        :checked="isStateChecked(characterState.id)" />
 
                     {{ characterState.label }}: {{ characterState.name }}
                 </label>
@@ -49,6 +50,14 @@
             return {
                 observations: []
             };
+        },
+        methods: {
+            isStateChecked(characterStateId) {
+                return this.$store.getters[GetterNames.GetCharacterStateChecked]({
+                    descriptorId: this.descriptor.id,
+                    characterStateId
+                });
+            }
         },
         components: {
             summaryView

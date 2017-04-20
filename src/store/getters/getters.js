@@ -6,7 +6,8 @@ const GetterNames = {
     GetSampleMinFor: 'getSampleMinFor',
     GetSampleMaxFor: 'getSampleMaxFor',
     GetSampleUnitFor: 'getSampleUnitFor',
-    GetSampleNFor: 'getSampleNFor'
+    GetSampleNFor: 'getSampleNFor',
+    GetCharacterStateChecked: `getCharacterStateChecked`
 };
 
 const GetterFunctions = {
@@ -17,7 +18,8 @@ const GetterFunctions = {
     [GetterNames.GetSampleMinFor]: require('./getSampleMinFor'),
     [GetterNames.GetSampleMaxFor]: require('./getSampleMaxFor'),
     [GetterNames.GetSampleUnitFor]: require('./getSampleUnitFor'),
-    [GetterNames.GetSampleNFor]: require('./getSampleNFor')
+    [GetterNames.GetSampleNFor]: require('./getSampleNFor'),
+    [GetterNames.GetCharacterStateChecked]: require('./getCharacterStateChecked')
 };
 
 module.exports = {
