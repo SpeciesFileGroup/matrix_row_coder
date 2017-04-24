@@ -14,7 +14,11 @@ const MutationNames = {
     SetContinuousValue: 'setContinuousValue',
     SetContinuousUnit: 'setContinuousUnit',
     SetPresence: 'setPresence',
-    SetCharacterStateChecked: 'setCharacterStateChecked'
+    SetCharacterStateChecked: 'setCharacterStateChecked',
+    SetSampleMaxFor: `setSampleMaxFor`,
+    SetSampleMinFor: `setSampleMinFor`,
+    SetSampleNFor: `setSampleNFor`,
+    SetSampleUnitFor: `setSampleUnitFor`
 };
 
 const MutationFunctions = {
@@ -33,7 +37,11 @@ const MutationFunctions = {
     [MutationNames.SetContinuousValue]: require('./setContinuousValue'),
     [MutationNames.SetContinuousUnit]: require('./setContinuousUnit'),
     [MutationNames.SetPresence]: require('./setPresence'),
-    [MutationNames.SetCharacterStateChecked]: require('./setCharacterStateChecked')
+    [MutationNames.SetCharacterStateChecked]: require('./setCharacterStateChecked'),
+    [MutationNames.SetSampleMaxFor]: require('./setSampleMaxFor'),
+    [MutationNames.SetSampleMinFor]: require('./setSampleMinFor'),
+    [MutationNames.SetSampleNFor]: require('./setSampleNFor'),
+    [MutationNames.SetSampleUnitFor]: require('./setSampleUnitFor'),
 };
 
 module.exports = {
