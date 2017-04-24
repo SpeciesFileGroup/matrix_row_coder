@@ -1,7 +1,10 @@
+const mergeIntoObservation = require(`../helpers/mergeIntoObservation`);
+
 module.exports = function(state, args) {
     const {
         descriptorId,
         continuousValue
     } = args;
-    state.observations.find(o => o.descriptorId === descriptorId).continuousValue = continuousValue;
+
+    mergeIntoObservation(state.observations.find(o => o.descriptorId === descriptorId), { continuousValue });
 };

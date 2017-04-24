@@ -1,7 +1,10 @@
+const mergeIntoObservation = require(`../helpers/mergeIntoObservation`);
+
 module.exports = function(state, args) {
     const {
         descriptorId,
         min
     } = args;
-    state.observations.find(o => o.descriptorId === descriptorId).min = min;
+
+    mergeIntoObservation(state.observations.find(o => o.descriptorId === descriptorId), { min });
 };

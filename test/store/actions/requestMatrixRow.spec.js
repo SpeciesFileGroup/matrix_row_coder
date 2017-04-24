@@ -150,6 +150,10 @@ describe(`requestMatrixRow action`, () => {
             });
         });
 
+        it(`should create observations with isUnsaved as false`, () => {
+            store.state.observations.forEach(o => expect(o.isUnsaved).to.be.false);
+        });
+
         describe('with Qualitative Descriptors', () => {
             it(`should create empty observations with the matching character state id if a qualitative descriptor`, () => {
                 store.state.descriptors.forEach(d => {
