@@ -3,7 +3,14 @@
         <h1 class="matrix-row-coder__title">{{ title }}</h1>
         <ul class="matrix-row-coder__descriptor-menu">
             <li v-for="descriptor in descriptors">
-                <div>{{ descriptor.title }}</div>
+                <div>
+                    {{ descriptor.title }}
+                    <button
+                            @click="zoomDescriptor(descriptor.id)"
+                            type="button">
+                        Zoom
+                    </button>
+                </div>
             </li>
         </ul>
         <ul class="matrix-row-coder__descriptor-list">
@@ -21,6 +28,7 @@
 
 <script>
     const vuex = require('vuex');
+    const MutationNames = require('../store/mutations/mutations').MutationNames;
     const ActionNames = require('../store/actions/actions').ActionNames;
 
     const computed = vuex.mapState({
@@ -49,6 +57,14 @@
             apiParams: Object
         },
         computed,
+        methods: {
+            zoomDescriptor(descriptorId) {
+                this.$store.commit(MutationNames.SetDescriptorZoom, {
+                    descriptorId,
+                    isZoomed: true
+                });
+            }
+        },
         components: {
             continuousDescriptor,
             presenceDescriptor,
