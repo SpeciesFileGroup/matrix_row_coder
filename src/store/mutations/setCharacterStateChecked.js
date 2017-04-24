@@ -1,4 +1,4 @@
-const mergeIntoObservation = require(`../helpers/mergeIntoObservation`);
+const mergeIntoObservation = require('../helpers/mergeIntoObservation');
 
 module.exports = function(state, args) {
     const {

@@ -7,7 +7,8 @@ const GetterNames = {
     GetSampleMaxFor: 'getSampleMaxFor',
     GetSampleUnitFor: 'getSampleUnitFor',
     GetSampleNFor: 'getSampleNFor',
-    GetCharacterStateChecked: `getCharacterStateChecked`
+    GetCharacterStateChecked: `getCharacterStateChecked`,
+    IsDescriptorObservationsUnsaved: 'isDescriptorObservationsUnsaved'
 };
 
 const GetterFunctions = {
@@ -19,7 +20,8 @@ const GetterFunctions = {
     [GetterNames.GetSampleMaxFor]: require('./getSampleMaxFor'),
     [GetterNames.GetSampleUnitFor]: require('./getSampleUnitFor'),
     [GetterNames.GetSampleNFor]: require('./getSampleNFor'),
-    [GetterNames.GetCharacterStateChecked]: require('./getCharacterStateChecked')
+    [GetterNames.GetCharacterStateChecked]: require('./getCharacterStateChecked'),
+    [GetterNames.IsDescriptorObservationsUnsaved]: require('./isDescriptorObservationsUnsaved')
 };
 
 module.exports = {
