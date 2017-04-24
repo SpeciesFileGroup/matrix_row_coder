@@ -14,6 +14,7 @@
         </summary-view>
 
         <zoomed-view v-bind:descriptor="descriptor">
+            <h2 class="qualitative-descriptor__descriptor-title">{{ descriptor.title }}</h2>
             <div class="qualitative-descriptor__descriptor-details">
                 <descriptor-details v-bind:descriptor="descriptor"></descriptor-details>
             </div>
