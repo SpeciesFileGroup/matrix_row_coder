@@ -3,21 +3,21 @@
         <summary-view v-bind:descriptor="descriptor">
             <label>
                 Min:
-                <input type="number" :value="sampleMin">
+                <input type="number" :value="sampleMin" @input="updateSampleMin">
             </label>
             to
             <label>
                 Max:
-                <input type="number" :value="sampleMax">
+                <input type="number" :value="sampleMax" @input="updateSampleMax">
             </label>
             <label>
                 Units:
-                <input type="text" :value="sampleUnit">
+                <input type="text" :value="sampleUnit" @input="updateSampleUnit">
             </label>
 
             <label>
                 n:
-                <input type="number" :value="sampleN">
+                <input type="number" :value="sampleN" @input="updateSampleN">
             </label>
         </summary-view>
 
@@ -34,6 +34,7 @@
 <script>
     const SingleObservationDescriptor = require('../SingleObservationDescriptor');
     const GetterNames = require('../../../store/getters/getters').GetterNames;
+    const MutationNames = require('../../../store/mutations/mutations').MutationNames;
 
     module.exports = {
         mixins: [SingleObservationDescriptor],
@@ -50,6 +51,32 @@
             },
             sampleUnit() {
                 return this.$store.getters[GetterNames.GetSampleUnitFor](this.$props.descriptor.id);
+            }
+        },
+        methods: {
+            updateSampleMin(event) {
+                this.$store.commit(MutationNames.SetSampleMinFor, {
+                    descriptorId: this.$props.descriptor.id,
+                    min: event.target.value
+                });
+            },
+            updateSampleMax(event) {
+                this.$store.commit(MutationNames.SetSampleMaxFor, {
+                    descriptorId: this.$props.descriptor.id,
+                    max: event.target.value
+                });
+            },
+            updateSampleN(event) {
+                this.$store.commit(MutationNames.SetSampleNFor, {
+                    descriptorId: this.$props.descriptor.id,
+                    n: event.target.value
+                });
+            },
+            updateSampleUnit(event) {
+                this.$store.commit(MutationNames.SetSampleUnitFor, {
+                    descriptorId: this.$props.descriptor.id,
+                    units: event.target.value
+                });
             }
         }
     };

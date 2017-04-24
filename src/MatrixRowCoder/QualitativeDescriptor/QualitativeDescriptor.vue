@@ -5,7 +5,8 @@
                 <label>
                     <input
                         type="checkbox"
-                        :checked="isStateChecked(characterState.id)" />
+                        :checked="isStateChecked(characterState.id)"
+                        @change="updateStateChecked(characterState.id, $event)" />
 
                     {{ characterState.label }}: {{ characterState.name }}
                 </label>
@@ -76,13 +77,20 @@
         methods: {
             isStateChecked(characterStateId) {
                 return this.$store.getters[GetterNames.GetCharacterStateChecked]({
-                    descriptorId: this.descriptor.id,
+                    descriptorId: this.$props.descriptor.id,
                     characterStateId
                 });
             },
             getCharacterStateObservation(characterStateId) {
                 const observations = this.$store.getters[GetterNames.GetObservationsFor](this.$props.descriptor.id);
                 return observations.find(o => o.characterStateId === characterStateId);
+            },
+            updateStateChecked(characterStateId, event) {
+                this.$store.commit(MutationNames.SetCharacterStateChecked, {
+                    descriptorId: this.$props.descriptor.id,
+                    characterStateId,
+                    isChecked: event.target.checked
+                });
             }
         },
         components: {
