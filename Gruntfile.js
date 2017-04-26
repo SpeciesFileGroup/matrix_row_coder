@@ -2,10 +2,12 @@ const BUILD_DIR = "build";
 const SRC_DIR = "src";
 const SRC_JS = `${SRC_DIR}/entry.js`;
 const SRC_INDEX = "index.html";
+const SRC_INDEX_LIVE = "index-live.html";
 const BUILD_INDEX = `${BUILD_DIR}/index.html`;
+const BUILD_INDEX_LIVE = `${BUILD_DIR}/index-live.html`;
 const BUNDLED_JS = `${BUILD_DIR}/main.js`;
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     const taskConfig = {
@@ -37,10 +39,15 @@ module.exports = function (grunt) {
         },
         copy: {
             build: {
-                files: [{
-                    src: SRC_INDEX,
-                    dest: BUILD_INDEX
-                }]
+                files: [
+                    {
+                        src: SRC_INDEX,
+                        dest: BUILD_INDEX
+                    }, {
+                        src: SRC_INDEX_LIVE,
+                        dest: BUILD_INDEX_LIVE
+                    }
+                ]
             }
         },
         mochaTest: {
