@@ -1,3 +1,5 @@
+const IMatrixRowCoderRequest = require('./IMatrixRowCoderRequest');
+
 const MOCK_REQUEST_DIR = `./mockRequests/`;
 
 require('./mockRequests/matrices-5-row?otu_id=1.json');
@@ -43,36 +45,47 @@ require('./mockRequests/observations-1002-notes.json');
 require('./mockRequests/observations-1003-notes.json');
 require('./mockRequests/observations-1004-notes.json');
 
-module.exports = {
+
+class MockRequest extends IMatrixRowCoderRequest {
     getMatrixRow(matrixId, otuId) {
         return promisify(require(MOCK_REQUEST_DIR + `matrices-${matrixId}-row?otu_id=${otuId}.json`));
-    },
+    }
+
     getObservations(otuId, descriptorId) {
         return promisify(require(MOCK_REQUEST_DIR + `observations?otu_id=${otuId}&descriptor_id=${descriptorId}.json`));
-    },
+    }
+
     getDescriptorNotes(descriptorId) {
         return promisify(require(MOCK_REQUEST_DIR + `descriptors-${descriptorId}-notes.json`));
-    },
+    }
+
     getDescriptorDepictions(descriptorId) {
         return promisify(require(MOCK_REQUEST_DIR + `descriptors-${descriptorId}-depictions.json`));
-    },
+    }
+
     getObservationNotes(observationId) {
         return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-notes.json`));
-    },
+    }
+
     getObservationDepictions(observationId) {
         return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-depictions.json`));
-    },
+    }
+
     getObservationConfidences(observationId) {
         return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-confidences.json`));
-    },
+    }
+
     getObservationCitations(observationId) {
         return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-citations.json`));
-    },
+    }
+
     getConfidenceLevels() {
         return promisify(require(MOCK_REQUEST_DIR + `confidence-levels.json`));
     }
-};
+}
 
 function promisify(data) {
     return new Promise(resolve => resolve(data));
 }
+
+module.exports = MockRequest;

@@ -1,3 +1,5 @@
+const IMatrixRowCoderRequest = require('./IMatrixRowCoderRequest');
+
 function getJSON(url) {
     return new Promise((resolve, reject) => {
         const request = new XMLHttpRequest();
@@ -18,6 +20,9 @@ function getJSON(url) {
     });
 }
 
-module.exports = {
-    getJSON
-};
+
+class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
+
+}
+
+module.exports = MatrixRowCoderRequest;
