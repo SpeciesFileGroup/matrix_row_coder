@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
-const store = require('../../../src/store/store').newStore();
 const ActionNames = require('../../../src/store/actions/actions').ActionNames;
+const store = require('../../testHelpers').newTestStore();
 
 describe(`RequestConfidenceLevels action`, () => {
     it(`should request the confidence levels and add them to the store as a promise`, () => {

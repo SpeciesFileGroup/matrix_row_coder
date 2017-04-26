@@ -22,7 +22,24 @@ function getJSON(url) {
 
 
 class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
+    constructor({ apiBase, apiParams }) {
+        super();
+        this.apiBase = apiBase;
+        this.apiParams = apiParams;
+    }
 
+    static stringifyApiParams(object) {
+        return Object.keys(object).reduce((accumulated, property, currentIndex, array) => {
+            return `${accumulated}${ getPropertyPrefix(currentIndex, array.length) }${property}=${object[property]}`;
+        }, '');
+
+        function getPropertyPrefix(index, length) {
+            if (index === 0)
+                return '?';
+            else
+                return '&';
+        }
+    }
 }
 
 module.exports = MatrixRowCoderRequest;
