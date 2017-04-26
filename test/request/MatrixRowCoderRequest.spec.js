@@ -2,13 +2,14 @@ const expect = require('chai').expect;
 const MatrixRowCoderRequest = require('../../src/request/MatrixRowCoderRequest');
 
 describe(`MatrixRowCoderRequest class`, () => {
-    it(`should construct with api url and api params`, () => {
+    it(`should be able to set api details`, () => {
         const expectedApiBase = '//foo.com/';
         const expectedApiParams = {
             foo: 'bar'
         };
 
-        const r = new MatrixRowCoderRequest({
+        const r = new MatrixRowCoderRequest();
+        r.setApi({
             apiBase: expectedApiBase,
             apiParams: expectedApiParams
         });

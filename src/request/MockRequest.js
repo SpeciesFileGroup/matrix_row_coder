@@ -47,6 +47,10 @@ require('./mockRequests/observations-1004-notes.json');
 
 
 class MockRequest extends IMatrixRowCoderRequest {
+    setApi(args) {
+        return null;
+    }
+
     getMatrixRow(matrixId, otuId) {
         return promisify(require(MOCK_REQUEST_DIR + `matrices-${matrixId}-row?otu_id=${otuId}.json`));
     }

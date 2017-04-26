@@ -22,8 +22,7 @@ function getJSON(url) {
 
 
 class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
-    constructor({ apiBase, apiParams }) {
-        super();
+    setApi({ apiBase, apiParams }) {
         this.apiBase = apiBase;
         this.apiParams = apiParams;
     }
