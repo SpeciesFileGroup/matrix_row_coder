@@ -1,6 +1,7 @@
 const Vue = require('vue');
 const MatrixRowCoder = require('./MatrixRowCoder/MatrixRowCoder.vue');
-const store = require('./store/store').newStore();
+const MatrixRowCoderRequest = require('./request/MatrixRowCoderRequest');
+const store = require('./store/store').newStore( new MatrixRowCoderRequest() );
 
 new Vue({
     el: 'app',

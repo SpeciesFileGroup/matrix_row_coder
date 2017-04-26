@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const GetterNames = require('../../../src/store/getters/getters').GetterNames;
-const store = require('../../../src/store/store').newStore();
 const TestHelpers = require('../../testHelpers');
+const store = TestHelpers.newTestStore();
 
 describe(`GetObservationsFor getter`, () => {
     before(done => {

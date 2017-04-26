@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
 const GetterNames = require('../../../src/store/getters/getters').GetterNames;
 const MutationNames = require('../../../src/store/mutations/mutations').MutationNames;
-const store = require('../../../src/store/store').newStore();
 const TestHelpers = require('../../testHelpers');
+const store = TestHelpers.newTestStore();
 
 describe(`IsDescriptorObservationsUnsaved Getter`, () => {
     const unsavedDescriptorId = 27;

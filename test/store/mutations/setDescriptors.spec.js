@@ -1,5 +1,6 @@
 const expect = require('chai').expect;
-const store = require('../../../src/store/store').newStore();
+const TestHelpers = require('../../testHelpers');
+const store = TestHelpers.newTestStore();
 const mutations = require('../../../src/store/mutations/mutations');
 
 describe(`setDescriptors`, () => {

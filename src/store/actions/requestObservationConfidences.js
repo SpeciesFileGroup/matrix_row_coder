@@ -1,10 +1,9 @@
 const MutationNames = require('../mutations/mutations').MutationNames;
-const mockRequest = require('../../request/mockRequest');
 
 module.exports = function({ commit, state }, observationId) {
     return Promise.all([
         state.confidenceLevels,
-        mockRequest.getObservationConfidences(observationId)
+        state.request.getObservationConfidences(observationId)
     ]).then(resolved => {
         const [confidenceLevels, observationConfidences] = resolved;
 

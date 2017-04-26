@@ -43,6 +43,11 @@
 
     module.exports = {
         created: function() {
+            this.$store.state.request.setApi({
+                apiBase: this.$props.apiBase,
+                apiParams: this.$props.apiParams
+            });
+
             this.$store.dispatch(ActionNames.RequestMatrixRow, {
                 matrixId: this.$props.matrixId,
                 otuId: this.$props.otuId
