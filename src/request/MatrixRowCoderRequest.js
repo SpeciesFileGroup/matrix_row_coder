@@ -27,6 +27,59 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
         this.apiParams = apiParams;
     }
 
+    getMatrixRow(matrixId, otuId) {
+        const params = Object.assign({
+            otu_id: otuId
+        }, this.apiParams);
+
+        const url = `${this.apiBase}/matrices/${matrixId}/row.json${MatrixRowCoderRequest.stringifyApiParams(params)}`;
+        return getJSON(url);
+    }
+
+    getObservations(otuId, descriptorId) {
+        const params = Object.assign({
+            otu_id: otuId,
+            descriptor_id: descriptorId
+        }, this.apiParams);
+
+        const url = `${this.apiBase}/observations.json${MatrixRowCoderRequest.stringifyApiParams(params)}`;
+        return getJSON(url);
+    }
+
+    getDescriptorNotes(descriptorId) {
+        const url = `${this.apiBase}/descriptors/${descriptorId}/notes.json`;
+        return getJSON(url);
+    }
+
+    getDescriptorDepictions(descriptorId) {
+        const url = `${this.apiBase}/descriptors/${descriptorId}/depictions.json`;
+        return getJSON(url);
+    }
+
+    getObservationNotes(observationId) {
+        const url = `${this.apiBase}/observations/${observationId}/notes.json`;
+        return getJSON(url);
+    }
+
+    getObservationDepictions(observationId) {
+        const url = `${this.apiBase}/observations/${observationId}/depictions.json`;
+        return getJSON(url);
+    }
+
+    getObservationConfidences(observationId) {
+        const url = `${this.apiBase}/observations/${observationId}/confidences.json`;
+        return getJSON(url);
+    }
+
+    getObservationCitations(observationId) {
+        const url = `${this.apiBase}/observations/${observationId}/citations.json`;
+        return getJSON(url);
+    }
+
+    getConfidenceLevels() {
+        return getJSON(`${this.apiBase}/confidence-levels.json`);
+    }
+
     static stringifyApiParams(object) {
         return Object.keys(object).reduce((accumulated, property, currentIndex, array) => {
             return `${accumulated}${ getPropertyPrefix(currentIndex, array.length) }${property}=${object[property]}`;
