@@ -1,10 +1,9 @@
 const BUILD_DIR = "build";
 const SRC_DIR = "src";
-const SRC_JS = `${SRC_DIR}/entry.js`;
+const SRC_JS_MOCK = `${SRC_DIR}/entry-mock.js`;
+const SRC_JS_LIVE = `${SRC_DIR}/entry-live.js`;
 const SRC_INDEX = "index.html";
-const SRC_INDEX_LIVE = "index-live.html";
 const BUILD_INDEX = `${BUILD_DIR}/index.html`;
-const BUILD_INDEX_LIVE = `${BUILD_DIR}/index-live.html`;
 const BUNDLED_JS = `${BUILD_DIR}/main.js`;
 
 module.exports = function(grunt) {
@@ -12,7 +11,7 @@ module.exports = function(grunt) {
 
     const taskConfig = {
         browserify: {
-            build: {
+            buildMock: {
                 options: {
                     transform: ['vueify'],
                     watch: true,
@@ -20,7 +19,18 @@ module.exports = function(grunt) {
                         debug: true
                     }
                 },
-                src: [SRC_JS],
+                src: [SRC_JS_MOCK],
+                dest: BUNDLED_JS
+            },
+            buildLive: {
+                options: {
+                    transform: ['vueify'],
+                    watch: true,
+                    browserifyOptions: {
+                        debug: true
+                    }
+                },
+                src: [SRC_JS_LIVE],
                 dest: BUNDLED_JS
             }
         },
@@ -43,9 +53,6 @@ module.exports = function(grunt) {
                     {
                         src: SRC_INDEX,
                         dest: BUILD_INDEX
-                    }, {
-                        src: SRC_INDEX_LIVE,
-                        dest: BUILD_INDEX_LIVE
                     }
                 ]
             }
@@ -71,14 +78,29 @@ module.exports = function(grunt) {
         'mochaTest:test'
     ]);
 
-    grunt.registerTask('build', [
+    grunt.registerTask('pre-build', [
         'clean',
-        'copy:build',
-        'browserify:build'
+        'copy:build'
     ]);
 
-    grunt.registerTask('serve', [
-        'build',
+    grunt.registerTask('build-mock', [
+        'pre-build',
+        'browserify:buildMock'
+    ]);
+
+    grunt.registerTask('build-live', [
+        'pre-build',
+        'browserify:buildLive'
+    ]);
+
+    grunt.registerTask('serve-mock', [
+        'build-mock',
+        'connect:build',
+        'watch'
+    ]);
+
+    grunt.registerTask('serve-live', [
+        'build-live',
         'connect:build',
         'watch'
     ]);
