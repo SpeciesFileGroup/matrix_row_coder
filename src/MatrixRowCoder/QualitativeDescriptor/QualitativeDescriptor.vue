@@ -1,16 +1,18 @@
 <template>
     <div class="qualitative-descriptor">
         <summary-view v-bind:descriptor="descriptor">
-            <li v-for="characterState in descriptor.characterStates">
-                <label>
-                    <input
-                        type="checkbox"
-                        :checked="isStateChecked(characterState.id)"
-                        @change="updateStateChecked(characterState.id, $event)" />
+            <ul>
+                <li v-for="characterState in descriptor.characterStates">
+                    <label>
+                        <input
+                            type="checkbox"
+                            :checked="isStateChecked(characterState.id)"
+                            @change="updateStateChecked(characterState.id, $event)" />
 
-                    {{ characterState.label }}: {{ characterState.name }}
-                </label>
-            </li>
+                        {{ characterState.label }}: {{ characterState.name }}
+                    </label>
+                </li>
+            </ul>
         </summary-view>
 
         <zoomed-view v-bind:descriptor="descriptor">
@@ -24,7 +26,14 @@
                     v-for="characterState in descriptor.characterStates">
 
                     <div class="qualitative-descriptor__character-state-details">
-                        {{ characterState.name }}
+                        <label>
+                            <input
+                                type="checkbox"
+                                :checked="isStateChecked(characterState.id)"
+                                @change="updateStateChecked(characterState.id, $event)" />
+
+                            {{ characterState.label }}: {{ characterState.name }}
+                        </label>
                     </div>
                     <div class="qualitative-descriptor__observation-details">
                         <observation-details v-bind:observation="getCharacterStateObservation(characterState.id)"></observation-details>
