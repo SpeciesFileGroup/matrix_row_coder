@@ -4,12 +4,14 @@
 
 * http://0.0.0.0:3000/api/v1/confidence_levels.json?project_id=1&token=RZRT7Voy4vOX26MASONOIQ
 
-## Depictions
+## Descriptors
 
 * http://0.0.0.0:3000/api/v1/descriptors/1.json?project_id=1&token=RZRT7Voy4vOX26MASONOIQ
 * http://0.0.0.0:3000/api/v1/descriptors/1/observations.json?project_id=1&otu_id=23141&token=RZRT7Voy4vOX26MASONOIQ
 
 ### Annotations
+
+* http://127.0.0.1:3000/api/v1/descriptors/22/annotations.json?token=RZRT7Voy4vOX26MASONOIQ&project_id=1
 
 * http://0.0.0.0:3000/api/v1/descriptors/1/notes.json?project_id=1&token=RZRT7Voy4vOX26MASONOIQ
 * http://0.0.0.0:3000/api/v1/descriptors/1/depictions.json?project_id=1&token=RZRT7Voy4vOX26MASONOIQ
