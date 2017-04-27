@@ -19,7 +19,7 @@
 
 ## Observations
 
-* TODO: POST api
+* CRUD @ http://127.0.0.1:3000/api/v1/observations/212659.json
 
 * http://127.0.0.1:3000/api/v1/observations/212659.json?token=RZRT7Voy4vOX26MASONOIQ&project_id=1
 * http://127.0.0.1:3000/api/v1/observations.json?otu_id=44681&descriptor_id=50&token=RZRT7Voy4vOX26MASONOIQ&project_id=1 
