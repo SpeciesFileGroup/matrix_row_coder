@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
-const newStore = require('../../../src/store/store').newStore;
 const MutationNames = require('../../../src/store/mutations/mutations').MutationNames;
 const ObservationTypes = require('../../../src/store/helpers/ObservationTypes');
+const TestHelpers = require('../../testHelpers');
 
 const mockDescriptors = [
     {
@@ -28,7 +28,7 @@ describe(`SetObservation mutation`, () => {
     let store;
 
     beforeEach(done => {
-        store = newStore();
+        store = TestHelpers.newTestStore();
         store.commit(MutationNames.SetDescriptors, mockDescriptors);
         done();
     });

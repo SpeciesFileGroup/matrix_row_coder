@@ -1,8 +1,7 @@
-const mockRequest = require('../../request/mockRequest');
 const MutationNames = require('../mutations/mutations').MutationNames;
 
-module.exports = function({ commit }, observationId) {
-    return mockRequest.getObservationDepictions(observationId)
+module.exports = function({ commit, state }, observationId) {
+    return state.request.getObservationDepictions(observationId)
         .then(depictions => {
             commit(MutationNames.SetObservationDepictions, {
                 observationId,

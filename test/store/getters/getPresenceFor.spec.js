@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
 const GetterNames = require('../../../src/store/getters/getters').GetterNames;
-const store = require('../../../src/store/store').newStore();
 const TestHelpers = require('../../testHelpers');
 const ComponentNames = require('../../../src/store/helpers/ComponentNames');
+const store = TestHelpers.newTestStore();
 
 describe(`GetPresenceFor getter`, () => {
     before(done => {

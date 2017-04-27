@@ -1,12 +1,11 @@
 const expect = require('chai').expect;
-const store = require('../../../src/store/store').newStore();
 const ActionNames = require('../../../src/store/actions/actions').ActionNames;
-const TestDefines = require('../../testDefines');
 const TestHelpers = require('../../testHelpers');
+const store = TestHelpers.newTestStore();
 
 describe(`requestObservations action`, () => {
     before(done => {
-        store.dispatch(ActionNames.RequestMatrixRow, TestDefines.MatrixRowUrl)
+        TestHelpers.requestMatrixRowForStore(store)
             .then(_ => TestHelpers.requestAllObservationsForStore(store) )
             .then(_ => done() );
     });
@@ -71,7 +70,6 @@ describe(`requestObservations action`, () => {
         it(`should mark character states as checked if an observation exists for them`, () => {
             const qualitativeObservations = store.state.observations
                 .filter(o => o.descriptorId === 24);
-            console.log(qualitativeObservations);
             const expectedisChecked = {
                 33: true,
                 34: false

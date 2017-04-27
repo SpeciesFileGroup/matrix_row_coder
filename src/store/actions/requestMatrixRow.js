@@ -1,11 +1,15 @@
-const mockRequest = require('../../request/mockRequest');
 const MutationNames = require('../mutations/mutations').MutationNames;
 const ComponentNames = require('../helpers/ComponentNames');
 const ObservationTypes = require('../helpers/ObservationTypes');
 const makeObservation = require('../helpers/makeObservation');
 
-module.exports = function({commit}, matrixRowUrl) {
-    return mockRequest.getMatrixRow(matrixRowUrl)
+module.exports = function({commit, state}, args) {
+    const {
+        matrixId,
+        otuId
+    } = args;
+
+    return state.request.getMatrixRow(matrixId, otuId)
         .then(response => {
             const descriptors = response.descriptors.map(transformDescriptorForViewmodel);
             commit(MutationNames.SetDescriptors, descriptors);

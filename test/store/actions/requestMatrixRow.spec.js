@@ -1,17 +1,21 @@
 const expect = require('chai').expect;
-const store = require('../../../src/store/store').newStore();
 const ActionNames = require('../../../src/store/actions/actions').ActionNames;
 const ComponentNames = require('../../../src/store/helpers/ComponentNames');
+const TestHelpers = require('../../testHelpers');
+const store = TestHelpers.newTestStore();
 
 const indexOfQualitativeDescriptor = 0;
-const MatrixRowUrl = require('../../testDefines').MatrixRowUrl;
+const TestDefines = require('../../testDefines');
 
 describe(`requestMatrixRow action`, () => {
     let qualitativeDescriptor;
 
     before(done => {
         store
-            .dispatch(ActionNames.RequestMatrixRow, MatrixRowUrl)
+            .dispatch(ActionNames.RequestMatrixRow, {
+                matrixId: TestDefines.MatrixId,
+                otuId: TestDefines.OtuId
+            })
             .then(_ => qualitativeDescriptor = store.state.descriptors[indexOfQualitativeDescriptor])
             .then(_ => done());
     });
@@ -145,6 +149,10 @@ describe(`requestMatrixRow action`, () => {
                 expect(o.depictions).to.deep.equal([]);
                 expect(o.confidences).to.deep.equal([]);
             });
+        });
+
+        it(`should create observations with isUnsaved as false`, () => {
+            store.state.observations.forEach(o => expect(o.isUnsaved).to.be.false);
         });
 
         describe('with Qualitative Descriptors', () => {

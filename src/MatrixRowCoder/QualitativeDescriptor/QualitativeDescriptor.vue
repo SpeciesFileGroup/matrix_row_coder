@@ -4,12 +4,34 @@
             <li v-for="characterState in descriptor.characterStates">
                 <label>
                     <input
-                        type="checkbox" />
+                        type="checkbox"
+                        :checked="isStateChecked(characterState.id)"
+                        @change="updateStateChecked(characterState.id, $event)" />
 
                     {{ characterState.label }}: {{ characterState.name }}
                 </label>
             </li>
         </summary-view>
+
+        <zoomed-view v-bind:descriptor="descriptor">
+            <h2 class="qualitative-descriptor__descriptor-title">{{ descriptor.title }}</h2>
+            <div class="qualitative-descriptor__descriptor-details">
+                <descriptor-details v-bind:descriptor="descriptor"></descriptor-details>
+            </div>
+            <div class="qualitative-descriptor__character-state-list">
+                <div
+                    class="qualitative-descriptor__character-state"
+                    v-for="characterState in descriptor.characterStates">
+
+                    <div class="qualitative-descriptor__character-state-details">
+                        {{ characterState.name }}
+                    </div>
+                    <div class="qualitative-descriptor__observation-details">
+                        <observation-details v-bind:observation="getCharacterStateObservation(characterState.id)"></observation-details>
+                    </div>
+                </div>
+            </div>
+        </zoomed-view>
     </div>
 </template>
 
@@ -22,6 +44,9 @@
 
     const summaryView = require('../SummaryView/SummaryView.vue');
     const zoomedView = require('../ZoomedView/ZoomedView.vue');
+
+    const observationDetails = require('../ObservationDetails/ObservationDetails.vue');
+    const descriptorDetails = require('../DescriptorDetails/DescriptorDetails.vue');
 
     module.exports = {
         name: 'qualitative-descriptor',
@@ -50,8 +75,30 @@
                 observations: []
             };
         },
+        methods: {
+            isStateChecked(characterStateId) {
+                return this.$store.getters[GetterNames.GetCharacterStateChecked]({
+                    descriptorId: this.$props.descriptor.id,
+                    characterStateId
+                });
+            },
+            getCharacterStateObservation(characterStateId) {
+                const observations = this.$store.getters[GetterNames.GetObservationsFor](this.$props.descriptor.id);
+                return observations.find(o => o.characterStateId === characterStateId);
+            },
+            updateStateChecked(characterStateId, event) {
+                this.$store.commit(MutationNames.SetCharacterStateChecked, {
+                    descriptorId: this.$props.descriptor.id,
+                    characterStateId,
+                    isChecked: event.target.checked
+                });
+            }
+        },
         components: {
-            summaryView
+            summaryView,
+            zoomedView,
+            observationDetails,
+            descriptorDetails
         }
     };
 </script>

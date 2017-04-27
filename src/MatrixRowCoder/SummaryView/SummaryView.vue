@@ -1,5 +1,5 @@
 <template>
-    <div class="summary-view">
+    <div class="summary-view" :class="{ 'summary-view--unsaved': isUnsaved }">
         <h2 class="summary-view__title">{{ descriptor.title }}</h2>
         <p>
             <button @click="zoomIn" type="button">Zoom</button>
@@ -14,10 +14,16 @@
 
 <script>
     const MutationNames = require('../../store/mutations/mutations').MutationNames;
+    const GetterNames = require('../../store/getters/getters').GetterNames;
 
     module.exports = {
         name: "summary-view",
         props: ['descriptor'],
+        computed: {
+            isUnsaved: function() {
+                return this.$store.getters[GetterNames.IsDescriptorObservationsUnsaved](this.$props.descriptor.id);
+            }
+        },
         methods: {
             zoomIn: function(event) {
                 this.$store.commit(MutationNames.SetDescriptorZoom, {

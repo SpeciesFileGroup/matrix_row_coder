@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
-const store = require('../../../src/store/store').newStore();
 const MutationNames = require('../../../src/store/mutations/mutations').MutationNames;
 const TestHelpers = require('../../testHelpers');
+const store = TestHelpers.newTestStore();
 
 describe(`SetDescriptorNotes mutation`, () => {
     before(done => {

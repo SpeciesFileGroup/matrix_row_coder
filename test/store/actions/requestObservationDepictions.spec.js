@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
-const store = require('../../../src/store/store').newStore();
 const ActionNames = require('../../../src/store/actions/actions').ActionNames;
 const TestHelpers = require('../../testHelpers');
+const store = TestHelpers.newTestStore();
 
 describe(`RequestObservationDepictions action`, () => {
     before(done => {

@@ -13,7 +13,7 @@
             </label>
         </summary-view>
 
-        <zoomed-view
+        <single-observation-zoomed-view
             v-bind:descriptor="descriptor"
             v-bind:observation="observation">
 
@@ -23,7 +23,7 @@
                 <dt>Unit</dt>
                 <dd>{{ continuousUnit }}</dd>
             </dl>
-        </zoomed-view>
+        </single-observation-zoomed-view>
     </div>
 </template>
 
@@ -31,6 +31,7 @@
 
 <script>
     const GetterNames = require('../../../store/getters/getters').GetterNames;
+    const MutationNames = require('../../../store/mutations/mutations').MutationNames;
     const SingleObservationDescriptor = require('../SingleObservationDescriptor');
 
     module.exports = {
@@ -46,10 +47,16 @@
         },
         methods: {
             updateContinuousValue(event) {
-                console.log(event.target.value);
+                this.$store.commit(MutationNames.SetContinuousValue, {
+                    descriptorId: this.$props.descriptor.id,
+                    continuousValue: event.target.value
+                })
             },
             updateContinuousUnit(event) {
-                console.log(event.target.value);
+                this.$store.commit(MutationNames.SetContinuousUnit, {
+                    descriptorId: this.$props.descriptor.id,
+                    continuousUnit: event.target.value
+                });
             }
         }
     };

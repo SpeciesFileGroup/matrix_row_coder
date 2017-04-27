@@ -6,6 +6,7 @@ module.exports = function makeBaseObservation(observationData) {
         notes: [],
         depictions: [],
         confidences: [],
-        citations: []
+        citations: [],
+        isUnsaved: false
     };
 };

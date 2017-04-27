@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const MutationNames = require('../../../src/store/mutations/mutations').MutationNames;
-const store = require('../../../src/store/store').newStore();
 const TestHelpers = require('../../testHelpers');
+const store = TestHelpers.newTestStore();
 
 describe(`SetConfidenceLevels mutation`, () => {
     it(`should set the given confidence levels`, () => {

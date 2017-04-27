@@ -10,7 +10,15 @@ const MutationNames = {
     SetObservationDepictions: 'setObservationDepictions',
     SetObservationConfidences: 'setObservationConfidences',
     SetObservationCitations: 'setObservationCitations',
-    SetDescriptorZoom: 'setDescriptorZoom'
+    SetDescriptorZoom: 'setDescriptorZoom',
+    SetContinuousValue: 'setContinuousValue',
+    SetContinuousUnit: 'setContinuousUnit',
+    SetPresence: 'setPresence',
+    SetCharacterStateChecked: 'setCharacterStateChecked',
+    SetSampleMaxFor: `setSampleMaxFor`,
+    SetSampleMinFor: `setSampleMinFor`,
+    SetSampleNFor: `setSampleNFor`,
+    SetSampleUnitFor: `setSampleUnitFor`
 };
 
 const MutationFunctions = {
@@ -25,7 +33,15 @@ const MutationFunctions = {
     [MutationNames.SetObservationDepictions]: require('./setObservationDepictions'),
     [MutationNames.SetObservationConfidences]: require('./setObservationConfidences'),
     [MutationNames.SetObservationCitations]: require('./setObservationCitations'),
-    [MutationNames.SetDescriptorZoom]: require('./setDescriptorZoom')
+    [MutationNames.SetDescriptorZoom]: require('./setDescriptorZoom'),
+    [MutationNames.SetContinuousValue]: require('./setContinuousValue'),
+    [MutationNames.SetContinuousUnit]: require('./setContinuousUnit'),
+    [MutationNames.SetPresence]: require('./setPresence'),
+    [MutationNames.SetCharacterStateChecked]: require('./setCharacterStateChecked'),
+    [MutationNames.SetSampleMaxFor]: require('./setSampleMaxFor'),
+    [MutationNames.SetSampleMinFor]: require('./setSampleMinFor'),
+    [MutationNames.SetSampleNFor]: require('./setSampleNFor'),
+    [MutationNames.SetSampleUnitFor]: require('./setSampleUnitFor'),
 };
 
 module.exports = {
