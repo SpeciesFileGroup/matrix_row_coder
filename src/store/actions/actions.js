@@ -7,7 +7,8 @@ const ActionNames = {
     RequestObservationNotes: 'requestObservationNotes',
     RequestObservationDepictions: 'requestObservationDepictions',
     RequestObservationConfidences: 'requestObservationConfidences',
-    RequestObservationCitations: 'requestObservationCitations'
+    RequestObservationCitations: 'requestObservationCitations',
+    RemoveObservation: 'removeObservation'
 };
 
 const ActionFunctions = {
@@ -19,7 +20,8 @@ const ActionFunctions = {
     [ActionNames.RequestObservationNotes]: require('./requestObservationNotes'),
     [ActionNames.RequestObservationDepictions]: require('./requestObservationDepictions'),
     [ActionNames.RequestObservationConfidences]: require('./requestObservationConfidences'),
-    [ActionNames.RequestObservationCitations]: require('./requestObservationCitations')
+    [ActionNames.RequestObservationCitations]: require('./requestObservationCitations'),
+    [ActionNames.RemoveObservation]: require('./removeObservation')
 };
 
 module.exports = {

@@ -180,11 +180,11 @@ describe(`requestMatrixRow action`, () => {
         });
 
         describe(`with Continuous Descriptors`, () => {
-            it(`should have the continuous value set to zero`, () => {
+            it(`should have the continuous value set to null`, () => {
                 store.state.descriptors.forEach(d => {
                     if (d.componentName === ComponentNames.Continuous) {
                         const observation = store.state.observations.find(o => o.descriptorId === d.id);
-                        expect(observation.continuousValue).to.equal(0);
+                        expect(observation.continuousValue).to.equal(null);
                     }
                 });
             });

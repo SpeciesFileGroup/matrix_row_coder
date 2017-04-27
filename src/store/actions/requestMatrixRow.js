@@ -1,8 +1,7 @@
 const MutationNames = require('../mutations/mutations').MutationNames;
 const DescriptorTypes = require('../helpers/DescriptorTypes');
 const ComponentNames = require('../helpers/ComponentNames');
-const ObservationTypes = require('../helpers/ObservationTypes');
-const makeObservation = require('../helpers/makeObservation');
+const makeEmptyObservationsFor = require('../helpers/makeEmptyObservationsFor');
 
 module.exports = function({commit, state}, args) {
     const {
@@ -78,29 +77,11 @@ function transformCharacterStateForViewmodel(characterStateData) {
     };
 }
 
-const ComponentNamesToObservations = {
-    [ComponentNames.Qualitative]: ObservationTypes.Qualitative,
-    [ComponentNames.Continuous]: ObservationTypes.Continuous,
-    [ComponentNames.Sample]: ObservationTypes.Sample,
-    [ComponentNames.Presence]: ObservationTypes.Presence
-};
-
 function makeEmptyObservationsForDescriptors(descriptors) {
-    const observations = [];
+    let observations = [];
 
     descriptors.forEach(descriptor => {
-        const emptyObservationData = {
-            descriptorId: descriptor.id,
-            type: ComponentNamesToObservations[descriptor.componentName]
-        };
-
-        if (descriptor.componentName === ComponentNames.Qualitative) {
-            descriptor.characterStates.forEach(characterState => {
-                const emptyCharacterStateObservationData = Object.assign({}, emptyObservationData, { characterStateId: characterState.id });
-                observations.push(makeObservation(emptyCharacterStateObservationData));
-            });
-        } else
-            observations.push(makeObservation(emptyObservationData));
+        observations = [...observations, ...makeEmptyObservationsFor(descriptor)];
     });
 
     return observations;
