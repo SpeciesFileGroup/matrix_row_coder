@@ -47,37 +47,37 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
     }
 
     getDescriptorNotes(descriptorId) {
-        const url = `${this.apiBase}/descriptors/${descriptorId}/notes.json`;
+        const url = `${this.apiBase}/descriptors/${descriptorId}/notes.json${MatrixRowCoderRequest.stringifyApiParams(this.apiParams)}`;
         return getJSON(url);
     }
 
     getDescriptorDepictions(descriptorId) {
-        const url = `${this.apiBase}/descriptors/${descriptorId}/depictions.json`;
+        const url = `${this.apiBase}/descriptors/${descriptorId}/depictions.json${MatrixRowCoderRequest.stringifyApiParams(this.apiParams)}`;
         return getJSON(url);
     }
 
     getObservationNotes(observationId) {
-        const url = `${this.apiBase}/observations/${observationId}/notes.json`;
+        const url = `${this.apiBase}/observations/${observationId}/notes.json${MatrixRowCoderRequest.stringifyApiParams(this.apiParams)}`;
         return getJSON(url);
     }
 
     getObservationDepictions(observationId) {
-        const url = `${this.apiBase}/observations/${observationId}/depictions.json`;
+        const url = `${this.apiBase}/observations/${observationId}/depictions.json${MatrixRowCoderRequest.stringifyApiParams(this.apiParams)}`;
         return getJSON(url);
     }
 
     getObservationConfidences(observationId) {
-        const url = `${this.apiBase}/observations/${observationId}/confidences.json`;
+        const url = `${this.apiBase}/observations/${observationId}/confidences.json${MatrixRowCoderRequest.stringifyApiParams(this.apiParams)}`;
         return getJSON(url);
     }
 
     getObservationCitations(observationId) {
-        const url = `${this.apiBase}/observations/${observationId}/citations.json`;
+        const url = `${this.apiBase}/observations/${observationId}/citations.json${MatrixRowCoderRequest.stringifyApiParams(this.apiParams)}`;
         return getJSON(url);
     }
 
     getConfidenceLevels() {
-        return getJSON(`${this.apiBase}/confidence-levels.json`);
+        return getJSON(`${this.apiBase}/confidence_levels.json${MatrixRowCoderRequest.stringifyApiParams(this.apiParams)}`);
     }
 
     static stringifyApiParams(object) {
