@@ -63,6 +63,10 @@ class MockRequest extends IMatrixRowCoderRequest {
         return promisify({ success: true });
     }
 
+    updateObservation(observationId, payload) {
+        return promisify({ success: true });
+    }
+
     getDescriptorNotes(descriptorId) {
         return promisify(require(MOCK_REQUEST_DIR + `descriptors-${descriptorId}-notes.json`));
     }
