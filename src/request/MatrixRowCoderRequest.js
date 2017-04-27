@@ -48,8 +48,7 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
         const url = this.buildUrl(`/matrices/${matrixId}/row.json`, extraParams);
         return getJSON(url)
             .then(data => {
-                console.log(`getMatrixRow`);
-                console.log(data);
+                console.log(`getMatrixRow:`, data);
                 return data;
             });
     }
@@ -60,7 +59,11 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
             descriptor_id: descriptorId
         };
         const url = this.buildUrl(`/observations.json`, extraParams);
-        return getJSON(url);
+        return getJSON(url)
+            .then(data => {
+                console.log(`Observations for ${descriptorId}:`, data);
+                return data;
+            });
     }
 
     getDescriptorNotes(descriptorId) {

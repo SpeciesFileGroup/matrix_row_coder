@@ -1,6 +1,6 @@
 {
     "otu": {
-        "otu_id": 1,
+        "id": 1,
         "name": null,
         "object_tag": "Aus bus",
         "url": "//api.com/otus/24.json"

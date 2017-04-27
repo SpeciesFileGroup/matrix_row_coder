@@ -22,10 +22,10 @@ module.exports = function({commit, state}, args) {
 
             function addOtuToState() {
                 const {
-                    otu_id,
+                    id,
                     object_tag
                 } = response.otu;
-                commit(MutationNames.SetTaxonId, otu_id);
+                commit(MutationNames.SetTaxonId, id);
                 commit(MutationNames.SetTaxonTitle, object_tag);
             }
         });
