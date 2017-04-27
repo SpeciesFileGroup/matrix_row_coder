@@ -1,4 +1,5 @@
 const MutationNames = require('../mutations/mutations').MutationNames;
+const DescriptorTypes = require('../helpers/DescriptorTypes');
 const ComponentNames = require('../helpers/ComponentNames');
 const ObservationTypes = require('../helpers/ObservationTypes');
 const makeObservation = require('../helpers/makeObservation');
@@ -48,8 +49,15 @@ function makeBaseDescriptor(descriptorData) {
     };
 }
 
+const DescriptorTypesToComponentNames = {
+    [DescriptorTypes.Qualitative]: ComponentNames.Qualitative,
+    [DescriptorTypes.Continuous]: ComponentNames.Continuous,
+    [DescriptorTypes.Sample]: ComponentNames.Sample,
+    [DescriptorTypes.Presence]: ComponentNames.Presence
+};
+
 function getComponentNameForDescriptorType(descriptorData) {
-    return ComponentNames[descriptorData.type];
+    return DescriptorTypesToComponentNames[descriptorData.type];
 }
 
 function getDescription(descriptorData) {
@@ -70,7 +78,7 @@ function transformCharacterStateForViewmodel(characterStateData) {
     };
 }
 
-const DescriptorsToObservations = {
+const ComponentNamesToObservations = {
     [ComponentNames.Qualitative]: ObservationTypes.Qualitative,
     [ComponentNames.Continuous]: ObservationTypes.Continuous,
     [ComponentNames.Sample]: ObservationTypes.Sample,
@@ -83,7 +91,7 @@ function makeEmptyObservationsForDescriptors(descriptors) {
     descriptors.forEach(descriptor => {
         const emptyObservationData = {
             descriptorId: descriptor.id,
-            type: DescriptorsToObservations[descriptor.componentName]
+            type: ComponentNamesToObservations[descriptor.componentName]
         };
 
         if (descriptor.componentName === ComponentNames.Qualitative) {
