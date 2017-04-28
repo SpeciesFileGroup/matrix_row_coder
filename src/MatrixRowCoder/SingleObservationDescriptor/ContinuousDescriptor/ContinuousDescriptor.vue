@@ -11,6 +11,11 @@
                 Unit:
                 <input type="text" :value="continuousUnit" @input="updateContinuousUnit">
             </label>
+            <button
+                type="button"
+                @click="removeObservation">
+                Remove
+            </button>
         </summary-view>
 
         <single-observation-zoomed-view
@@ -63,6 +68,9 @@
                     descriptorId: this.$props.descriptor.id,
                     continuousUnit: event.target.value
                 });
+            },
+            removeObservation(event) {
+                console.log(`removeObservation`);
             }
         }
     };
