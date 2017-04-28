@@ -101,4 +101,22 @@ describe(`UpdateObservation action`, () => {
             store.dispatch(ActionNames.UpdateObservation, observationId);
         });
     });
+
+    describe(`Presence and Qualitative Observations`, () => {
+        it(`should throw an error if a Qualitative observation is updated`, () => {
+            const errorFn = _ => {
+                store.dispatch(ActionNames.UpdateObservation, 1001);
+            };
+
+            expect(errorFn).to.throw(`You can't update a Qualitative observation. You can only delete or create them.`);
+        });
+
+        it(`should throw an error if a Presence observation is updated`, () => {
+            const errorFn = _ => {
+                store.dispatch(ActionNames.UpdateObservation, 1004);
+            };
+
+            expect(errorFn).to.throw(`You can't update a Presence observation. You can only delete or create them.`);
+        });
+    });
 });
