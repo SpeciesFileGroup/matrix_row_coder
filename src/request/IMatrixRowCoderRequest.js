@@ -13,7 +13,7 @@ class IMatrixRowCoderRequest {
         throw IllegalBaseClassCallError;
     }
 
-    saveObservation() {
+    updateObservation() {
         throw IllegalBaseClassCallError;
     }
 

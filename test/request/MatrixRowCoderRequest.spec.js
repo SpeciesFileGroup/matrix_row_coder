@@ -61,12 +61,12 @@ describe(`MatrixRowCoderRequest class`, () => {
         });
 
         it(`should prepend the api base and api params`, () => {
-            const actual = request.buildUrl('/matrices/1/row.json');
+            const actual = request.buildGetUrl('/matrices/1/row.json');
             expect(actual).to.equal(`${base}/matrices/1/row.json?foo=bar`);
         });
 
         it(`should accept additional params to the global ones`, () => {
-            const actual = request.buildUrl('/matrices/2/row.json', { baz: 'quux' });
+            const actual = request.buildGetUrl('/matrices/2/row.json', { baz: 'quux' });
             expect(actual).to.equal(`${base}/matrices/2/row.json?foo=bar&baz=quux`);
         });
     });
