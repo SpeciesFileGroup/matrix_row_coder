@@ -1,6 +1,6 @@
 module.exports = function makeBaseObservation(observationData) {
     return {
-        id: observationData.id,
+        id: observationData.id || null,
         descriptorId: observationData.descriptorId || observationData.descriptor_id,
         type: observationData.type,
         notes: [],

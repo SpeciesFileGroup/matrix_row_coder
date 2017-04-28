@@ -8,6 +8,6 @@ module.exports = function(observationData) {
     });
 
     function attemptGetContinuousValueFromData() {
-        return observationData.hasOwnProperty('continuous_value') ? observationData.continuous_value : 0;
+        return observationData.hasOwnProperty('continuous_value') ? observationData.continuous_value : null;
     }
 };

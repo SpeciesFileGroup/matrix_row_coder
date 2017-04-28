@@ -17,12 +17,18 @@
             v-bind:descriptor="descriptor"
             v-bind:observation="observation">
 
-            <dl>
-                <dt>Amount:</dt>
-                <dd>{{ continuousValue }}</dd>
-                <dt>Unit</dt>
-                <dd>{{ continuousUnit }}</dd>
-            </dl>
+            <p>
+                <label>
+                    Amount:
+                    <input type="number" :value="continuousValue" @input="updateContinuousValue">
+                </label>
+            </p>
+            <p>
+                <label>
+                    Unit:
+                    <input type="text" :value="continuousUnit" @input="updateContinuousUnit">
+                </label>
+            </p>
         </single-observation-zoomed-view>
     </div>
 </template>

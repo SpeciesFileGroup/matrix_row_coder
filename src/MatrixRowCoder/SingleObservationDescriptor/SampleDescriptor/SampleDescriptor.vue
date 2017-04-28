@@ -25,6 +25,35 @@
             v-bind:descriptor="descriptor"
             v-bind:observation="observation">
 
+            <p>
+                <label>
+                    Min:
+                    <input type="number" :value="sampleMin" @input="updateSampleMin">
+                </label>
+            </p>
+            <p>
+                to
+            </p>
+            <p>
+                <label>
+                    Max:
+                    <input type="number" :value="sampleMax" @input="updateSampleMax">
+                </label>
+            </p>
+            <p>
+                <label>
+                    Units:
+                    <input type="text" :value="sampleUnit" @input="updateSampleUnit">
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    n:
+                    <input type="number" :value="sampleN" @input="updateSampleN">
+                </label>
+            </p>
+
         </single-observation-zoomed-view>
     </div>
 </template>

@@ -48,4 +48,26 @@ describe(`MatrixRowCoderRequest class`, () => {
             expect(actual).to.equal(expected);
         });
     });
+
+    describe(`building the endpoint urls`, () => {
+        const base = Math.random().toString(36);
+        const params = {
+            foo: 'bar'
+        };
+        const request = new MatrixRowCoderRequest();
+        request.setApi({
+            apiBase: base,
+            apiParams: params
+        });
+
+        it(`should prepend the api base and api params`, () => {
+            const actual = request.buildUrl('/matrices/1/row.json');
+            expect(actual).to.equal(`${base}/matrices/1/row.json?foo=bar`);
+        });
+
+        it(`should accept additional params to the global ones`, () => {
+            const actual = request.buildUrl('/matrices/2/row.json', { baz: 'quux' });
+            expect(actual).to.equal(`${base}/matrices/2/row.json?foo=bar&baz=quux`);
+        });
+    });
 });

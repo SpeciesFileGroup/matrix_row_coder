@@ -40,6 +40,7 @@ module.exports = function(grunt) {
         connect: {
             build: {
                 options: {
+                    hostname: '127.0.0.1',
                     open: true,
                     port: 9000,
                     livereload: 35729,

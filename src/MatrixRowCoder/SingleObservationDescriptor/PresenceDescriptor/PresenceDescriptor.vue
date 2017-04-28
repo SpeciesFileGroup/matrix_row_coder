@@ -11,6 +11,11 @@
             v-bind:descriptor="descriptor"
             v-bind:observation="observation">
 
+            <label>
+                Present
+                <input type="checkbox" :checked="isPresent" @change="updatePresence" />
+            </label>
+
         </single-observation-zoomed-view>
     </div>
 </template>
