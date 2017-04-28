@@ -1,16 +1,19 @@
 const ObservationTypes = require('../helpers/ObservationTypes');
+const ComponentNames = require('../helpers/ComponentNames');
 
-module.exports = function({state}, observationId) {
-    const observation = state.observations.find(o => o.id === observationId);
+module.exports = function({state}, descriptorId) {
+    const descriptor = state.descriptors.find(d => d.id === descriptorId);
 
-    if (isQualitativeOrPresence(observation.type))
-        throw `You can't update a ${observation.type} observation. You can only delete or create them.`;
+    if (isQualitativeOrPresence(descriptor.componentName))
+        throw `You can't update a ${getDescriptorTypeName(descriptor.componentName)} descriptor. You can only delete or create them.`;
 
-    return state.request.updateObservation(observationId, makePayload(observation));
+    const observation = state.observations.find(o => o.descriptorId === descriptorId);
+
+    return state.request.updateObservation(observation.id, makePayload(observation));
 };
 
-function isQualitativeOrPresence(type) {
-    return type === ObservationTypes.Qualitative || type === ObservationTypes.Presence;
+function isQualitativeOrPresence(componentName) {
+    return componentName === ComponentNames.Qualitative || componentName === ComponentNames.Presence;
 }
 
 function makePayload(observation) {
@@ -28,5 +31,9 @@ function makePayload(observation) {
         };
 }
 
-
-
+function getDescriptorTypeName(componentName) {
+    if (componentName === ComponentNames.Qualitative)
+        return `Qualitative`;
+    if (componentName === ComponentNames.Presence)
+        return `Presence`;
+}

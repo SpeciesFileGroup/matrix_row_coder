@@ -21,7 +21,7 @@ describe(`UpdateObservation action`, () => {
             return Promise.resolve({});
         };
 
-        return store.dispatch(ActionNames.UpdateObservation, 1002)
+        return store.dispatch(ActionNames.UpdateObservation, 26)
             .then(_ => {
                 expect(timesCalled).to.equal(1);
             });
@@ -30,11 +30,12 @@ describe(`UpdateObservation action`, () => {
     describe(`Continuous Observations`, () => {
         it(`should include the new continuous value`, () => {
             const observationId = 1002;
+            const descriptorId = 26;
 
             const expectedContinuousValue = 500;
 
             store.commit(MutationNames.SetContinuousValue, {
-                descriptorId: 26,
+                descriptorId,
                 continuousValue: expectedContinuousValue
             });
 
@@ -43,16 +44,17 @@ describe(`UpdateObservation action`, () => {
                 expect(payload.continuous_value).to.equal(expectedContinuousValue);
             };
 
-            return store.dispatch(ActionNames.UpdateObservation, observationId);
+            return store.dispatch(ActionNames.UpdateObservation, descriptorId);
         });
 
         it(`should include the new continuous unit`, () => {
             const observationId = 1002;
+            const descriptorId = 26;
 
             const expectedContinuousUnit = "cm";
 
             store.commit(MutationNames.SetContinuousUnit, {
-                descriptorId: 26,
+                descriptorId,
                 continuousUnit: expectedContinuousUnit
             });
 
@@ -61,7 +63,7 @@ describe(`UpdateObservation action`, () => {
                 expect(payload.continuous_unit).to.equal(expectedContinuousUnit);
             };
 
-            return store.dispatch(ActionNames.UpdateObservation, observationId);
+            return store.dispatch(ActionNames.UpdateObservation, descriptorId);
         });
     });
 
@@ -98,25 +100,25 @@ describe(`UpdateObservation action`, () => {
                 expect(payload.sample_units).to.equal(`feet`);
             };
 
-            store.dispatch(ActionNames.UpdateObservation, observationId);
+            store.dispatch(ActionNames.UpdateObservation, descriptorId);
         });
     });
 
     describe(`Presence and Qualitative Observations`, () => {
         it(`should throw an error if a Qualitative observation is updated`, () => {
             const errorFn = _ => {
-                store.dispatch(ActionNames.UpdateObservation, 1001);
+                store.dispatch(ActionNames.UpdateObservation, 24);
             };
 
-            expect(errorFn).to.throw(`You can't update a Qualitative observation. You can only delete or create them.`);
+            expect(errorFn).to.throw(`You can't update a Qualitative descriptor. You can only delete or create them.`);
         });
 
         it(`should throw an error if a Presence observation is updated`, () => {
             const errorFn = _ => {
-                store.dispatch(ActionNames.UpdateObservation, 1004);
+                store.dispatch(ActionNames.UpdateObservation, 25);
             };
 
-            expect(errorFn).to.throw(`You can't update a Presence observation. You can only delete or create them.`);
+            expect(errorFn).to.throw(`You can't update a Presence descriptor. You can only delete or create them.`);
         });
     });
 });
