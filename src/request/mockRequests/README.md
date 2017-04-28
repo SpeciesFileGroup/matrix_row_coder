@@ -41,3 +41,6 @@
 
 * http://127.0.0.1:3000/api/v1/matrices/1/row.json?otu_id=2&project_id=1&token=RZRT7Voy4vOX26MASONOIQ 
 
+# CharacterStates
+
+* http://127.0.0.1:3000/api/v1/character_states/1/annotations.json?project_id=1&token=RZRT7Voy4vOX26MASONOIQ
