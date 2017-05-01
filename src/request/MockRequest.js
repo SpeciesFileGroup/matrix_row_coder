@@ -1,4 +1,5 @@
 const IMatrixRowCoderRequest = require('./IMatrixRowCoderRequest');
+const deepFreeze = require('deep-freeze');
 
 const MOCK_REQUEST_DIR = `./mockRequests/`;
 
@@ -45,66 +46,65 @@ require('./mockRequests/observations-1002-notes.json');
 require('./mockRequests/observations-1003-notes.json');
 require('./mockRequests/observations-1004-notes.json');
 
-
 class MockRequest extends IMatrixRowCoderRequest {
     setApi(args) {
         return null;
     }
 
     getMatrixRow(matrixId, otuId) {
-        return promisify(require(MOCK_REQUEST_DIR + `matrices-${matrixId}-row?otu_id=${otuId}.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `matrices-${matrixId}-row?otu_id=${otuId}.json`));
     }
 
     getObservations(otuId, descriptorId) {
-        return promisify(require(MOCK_REQUEST_DIR + `observations?otu_id=${otuId}&descriptor_id=${descriptorId}.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `observations?otu_id=${otuId}&descriptor_id=${descriptorId}.json`));
     }
 
     removeObservation(observationId) {
         console.log(`remove observation: ${observationId}`);
-        return promisify({ success: true });
+        return freezeAndPromisify({ success: true });
     }
 
     createObservation(payload) {
         console.log('create observation:', payload);
-        return promisify({ success: true });
+        return freezeAndPromisify({ success: true });
     }
 
     updateObservation(observationId, payload) {
         console.log(`update observation: ${observationId}`);
-        return promisify({ success: true });
+        return freezeAndPromisify({ success: true });
     }
 
     getDescriptorNotes(descriptorId) {
-        return promisify(require(MOCK_REQUEST_DIR + `descriptors-${descriptorId}-notes.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `descriptors-${descriptorId}-notes.json`));
     }
 
     getDescriptorDepictions(descriptorId) {
-        return promisify(require(MOCK_REQUEST_DIR + `descriptors-${descriptorId}-depictions.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `descriptors-${descriptorId}-depictions.json`));
     }
 
     getObservationNotes(observationId) {
-        return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-notes.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-notes.json`));
     }
 
     getObservationDepictions(observationId) {
-        return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-depictions.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-depictions.json`));
     }
 
     getObservationConfidences(observationId) {
-        return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-confidences.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-confidences.json`));
     }
 
     getObservationCitations(observationId) {
-        return promisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-citations.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `observations-${observationId}-citations.json`));
     }
 
     getConfidenceLevels() {
-        return promisify(require(MOCK_REQUEST_DIR + `confidence-levels.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `confidence-levels.json`));
     }
 }
 
-function promisify(data) {
-    return new Promise(resolve => resolve(data));
+function freezeAndPromisify(data) {
+    return new Promise(resolve => resolve(deepFreeze(data)));
 }
 
 module.exports = MockRequest;

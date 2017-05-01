@@ -1,16 +1,4 @@
-const ActionNames = {
-    RequestMatrixRow: 'requestMatrixRow',
-    RequestConfidenceLevels: 'requestConfidenceLevels',
-    RequestObservations: 'requestObservation',
-    RequestDescriptorNotes: 'requestDescriptorNotes',
-    RequestDescriptorDepictions: 'requestDescriptorDepictions',
-    RequestObservationNotes: 'requestObservationNotes',
-    RequestObservationDepictions: 'requestObservationDepictions',
-    RequestObservationConfidences: 'requestObservationConfidences',
-    RequestObservationCitations: 'requestObservationCitations',
-    RemoveObservation: 'removeObservation',
-    UpdateObservation: 'updateObservation'
-};
+const ActionNames = require('./actionNames');
 
 const ActionFunctions = {
     [ActionNames.RequestMatrixRow]: require('./requestMatrixRow'),
@@ -23,7 +11,9 @@ const ActionFunctions = {
     [ActionNames.RequestObservationConfidences]: require('./requestObservationConfidences'),
     [ActionNames.RequestObservationCitations]: require('./requestObservationCitations'),
     [ActionNames.RemoveObservation]: require('./removeObservation'),
-    [ActionNames.UpdateObservation]: require('./updateObservation')
+    [ActionNames.UpdateObservation]: require('./updateObservation'),
+    [ActionNames.CreateObservation]: require('./createObservation'),
+    [ActionNames.SaveObservationsFor]: require('./saveObservationsFor')
 };
 
 module.exports = {

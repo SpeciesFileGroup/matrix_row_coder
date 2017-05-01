@@ -24,5 +24,21 @@ module.exports = {
                 otuId
             });
         }));
+    },
+    spyOnMethod(object, methodName) {
+        return new Spy(object, methodName);
     }
 };
+
+class Spy {
+    constructor(object, methodName) {
+        this.timesCalled = 0;
+        object[methodName] = _ => {
+            ++this.timesCalled;
+        }
+    }
+
+    getTimesCalled() {
+        return this.timesCalled;
+    }
+}

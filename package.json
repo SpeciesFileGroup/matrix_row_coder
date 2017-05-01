@@ -23,5 +23,8 @@
     "vue": "2.2.4",
     "vueify": "9.4.1",
     "vuex": "2.2.1"
+  },
+  "devDependencies": {
+    "deep-freeze": "0.0.1"
   }
 }
