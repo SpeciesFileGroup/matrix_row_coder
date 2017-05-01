@@ -60,10 +60,17 @@ class MockRequest extends IMatrixRowCoderRequest {
     }
 
     removeObservation(observationId) {
+        console.log(`remove observation: ${observationId}`);
+        return promisify({ success: true });
+    }
+
+    createObservation(payload) {
+        console.log('create observation:', payload);
         return promisify({ success: true });
     }
 
     updateObservation(observationId, payload) {
+        console.log(`update observation: ${observationId}`);
         return promisify({ success: true });
     }
 

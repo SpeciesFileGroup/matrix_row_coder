@@ -17,6 +17,10 @@ class IMatrixRowCoderRequest {
         throw IllegalBaseClassCallError;
     }
 
+    createObservation() {
+        throw IllegalBaseClassCallError;
+    }
+
     removeObservation() {
         throw IllegalBaseClassCallError;
     }

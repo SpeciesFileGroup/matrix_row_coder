@@ -88,6 +88,10 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
         return postJSON(url, Object.assign(payload, this.apiParams));
     }
 
+    createObservation(payload) {
+
+    }
+
     removeObservation(observationId) {
         const url = `/observations/${observationId}.json`;
         return deleteResource(url);
