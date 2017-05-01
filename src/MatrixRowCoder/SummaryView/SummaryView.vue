@@ -7,6 +7,7 @@
         <div>
             <slot></slot>
         </div>
+        <save-countdown v-bind:descriptor="descriptor"></save-countdown>
     </div>
 </template>
 
@@ -15,6 +16,8 @@
 <script>
     const MutationNames = require('../../store/mutations/mutations').MutationNames;
     const GetterNames = require('../../store/getters/getters').GetterNames;
+
+    const saveCountdown = require('../SaveCountdown/SaveCountdown.vue');
 
     module.exports = {
         name: "summary-view",
@@ -31,6 +34,9 @@
                     isZoomed: true
                 });
             }
+        },
+        components: {
+            saveCountdown
         }
     };
 </script>

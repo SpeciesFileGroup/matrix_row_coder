@@ -1,0 +1,25 @@
+.save-countdown
+
+    &__duration-bar
+        background-color transparent
+        left 0
+        height 3px
+        position absolute
+        transform-origin 0 50%
+        transition background-color 250ms
+        top 0
+        right 0
+
+    &__duration-bar-animation
+        &-enter-active
+            animation countdown 10000ms linear
+
+
+@keyframes countdown
+    from
+        background-color red
+        transform scaleX(0)
+
+    to
+        background-color red
+        transform scaleX(1)
