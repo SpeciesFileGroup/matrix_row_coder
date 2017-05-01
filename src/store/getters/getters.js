@@ -8,7 +8,8 @@ const GetterNames = {
     GetSampleUnitFor: 'getSampleUnitFor',
     GetSampleNFor: 'getSampleNFor',
     GetCharacterStateChecked: `getCharacterStateChecked`,
-    IsDescriptorObservationsUnsaved: 'isDescriptorObservationsUnsaved'
+    IsDescriptorUnsaved: 'isDescriptorUnsaved',
+    DoesDescriptorNeedCountdown: 'doesDescriptorNeedCountdown'
 };
 
 const GetterFunctions = {
@@ -21,7 +22,8 @@ const GetterFunctions = {
     [GetterNames.GetSampleUnitFor]: require('./getSampleUnitFor'),
     [GetterNames.GetSampleNFor]: require('./getSampleNFor'),
     [GetterNames.GetCharacterStateChecked]: require('./getCharacterStateChecked'),
-    [GetterNames.IsDescriptorObservationsUnsaved]: require('./isDescriptorObservationsUnsaved')
+    [GetterNames.IsDescriptorUnsaved]: require('./isDescriptorUnsaved'),
+    [GetterNames.DoesDescriptorNeedCountdown]: require('./doesDescriptorNeedCountdown')
 };
 
 module.exports = {

@@ -112,6 +112,18 @@ describe(`requestMatrixRow action`, () => {
         });
     });
 
+    it(`should initialized isUnsaved to false`, () => {
+        store.state.descriptors.forEach(d => {
+            expect(d.isUnsaved).to.be.false;
+        });
+    });
+
+    it(`should initialized needsCountdown to false`, () => {
+        store.state.descriptors.forEach(d => {
+            expect(d.needsCountdown).to.be.false;
+        });
+    });
+
     describe('with Observations', () => {
         it(`should create an empty observation for each non-qualitative descriptor and character state`, () => {
             //6 Non-qualitative descriptors and 5 character states

@@ -24,7 +24,7 @@ describe(`SetSampleMinFor Mutation`, () => {
         expect( store.getters[GetterNames.GetSampleMinFor](descriptorId) ).to.equal(expectedSampleMin);
     });
 
-    it(`should mark the observation as unsaved`, () => {
-        expect( store.getters[GetterNames.GetObservationsFor](descriptorId)[0].isUnsaved ).to.be.true;
+    it(`should mark the descriptor as unsaved`, () => {
+        expect( store.state.descriptors.find(d => d.id === descriptorId).isUnsaved ).to.be.true;
     });
 });

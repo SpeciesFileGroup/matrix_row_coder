@@ -29,9 +29,8 @@ describe(`SetCharacterStateChecked Mutation`, () => {
         })).to.equal(isChecked);
     });
 
-    it(`should set the observation to unsaved`, () => {
-        const observationsForDescriptor = store.getters[GetterNames.GetObservationsFor](descriptorId);
-        const characterStateObservation = observationsForDescriptor.find(o => o.characterStateId === characterStateId);
-        expect(characterStateObservation.isUnsaved).to.be.true;
+    it(`should set the descriptor to unsaved`, () => {
+        const descriptor = store.state.descriptors.find(d => d.id === descriptorId);
+        expect(descriptor.isUnsaved).to.be.true;
     });
 });

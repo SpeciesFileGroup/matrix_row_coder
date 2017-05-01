@@ -43,6 +43,8 @@ function makeBaseDescriptor(descriptorData) {
         title: descriptorData.object_tag,
         description: getDescription(descriptorData),
         isZoomed: false,
+        isUnsaved: false,
+        needsCountdown: false,
         notes: null,
         depictions: null
     };

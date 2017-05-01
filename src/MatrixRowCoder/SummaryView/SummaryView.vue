@@ -24,7 +24,7 @@
         props: ['descriptor'],
         computed: {
             isUnsaved: function() {
-                return this.$store.getters[GetterNames.IsDescriptorObservationsUnsaved](this.$props.descriptor.id);
+                return this.$store.getters[GetterNames.IsDescriptorUnsaved](this.$props.descriptor.id);
             }
         },
         methods: {

@@ -4,7 +4,7 @@ const MutationNames = require('../../../src/store/mutations/mutations').Mutation
 const TestHelpers = require('../../testHelpers');
 const store = TestHelpers.newTestStore();
 
-describe(`IsDescriptorObservationsUnsaved Getter`, () => {
+describe(`IsDescriptorUnsaved Getter`, () => {
     const unsavedDescriptorId = 27;
 
     before(done => {
@@ -19,8 +19,8 @@ describe(`IsDescriptorObservationsUnsaved Getter`, () => {
             .then(_ => done());
     });
 
-    it(`should return true if any observation has been changed and unsaved`, () => {
-        expect(store.getters[GetterNames.IsDescriptorObservationsUnsaved](unsavedDescriptorId)).to.be.true;
+    it(`should return true if any observation for that descriptor has been changed and unsaved`, () => {
+        expect(store.getters[GetterNames.IsDescriptorUnsaved](unsavedDescriptorId)).to.be.true;
     });
 
     it(`should return false if the observation has not been changed`, () => {
@@ -28,7 +28,7 @@ describe(`IsDescriptorObservationsUnsaved Getter`, () => {
             .map(d => d.id)
             .filter(dId => dId !== unsavedDescriptorId)
             .forEach(normalDescriptorId => {
-                expect(store.getters[GetterNames.IsDescriptorObservationsUnsaved](normalDescriptorId)).to.be.false;
+                expect(store.getters[GetterNames.IsDescriptorUnsaved](normalDescriptorId)).to.be.false;
             });
     });
 });

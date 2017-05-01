@@ -24,7 +24,7 @@ describe(`SetContinuousValue Mutation`, () => {
         expect(store.state.observations.find(o => o.descriptorId === descriptorId).continuousValue).to.equal(expectedContinuousValue);
     });
 
-    it(`should set the observation to unsaved`, () => {
-        expect( store.getters[GetterNames.GetObservationsFor](descriptorId)[0].isUnsaved ).to.be.true;
+    it(`should set the descriptor to unsaved`, () => {
+        expect( store.state.descriptors.find(d => d.id === descriptorId).isUnsaved ).to.be.true;
     });
 });
