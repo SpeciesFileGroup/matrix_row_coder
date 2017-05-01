@@ -20,7 +20,8 @@ const MutationNames = {
     SetSampleNFor: `setSampleNFor`,
     SetSampleUnitFor: `setSampleUnitFor`,
     ClearObservation: 'clearObservation',
-    ObservationSaved: `observationSaved`
+    ObservationSaved: `observationSaved`,
+    CountdownStartedFor: `countdownStartedFor`
 };
 
 const MutationFunctions = {
@@ -45,7 +46,8 @@ const MutationFunctions = {
     [MutationNames.SetSampleNFor]: require('./setSampleNFor'),
     [MutationNames.SetSampleUnitFor]: require('./setSampleUnitFor'),
     [MutationNames.ClearObservation]: require('./clearObservation'),
-    [MutationNames.ObservationSaved]: require('./observationSaved')
+    [MutationNames.ObservationSaved]: require('./observationSaved'),
+    [MutationNames.CountdownStartedFor]: require('./countdownStartedFor')
 };
 
 module.exports = {
