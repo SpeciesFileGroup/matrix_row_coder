@@ -19,7 +19,8 @@ const MutationNames = {
     SetSampleMinFor: `setSampleMinFor`,
     SetSampleNFor: `setSampleNFor`,
     SetSampleUnitFor: `setSampleUnitFor`,
-    ClearObservation: 'clearObservation'
+    ClearObservation: 'clearObservation',
+    ObservationSaved: `observationSaved`
 };
 
 const MutationFunctions = {
@@ -43,7 +44,8 @@ const MutationFunctions = {
     [MutationNames.SetSampleMinFor]: require('./setSampleMinFor'),
     [MutationNames.SetSampleNFor]: require('./setSampleNFor'),
     [MutationNames.SetSampleUnitFor]: require('./setSampleUnitFor'),
-    [MutationNames.ClearObservation]: require('./clearObservation')
+    [MutationNames.ClearObservation]: require('./clearObservation'),
+    [MutationNames.ObservationSaved]: require('./observationSaved')
 };
 
 module.exports = {
