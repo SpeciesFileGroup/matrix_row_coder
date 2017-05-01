@@ -5,7 +5,7 @@
             v-on:after-enter="doSave">
 
             <div
-                v-if="isUnsaved"
+                v-if="isCountingDown"
                 class="save-countdown__duration-bar"></div>
         </transition>
     </div>
@@ -15,19 +15,36 @@
 
 <script>
     const GetterNames = require('../../store/getters/getters').GetterNames;
+    const MutationNames = require('../../store/mutations/mutations').MutationNames;
     const ActionNames = require('../../store/actions/actions').ActionNames;
 
     module.exports = {
         name: 'save-countdown',
         props: ['descriptor'],
+        data: function() {
+            return {
+                isCountingDown: false
+            };
+        },
         computed: {
-            isUnsaved: function() {
-                return this.$store.getters[GetterNames.IsDescriptorUnsaved](this.$props.descriptor.id);
+            needsCountdown: function() {
+                return this.$store.getters[GetterNames.DoesDescriptorNeedCountdown](this.$props.descriptor.id);
             }
         },
         methods: {
             doSave() {
 
+            }
+        },
+        watch: {
+            needsCountdown: function(needsCountdown) {
+                if (needsCountdown) {
+                    this.isCountingDown = false;
+                    requestAnimationFrame(_ => {
+                        this.isCountingDown = true;
+                        this.$store.commit(MutationNames.CountdownStartedFor, this.$props.descriptor.id);
+                    });
+                }
             }
         }
     };
