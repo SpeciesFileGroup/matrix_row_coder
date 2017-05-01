@@ -59,5 +59,47 @@ describe(`SaveObservationsFor action`, () => {
                     expect(removeSpy.getTimesCalled(), 'remove').to.equal(0);
                 });
         });
+
+        it.skip(`should do nothing and revert isUnsaved if the observation is unchecked and has no id`, () => {
+            
+        });
+    });
+
+    describe(`Presence descriptors`, () => {
+        it.skip(`should create a new observation if checked is true and there is no id`, () => {
+
+        });
+
+        it.skip(`should remove the observation if checked is false and there is an id`, () => {
+            
+        });
+
+        it.skip(`should do nothing and revert isUnsaved if checked is false and there is no id`, () => {
+            
+        });
+
+        it.skip(`should do nothing and revert isUnsaved if checked is true and there is an id`, () => {
+            
+        });
+    });
+
+    describe(`Continuous descriptors`, () => {
+        it.skip(`should update the observation if there is an id`, () => {
+
+        });
+
+        it.skip(`should create an observation if there is no id`, () => {
+            
+        });
+    });
+
+    describe(`Sample descriptors`, () => {
+        it.skip(`should update the observation if there is an id`, () => {
+
+        });
+
+        it.skip(`should create an observation if there is no id`, () => {
+
+        });
     });
 });
