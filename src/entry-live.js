@@ -14,7 +14,7 @@ new Vue({
                 apiBase: 'http://127.0.0.1:3000/api/v1',
                 apiParams: {
                     project_id: 1,
-                    token: `wRxpUlE1Pm_49S0a3v5erQ`
+                    token: `T2LDAEltkiZ27wqBgwPJ9w`
                 }
             }
         })
