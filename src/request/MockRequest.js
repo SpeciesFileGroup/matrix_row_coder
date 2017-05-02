@@ -3,7 +3,7 @@ const deepFreeze = require('deep-freeze');
 
 const MOCK_REQUEST_DIR = `./mockRequests/`;
 
-require('./mockRequests/matrices-5-row?otu_id=1.json');
+require('./mockRequests/observation_matrices-5-row?otu_id=1.json');
 require('./mockRequests/confidence-levels.json');
 require('./mockRequests/observations?otu_id=1&descriptor_id=24.json');
 require('./mockRequests/observations?otu_id=1&descriptor_id=25.json');
@@ -52,7 +52,7 @@ class MockRequest extends IMatrixRowCoderRequest {
     }
 
     getMatrixRow(matrixId, otuId) {
-        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `matrices-${matrixId}-row?otu_id=${otuId}.json`));
+        return freezeAndPromisify(require(MOCK_REQUEST_DIR + `observation_matrices-${matrixId}-row?otu_id=${otuId}.json`));
     }
 
     getObservations(otuId, descriptorId) {

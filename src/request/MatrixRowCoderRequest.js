@@ -62,7 +62,7 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
 
     getMatrixRow(matrixId, otuId) {
         const extraParams = { otu_id: otuId };
-        const url = this.buildGetUrl(`/matrices/${matrixId}/row.json`, extraParams);
+        const url = this.buildGetUrl(`/observation_matrices/${matrixId}/row.json`, extraParams);
         return getJSON(url)
             .then(data => {
                 console.log(`getMatrixRow:`, data);
