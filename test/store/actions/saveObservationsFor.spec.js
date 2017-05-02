@@ -60,46 +60,166 @@ describe(`SaveObservationsFor action`, () => {
                 });
         });
 
-        it.skip(`should do nothing and revert isUnsaved if the observation is unchecked and has no id`, () => {
-            
+        it(`should do nothing and revert isUnsaved if the observation is unchecked and has no id`, () => {
+            store.commit(MutationNames.SetCharacterStateChecked, {
+                descriptorId: 24,
+                characterStateId: 34,
+                isChecked: false
+            });
+
+            const createSpy = TestHelpers.spyOnMethod(store.state.request, 'createObservation');
+            const removeSpy = TestHelpers.spyOnMethod(store.state.request, 'removeObservation');
+
+            return store.dispatch(ActionNames.SaveObservationsFor, 24)
+                .then(_ => {
+                    expect(store.state.observations.find(o => o.characterStateId === 34).isUnsaved).to.be.false;
+                    expect(createSpy.getTimesCalled(), 'create').to.equal(0);
+                    expect(removeSpy.getTimesCalled(), 'remove').to.equal(0);
+                });
         });
     });
 
     describe(`Presence descriptors`, () => {
-        it.skip(`should create a new observation if checked is true and there is no id`, () => {
+        it(`should create a new observation if checked is true and there is no id`, () => {
+            store.commit(MutationNames.SetPresence, {
+                descriptorId: 30,
+                isChecked: true
+            });
 
+            const createSpy = TestHelpers.spyOnMethod(store.state.request, 'createObservation');
+
+            return store.dispatch(ActionNames.SaveObservationsFor, 30)
+                .then(_ => {
+                    expect(store.state.observations.find(o => o.descriptorId === 30).isUnsaved).to.be.false;
+                    expect(createSpy.getTimesCalled()).to.equal(1);
+                });
         });
 
-        it.skip(`should remove the observation if checked is false and there is an id`, () => {
-            
+        it(`should remove the observation if checked is false and there is an id`, () => {
+            const descriptorId = 25;
+
+            store.commit(MutationNames.SetPresence, {
+                descriptorId,
+                isChecked: false
+            });
+
+            const removeSpy = TestHelpers.spyOnMethod(store.state.request, 'removeObservation');
+
+            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
+                .then(_ => {
+                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.be.false;
+                    expect(removeSpy.getTimesCalled(), 'remove').to.equal(1);
+                });
         });
 
-        it.skip(`should do nothing and revert isUnsaved if checked is false and there is no id`, () => {
-            
+        it(`should do nothing and revert isUnsaved if checked is false and there is no id`, () => {
+            const descriptorId = 30;
+
+            store.commit(MutationNames.SetPresence, {
+                descriptorId,
+                isChecked: false
+            });
+
+            const createSpy = TestHelpers.spyOnMethod(store.state.request, 'createObservation');
+            const removeSpy = TestHelpers.spyOnMethod(store.state.request, 'removeObservation');
+
+            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
+                .then(_ => {
+                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.be.false;
+                    expect(createSpy.getTimesCalled(), 'create').to.equal(0);
+                    expect(removeSpy.getTimesCalled(), 'remove').to.equal(0);
+                });
         });
 
-        it.skip(`should do nothing and revert isUnsaved if checked is true and there is an id`, () => {
-            
+        it(`should do nothing and revert isUnsaved if checked is true and there is an id`, () => {
+            const descriptorId = 25;
+
+            store.commit(MutationNames.SetPresence, {
+                descriptorId,
+                isChecked: true
+            });
+
+            const createSpy = TestHelpers.spyOnMethod(store.state.request, 'createObservation');
+            const removeSpy = TestHelpers.spyOnMethod(store.state.request, 'removeObservation');
+
+            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
+                .then(_ => {
+                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.be.false;
+                    expect(createSpy.getTimesCalled(), 'create').to.equal(0);
+                    expect(removeSpy.getTimesCalled(), 'remove').to.equal(0);
+                });
         });
     });
 
     describe(`Continuous descriptors`, () => {
-        it.skip(`should update the observation if there is an id`, () => {
+        it(`should update the observation if there is an id`, () => {
+            const descriptorId = 26;
 
+            store.commit(MutationNames.SetContinuousValue, {
+                descriptorId,
+                continuousValue: 1001
+            });
+
+            const updateSpy = TestHelpers.spyOnMethod(store.state.request, 'updateObservation');
+
+            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
+                .then(_ => {
+                    expect(updateSpy.getTimesCalled()).to.equal(1);
+                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.equal(false);
+                });
         });
 
-        it.skip(`should create an observation if there is no id`, () => {
-            
+        it(`should create an observation if there is no id`, () => {
+            const descriptorId = 28;
+
+            store.commit(MutationNames.SetContinuousValue, {
+                descriptorId,
+                continuousValue: 1001
+            });
+
+            const createSpy = TestHelpers.spyOnMethod(store.state.request, 'createObservation');
+
+            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
+                .then(_ => {
+                    expect(createSpy.getTimesCalled(), 'create').to.equal(1);
+                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.equal(false);
+                });
         });
     });
 
     describe(`Sample descriptors`, () => {
-        it.skip(`should update the observation if there is an id`, () => {
+        it(`should update the observation if there is an id`, () => {
+            const descriptorId = 27;
 
+            store.commit(MutationNames.SetSampleNFor, {
+                descriptorId,
+                n: 1001
+            });
+
+            const updateSpy = TestHelpers.spyOnMethod(store.state.request, 'updateObservation');
+
+            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
+                .then(_ => {
+                    expect(updateSpy.getTimesCalled()).to.equal(1);
+                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.equal(false);
+                });
         });
 
-        it.skip(`should create an observation if there is no id`, () => {
+        it(`should create an observation if there is no id`, () => {
+            const descriptorId = 31;
 
+            store.commit(MutationNames.SetSampleNFor, {
+                descriptorId,
+                n: 1001
+            });
+
+            const createSpy = TestHelpers.spyOnMethod(store.state.request, 'createObservation');
+
+            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
+                .then(_ => {
+                    expect(createSpy.getTimesCalled(), 'create').to.equal(1);
+                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.equal(false);
+                });
         });
     });
 });

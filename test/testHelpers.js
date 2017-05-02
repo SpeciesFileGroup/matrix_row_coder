@@ -35,6 +35,7 @@ class Spy {
         this.timesCalled = 0;
         object[methodName] = _ => {
             ++this.timesCalled;
+            return Promise.resolve({});
         }
     }
 
