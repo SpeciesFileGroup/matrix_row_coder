@@ -21,7 +21,9 @@ const MutationNames = {
     SetSampleUnitFor: `setSampleUnitFor`,
     ClearObservation: 'clearObservation',
     ObservationSaved: `observationSaved`,
-    CountdownStartedFor: `countdownStartedFor`
+    CountdownStartedFor: `countdownStartedFor`,
+    SetDescriptorSaving: `setDescriptorSaving`,
+    SetDescriptorSavedOnce: `setDescriptorSavedOnce`
 };
 
 const MutationFunctions = {
@@ -47,7 +49,9 @@ const MutationFunctions = {
     [MutationNames.SetSampleUnitFor]: require('./setSampleUnitFor'),
     [MutationNames.ClearObservation]: require('./clearObservation'),
     [MutationNames.ObservationSaved]: require('./observationSaved'),
-    [MutationNames.CountdownStartedFor]: require('./countdownStartedFor')
+    [MutationNames.CountdownStartedFor]: require('./countdownStartedFor'),
+    [MutationNames.SetDescriptorSaving]: require('./setDescriptorSaving'),
+    [MutationNames.SetDescriptorSavedOnce]: require('./setDescriptorSavedOnce')
 };
 
 module.exports = {

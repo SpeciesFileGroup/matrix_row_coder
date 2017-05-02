@@ -112,15 +112,27 @@ describe(`requestMatrixRow action`, () => {
         });
     });
 
-    it(`should initialized isUnsaved to false`, () => {
+    it(`should initialize isUnsaved to false`, () => {
         store.state.descriptors.forEach(d => {
             expect(d.isUnsaved).to.be.false;
         });
     });
 
-    it(`should initialized needsCountdown to false`, () => {
+    it(`should initialize needsCountdown to false`, () => {
         store.state.descriptors.forEach(d => {
             expect(d.needsCountdown).to.be.false;
+        });
+    });
+
+    it(`should initialize isSaving to false`, () => {
+        store.state.descriptors.forEach(d => {
+            expect(d.isSaving).to.be.false;
+        });
+    });
+
+    it(`should initialize hasSavedAtLeastOnce to false`, () => {
+        store.state.descriptors.forEach(d => {
+            expect(d.hasSavedAtLeastOnce).to.be.false;
         });
     });
 

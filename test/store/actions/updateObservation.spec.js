@@ -27,6 +27,18 @@ describe(`UpdateObservation action`, () => {
             });
     });
 
+    it(`should set a saving flag while the request is being made`, () => {
+        store.state.request.updateObservation = function() {
+            return new Promise(resolve => {
+                setTimeout(_ => {
+                    resolve();
+                }, 50);
+            });
+        }
+
+
+    });
+
     describe(`Continuous Observations`, () => {
         it(`should include the new continuous value`, () => {
             const observationId = 1002;
