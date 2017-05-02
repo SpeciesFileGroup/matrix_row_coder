@@ -27,16 +27,26 @@ describe(`UpdateObservation action`, () => {
             });
     });
 
-    it(`should set a saving flag while the request is being made`, () => {
+    it(`should set the correct saving flags for the request`, () => {
         store.state.request.updateObservation = function() {
             return new Promise(resolve => {
                 setTimeout(_ => {
                     resolve();
                 }, 50);
             });
-        }
+        };
 
+        const descriptorId = 26;
 
+        const updatePromise = store.dispatch(ActionNames.UpdateObservation, descriptorId);
+
+        expect(store.state.descriptors.find(d => d.id === descriptorId).isSaving).to.equal(true);
+
+        return updatePromise
+            .then(_ => {
+                expect(store.state.descriptors.find(d => d.id === descriptorId).isSaving).to.equal(false);
+                expect(store.state.descriptors.find(d => d.id === descriptorId).hasSavedAtLeastOnce).to.equal(true);
+            });
     });
 
     describe(`Continuous Observations`, () => {
@@ -54,6 +64,7 @@ describe(`UpdateObservation action`, () => {
             store.state.request.updateObservation = function(oIdArg, payload) {
                 expect(oIdArg).to.equal(observationId);
                 expect(payload.continuous_value).to.equal(expectedContinuousValue);
+                return Promise.resolve({});
             };
 
             return store.dispatch(ActionNames.UpdateObservation, descriptorId);
@@ -73,6 +84,7 @@ describe(`UpdateObservation action`, () => {
             store.state.request.updateObservation = function(oIdArg, payload) {
                 expect(oIdArg).to.equal(observationId);
                 expect(payload.continuous_unit).to.equal(expectedContinuousUnit);
+                return Promise.resolve({});
             };
 
             return store.dispatch(ActionNames.UpdateObservation, descriptorId);
@@ -110,6 +122,7 @@ describe(`UpdateObservation action`, () => {
                 expect(payload.sample_max).to.equal(10);
                 expect(payload.sample_n).to.equal(200);
                 expect(payload.sample_units).to.equal(`feet`);
+                return Promise.resolve({});
             };
 
             store.dispatch(ActionNames.UpdateObservation, descriptorId);

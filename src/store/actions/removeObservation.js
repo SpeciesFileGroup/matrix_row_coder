@@ -10,9 +10,19 @@ module.exports = function({ commit, state }, args) {
     const descriptor = state.descriptors.find(d => d.id === descriptorId);
     const observationId = findObservationId();
 
+    commit(MutationNames.SetDescriptorSaving, {
+        descriptorId,
+        isSaving: true
+    });
+
     return state.request.removeObservation(observationId)
         .then(_ => {
             commit(MutationNames.ClearObservation, observationId);
+            commit(MutationNames.SetDescriptorSaving, {
+                descriptorId,
+                isSaving: false
+            });
+            commit(MutationNames.SetDescriptorSavedOnce, descriptorId);
         });
 
     function findObservationId() {

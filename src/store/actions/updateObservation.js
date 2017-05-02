@@ -1,7 +1,8 @@
 const ObservationTypes = require('../helpers/ObservationTypes');
 const ComponentNames = require('../helpers/ComponentNames');
+const MutationNames = require('../mutations/mutations').MutationNames;
 
-module.exports = function({state}, descriptorId) {
+module.exports = function({state, commit}, descriptorId) {
     const descriptor = state.descriptors.find(d => d.id === descriptorId);
 
     if (isQualitativeOrPresence(descriptor.componentName))
@@ -9,7 +10,20 @@ module.exports = function({state}, descriptorId) {
 
     const observation = state.observations.find(o => o.descriptorId === descriptorId);
 
-    return state.request.updateObservation(observation.id, makePayload(observation));
+    commit(MutationNames.SetDescriptorSaving, {
+        descriptorId,
+        isSaving: true
+    });
+
+    return state.request.updateObservation(observation.id, makePayload(observation))
+        .then(_ => {
+            commit(MutationNames.SetDescriptorSaving, {
+                descriptorId,
+                isSaving: false
+            });
+
+            commit(MutationNames.SetDescriptorSavedOnce, descriptorId);
+        });
 };
 
 function isQualitativeOrPresence(componentName) {

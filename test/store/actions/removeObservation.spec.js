@@ -56,6 +56,28 @@ describe(`RemoveObservation action`, () => {
             });
     });
 
+    it(`should set the correct saving flags for the request`, () => {
+        store.state.request.removeObservation = function() {
+            return new Promise(resolve => {
+                setTimeout(_ => {
+                    resolve();
+                }, 50);
+            });
+        };
+
+        const descriptorId = 25;
+
+        const removePromise = store.dispatch(ActionNames.RemoveObservation, { descriptorId });
+
+        expect(store.state.descriptors.find(d => d.id === descriptorId).isSaving).to.equal(true);
+
+        return removePromise
+            .then(_ => {
+                expect(store.state.descriptors.find(d => d.id === descriptorId).isSaving).to.equal(false);
+                expect(store.state.descriptors.find(d => d.id === descriptorId).hasSavedAtLeastOnce).to.equal(true);
+            });
+    });
+
     describe(`Qualitative Observations`, () => {
         it(`requires the character state id as an additional arg`, () => {
             const descriptorId = 24;

@@ -44,4 +44,29 @@ describe(`CreateObservation action`, () => {
             expect(timesCalled).to.equal(0);
         });
     });
+
+    it(`should set the correct saving flags for the request`, () => {
+        store.state.request.createObservation = function() {
+            return new Promise(resolve => {
+                setTimeout(_ => {
+                    resolve();
+                }, 50);
+            });
+        };
+
+        const descriptorId = 24;
+
+        const createPromise = store.dispatch(ActionNames.CreateObservation, {
+            descriptorId,
+            characterStateId: 34
+        });
+
+        expect(store.state.descriptors.find(d => d.id === descriptorId).isSaving).to.equal(true);
+
+        return createPromise
+            .then(_ => {
+                expect(store.state.descriptors.find(d => d.id === descriptorId).isSaving).to.equal(false);
+                expect(store.state.descriptors.find(d => d.id === descriptorId).hasSavedAtLeastOnce).to.equal(true);
+            });
+    });
 });
