@@ -3,7 +3,7 @@
         "id": 1003,
         "otu_id": 1,
         "descriptor_id": 27,
-        "type": "Sample",
+        "type": "Observation::Sample",
         "cached_column_label": "Big green spine",
         "cached_row_label": "Aus bus",
         "sample_n": 100,

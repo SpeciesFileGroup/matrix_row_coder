@@ -98,7 +98,7 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
 
     createObservation(payload) {
         const url = `${this.apiBase}/observations`;
-        return postJSON(url, payload);
+        return postJSON(url, Object.assign(payload, this.apiParams));
     }
 
     removeObservation(observationId) {

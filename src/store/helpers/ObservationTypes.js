@@ -1,6 +1,6 @@
 module.exports = {
-    Qualitative: "Qualitative",
-    Presence: "Presence",
-    Continuous: "Continuous",
-    Sample: "Sample"
+    Qualitative: "Observation::Qualitative",
+    Presence: "Observation::Presence",
+    Continuous: "Observation::Continuous",
+    Sample: "Observation::Sample"
 };
