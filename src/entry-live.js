@@ -17,6 +17,6 @@ new Vue({
                     token: `T2LDAEltkiZ27wqBgwPJ9w`
                 }
             }
-        })
+        });
     }
 });

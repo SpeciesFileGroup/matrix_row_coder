@@ -27,14 +27,22 @@ function postJSON(url, payload) {
             if( this.readyState === 4 )
                 resolve();
         });
+        request.setRequestHeader("Content-Type", "application/json");
         request.open('POST', url, true);
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
         request.send(payload);
     });
 }
 
 function deleteResource(url) {
-
+    return new Promise(resolve => {
+        const request = new XMLHttpRequest();
+        request.addEventListener('readystatechange', function(e) {
+            if( this.readyState === 4 )
+                resolve();
+        });
+        request.open('DELETE', url, true);
+        request.send();
+    });
 }
 
 class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
@@ -89,11 +97,12 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
     }
 
     createObservation(payload) {
-
+        const url = `${this.apiBase}/observations`;
+        return postJSON(url, payload);
     }
 
     removeObservation(observationId) {
-        const url = `/observations/${observationId}.json`;
+        const url = `${this.apiBase}/observations/${observationId}.json${MatrixRowCoderRequest.stringifyApiParams(this.apiParams)}`;
         return deleteResource(url);
     }
 
