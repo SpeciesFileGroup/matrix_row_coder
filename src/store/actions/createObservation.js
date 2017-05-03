@@ -1,4 +1,5 @@
 const getObservationFromArgs = require('../helpers/getObservationFromArgs');
+const ObservationTypes = require('../helpers/ObservationTypes');
 const MutationNames = require('../mutations/mutations').MutationNames;
 
 module.exports = function({ commit, state }, args) {
@@ -12,14 +13,10 @@ module.exports = function({ commit, state }, args) {
         isSaving: true
     });
 
-    const payload = {
-        // descriptor_id: 2,
-        // character_state_id: 854,
-        // project_id: 1,
-        // otu_id: 1,
-        // token: "T2LDAEltkiZ27wqBgwPJ9w",
-        // type: "Observation::Qualitative"
-    };
+    const payload = makeBasePayload();
+
+    if (observation.type === ObservationTypes.Qualitative)
+        setupQualitativePayload(payload);
 
     return state.request.createObservation(payload)
         .then(_ => {
@@ -30,4 +27,16 @@ module.exports = function({ commit, state }, args) {
 
             commit(MutationNames.SetDescriptorSavedOnce, args.descriptorId);
         });
+
+    function setupQualitativePayload(payload) {
+        return Object.assign(payload, { character_state_id: args.characterStateId });
+    }
+
+    function makeBasePayload() {
+        return {
+            descriptor_id: args.descriptorId,
+            otu_id: state.taxonId,
+            type: observation.type
+        }
+    }
 };
