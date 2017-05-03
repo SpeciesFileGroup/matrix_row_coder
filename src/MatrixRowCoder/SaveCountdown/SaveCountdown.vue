@@ -33,7 +33,7 @@
         },
         methods: {
             doSave() {
-
+                this.$store.dispatch(ActionNames.SaveObservationsFor, this.$props.descriptor.id);
             }
         },
         watch: {
