@@ -6,7 +6,8 @@
 
             <div
                 v-if="isCountingDown"
-                class="save-countdown__duration-bar"></div>
+                class="save-countdown__duration-bar"
+                :class="{ 'save-countdown__duration-bar--saving': isSaving, 'save-countdown__duration-bar--saved-at-least-once': savedAtLeastOnce }"></div>
         </transition>
     </div>
 </template>
@@ -29,6 +30,12 @@
         computed: {
             needsCountdown: function() {
                 return this.$store.getters[GetterNames.DoesDescriptorNeedCountdown](this.$props.descriptor.id);
+            },
+            isSaving: function() {
+                return this.$props.descriptor.isSaving;
+            },
+            savedAtLeastOnce: function() {
+                return this.$props.descriptor.hasSavedAtLeastOnce;
             }
         },
         methods: {

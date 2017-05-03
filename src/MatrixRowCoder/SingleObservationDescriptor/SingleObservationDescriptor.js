@@ -9,8 +9,8 @@ module.exports = {
         const descriptorId = this.$props.descriptor.id;
         const otuId = this.$store.state.taxonId;
 
-        this.$store.dispatch(ActionNames.RequestDescriptorDepictions, descriptorId);
-        this.$store.dispatch(ActionNames.RequestDescriptorNotes, descriptorId);
+        //this.$store.dispatch(ActionNames.RequestDescriptorDepictions, descriptorId);
+        //this.$store.dispatch(ActionNames.RequestDescriptorNotes, descriptorId);
         this.$store.dispatch(ActionNames.RequestObservations, {descriptorId, otuId})
             .then(_ => {
                 const observations = this.$store.getters[GetterNames.GetObservationsFor](descriptorId);
@@ -21,10 +21,10 @@ module.exports = {
                     this.observation = observation;
 
                     if (this.observation.id) {
-                        this.$store.dispatch(ActionNames.RequestObservationCitations, observation.id);
-                        this.$store.dispatch(ActionNames.RequestObservationConfidences, observation.id);
-                        this.$store.dispatch(ActionNames.RequestObservationDepictions, observation.id);
-                        this.$store.dispatch(ActionNames.RequestObservationNotes, observation.id);
+                        //this.$store.dispatch(ActionNames.RequestObservationCitations, observation.id);
+                        //this.$store.dispatch(ActionNames.RequestObservationConfidences, observation.id);
+                        //this.$store.dispatch(ActionNames.RequestObservationDepictions, observation.id);
+                        //this.$store.dispatch(ActionNames.RequestObservationNotes, observation.id);
                     }
                 }
             });

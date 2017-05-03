@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browser-request": "^0.3.3",
     "chai": "3.5.0",
+    "deep-freeze": "0.0.1",
     "grunt": "1.0.1",
     "grunt-browserify": "5.0.0",
     "grunt-contrib-clean": "1.0.0",
@@ -23,8 +25,5 @@
     "vue": "2.2.4",
     "vueify": "9.4.1",
     "vuex": "2.2.1"
-  },
-  "devDependencies": {
-    "deep-freeze": "0.0.1"
   }
 }

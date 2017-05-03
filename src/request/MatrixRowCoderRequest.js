@@ -1,47 +1,51 @@
 const IMatrixRowCoderRequest = require('./IMatrixRowCoderRequest');
+const browserRequest = require('browser-request');
 
 function getJSON(url) {
     return new Promise((resolve, reject) => {
-        const request = new XMLHttpRequest();
-        request.open('GET', url, true);
+        const options = {
+            url,
+            json: true
+        };
 
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400)
-                resolve(JSON.parse(request.responseText));
+        browserRequest.get(options, (error, response, body) => {
+            if (error)
+                reject(error);
             else
-                reject(request.status);
-        };
-
-        request.onerror = function() {
-            reject('An error happened');
-        };
-
-        request.send();
+                resolve(body);
+        });
     });
 }
 
 function postJSON(url, payload) {
-    return new Promise(resolve => {
-        const request = new XMLHttpRequest();
-        request.addEventListener('readystatechange', function(e) {
-            if( this.readyState === 4 )
-                resolve();
-        });
-        request.setRequestHeader("Content-Type", "application/json");
-        request.open('POST', url, true);
-        request.send(payload);
+    return new Promise((resolve, reject) => {
+        const options = {
+            url,
+            json: payload
+        };
+
+        browserRequest.post(options, (error, response, body) => {
+            if (error)
+                reject(error);
+            else
+                resolve(body);
+        })
     });
 }
 
 function deleteResource(url) {
-    return new Promise(resolve => {
-        const request = new XMLHttpRequest();
-        request.addEventListener('readystatechange', function(e) {
-            if( this.readyState === 4 )
-                resolve();
+    return new Promise((resolve, reject) => {
+        const options = {
+            method: 'DELETE',
+            url
+        };
+
+        browserRequest(options, (error, response, body) => {
+            if (error)
+                reject(error);
+            else
+                resolve(body);
         });
-        request.open('DELETE', url, true);
-        request.send();
     });
 }
 
@@ -93,7 +97,9 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
 
     updateObservation(observationId, payload) {
         const url = `/observations/${observationId}.json`;
-        return postJSON(url, Object.assign(payload, this.apiParams));
+        // return postJSON(url, Object.assign(payload, this.apiParams));
+        console.error('updateObservation');
+        return Promise.resolve();
     }
 
     createObservation(payload) {
