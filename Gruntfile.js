@@ -62,7 +62,10 @@ module.exports = function(grunt) {
             test: {
                 options: {
                     bail: true,
-                    require: 'babel-register'
+                    require: [
+                        'babel-register',
+                        './test/testSetup.js'
+                    ]
                 },
                 src: ['test/**/*.spec.js']
             }

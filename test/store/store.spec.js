@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
-const newStore = require('../../src/store/store').newStore;
-const MockRequest = require('../../src/request/MockRequest');
+import { expect } from 'chai';
+import { newStore } from '../../src/store/store';
+import MockRequest from '../../src/request/MockRequest';
 
 describe('store', () => {
     it(`should initialize with a most empty state and the Request module given to the newStore function`, () => {

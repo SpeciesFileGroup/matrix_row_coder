@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
-const ActionNames = require('../../../src/store/actions/actions').ActionNames;
-const TestHelpers = require('../../testHelpers');
+import { expect } from 'chai';
+import { ActionNames } from '../../../src/store/actions/actions';
+import * as TestHelpers from '../../testHelpers';
 const store = TestHelpers.newTestStore();
 
 describe(`RequestDescriptorNotes action`, () => {

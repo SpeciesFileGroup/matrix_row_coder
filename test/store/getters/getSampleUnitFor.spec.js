@@ -1,8 +1,7 @@
-const expect = require('chai').expect;
-const GetterNames = require('../../../src/store/getters/getters').GetterNames;
-const TestHelpers = require('../../testHelpers');
+import { expect } from 'chai';
+import { GetterNames } from '../../../src/store/getters/getters';
+import * as TestHelpers from '../../testHelpers';
 const store = TestHelpers.newTestStore();
-const ComponentNames = require('../../../src/store/helpers/ComponentNames');
 
 describe(`GetSampleUnitFor getter`, () => {
     before(done => {
@@ -19,7 +18,8 @@ describe(`GetSampleUnitFor getter`, () => {
 
         Object.keys(expectedByDescriptor).forEach(key => {
             const descriptorId = parseInt(key);
-            expect(store.getters[GetterNames.GetSampleUnitFor](descriptorId), `descriptor id ${descriptorId}`).to.equal(expectedByDescriptor[descriptorId]);
+            expect(store.getters[GetterNames.GetSampleUnitFor](descriptorId), `descriptor id ${descriptorId}`)
+                .to.equal(expectedByDescriptor[descriptorId]);
         });
     });
 });

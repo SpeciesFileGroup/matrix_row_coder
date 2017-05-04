@@ -1,9 +1,9 @@
-const MutationNames = require('../mutations/mutations').MutationNames;
-const DescriptorTypes = require('../helpers/DescriptorTypes');
-const ComponentNames = require('../helpers/ComponentNames');
-const makeEmptyObservationsFor = require('../helpers/makeEmptyObservationsFor');
+import { MutationNames } from '../mutations/mutations';
+import DescriptorTypes from '../helpers/DescriptorTypes';
+import ComponentNames from '../helpers/ComponentNames';
+import makeEmptyObservationsFor from '../helpers/makeEmptyObservationsFor';
 
-module.exports = function({commit, state}, args) {
+export default function({commit, state}, args) {
     const {
         matrixId,
         otuId

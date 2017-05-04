@@ -1,3 +1,3 @@
-module.exports = function(state, descriptors) {
+export default function(state, descriptors) {
     state.descriptors = descriptors;
 };

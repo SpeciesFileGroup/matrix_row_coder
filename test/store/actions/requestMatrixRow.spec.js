@@ -1,11 +1,11 @@
-const expect = require('chai').expect;
-const ActionNames = require('../../../src/store/actions/actions').ActionNames;
+import { expect } from 'chai';
+import { ActionNames } from '../../../src/store/actions/actions';
 const ComponentNames = require('../../../src/store/helpers/ComponentNames');
-const TestHelpers = require('../../testHelpers');
-const store = TestHelpers.newTestStore();
+import * as TestHelpers from '../../testHelpers';
+import TestDefines from '../../testDefines';
 
+const store = TestHelpers.newTestStore();
 const indexOfQualitativeDescriptor = 0;
-const TestDefines = require('../../testDefines');
 
 describe(`requestMatrixRow action`, () => {
     let qualitativeDescriptor;

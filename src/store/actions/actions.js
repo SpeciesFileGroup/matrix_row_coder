@@ -1,22 +1,33 @@
-const ActionNames = require('./actionNames');
+import ActionNames from './actionNames';
+
+import requestMatrixRow from './requestMatrixRow';
+import requestConfidenceLevels from './requestConfidenceLevels';
+import requestObservations from './requestObservations';
+import requestDescriptorNotes from './requestDescriptorNotes';
+import requestDescriptorDepictions from './requestDescriptorDepictions';
+import requestObservationNotes from './requestObservationNotes';
+import requestObservationDepictions from './requestObservationDepictions';
+import requestObservationConfidences from './requestObservationConfidences';
+import requestObservationCitations from './requestObservationCitations';
+import removeObservation from './removeObservation';
+import updateObservation from './updateObservation';
+import createObservation from './createObservation';
+import saveObservationsFor from './saveObservationsFor';
 
 const ActionFunctions = {
-    [ActionNames.RequestMatrixRow]: require('./requestMatrixRow'),
-    [ActionNames.RequestConfidenceLevels]: require('./requestConfidenceLevels'),
-    [ActionNames.RequestObservations]: require('./requestObservations'),
-    [ActionNames.RequestDescriptorNotes]: require('./requestDescriptorNotes'),
-    [ActionNames.RequestDescriptorDepictions]: require('./requestDescriptorDepictions'),
-    [ActionNames.RequestObservationNotes]: require('./requestObservationNotes'),
-    [ActionNames.RequestObservationDepictions]: require('./requestObservationDepictions'),
-    [ActionNames.RequestObservationConfidences]: require('./requestObservationConfidences'),
-    [ActionNames.RequestObservationCitations]: require('./requestObservationCitations'),
-    [ActionNames.RemoveObservation]: require('./removeObservation'),
-    [ActionNames.UpdateObservation]: require('./updateObservation'),
-    [ActionNames.CreateObservation]: require('./createObservation'),
-    [ActionNames.SaveObservationsFor]: require('./saveObservationsFor')
+    [ActionNames.RequestMatrixRow]: requestMatrixRow,
+    [ActionNames.RequestConfidenceLevels]: requestConfidenceLevels,
+    [ActionNames.RequestObservations]: requestObservations,
+    [ActionNames.RequestDescriptorNotes]: requestDescriptorNotes,
+    [ActionNames.RequestDescriptorDepictions]: requestDescriptorDepictions,
+    [ActionNames.RequestObservationNotes]: requestObservationNotes,
+    [ActionNames.RequestObservationDepictions]: requestObservationDepictions,
+    [ActionNames.RequestObservationConfidences]: requestObservationConfidences,
+    [ActionNames.RequestObservationCitations]: requestObservationCitations,
+    [ActionNames.RemoveObservation]: removeObservation,
+    [ActionNames.UpdateObservation]: updateObservation,
+    [ActionNames.CreateObservation]: createObservation,
+    [ActionNames.SaveObservationsFor]: saveObservationsFor
 };
 
-module.exports = {
-    ActionNames,
-    ActionFunctions
-};
+export { ActionNames, ActionFunctions };

@@ -1,3 +1,3 @@
-module.exports = function(state, title) {
+export default function(state, title) {
     state.taxonTitle = title;
 };

@@ -1,6 +1,7 @@
-const expect = require('chai').expect;
-const GetterNames = require('../../../src/store/getters/getters').GetterNames;
-const TestHelpers = require('../../testHelpers');
+import { expect } from 'chai';
+import { GetterNames } from '../../../src/store/getters/getters';
+import * as TestHelpers from '../../testHelpers';
+
 const store = TestHelpers.newTestStore();
 
 describe(`GetObservationsFor getter`, () => {

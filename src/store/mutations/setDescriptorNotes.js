@@ -1,6 +1,6 @@
-const transformNoteForViewmodel = require('../helpers/transformNoteForViewmodel');
+import transformNoteForViewmodel from '../helpers/transformNoteForViewmodel';
 
-module.exports = function(state, args) {
+export default function(state, args) {
     state.descriptors.find(d => d.id === args.descriptorId)
         .notes = args.notes.map(transformNoteForViewmodel)
 };

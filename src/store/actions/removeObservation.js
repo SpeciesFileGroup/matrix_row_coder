@@ -1,7 +1,7 @@
-const ComponentNames = require('../helpers/ComponentNames');
-const MutationNames = require('../mutations/mutations').MutationNames;
+import ComponentNames from '../helpers/ComponentNames';
+import { MutationNames } from '../mutations/mutations';
 
-module.exports = function({ commit, state }, args) {
+export default function({ commit, state }, args) {
     const {
         descriptorId,
         characterStateId = null

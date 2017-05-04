@@ -1,8 +1,8 @@
-const ActionNames = require('./actionNames');
-const MutationNames = require('../mutations/mutations').MutationNames;
-const ObservationTypes = require('../helpers/ObservationTypes');
+import ActionNames from './actionNames';
+import { MutationNames } from '../mutations/mutations';
+import ObservationTypes from '../helpers/ObservationTypes';
 
-module.exports = function({ dispatch, state, commit }, descriptorId) {
+export default function({ dispatch, state, commit }, descriptorId) {
     const observations = state.observations
         .filter(o => o.descriptorId === descriptorId);
 

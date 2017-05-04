@@ -1,6 +1,8 @@
-const expect = require('chai').expect;
-const ActionNames = require('../../../src/store/actions/actions').ActionNames;
-const store = require('../../testHelpers').newTestStore();
+import { expect } from 'chai';
+import { ActionNames } from '../../../src/store/actions/actions';
+import * as TestHelpers from '../../testHelpers';
+
+const store = TestHelpers.newTestStore();
 
 describe(`RequestConfidenceLevels action`, () => {
     it(`should request the confidence levels and add them to the store as a promise`, () => {

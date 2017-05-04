@@ -9,7 +9,7 @@ const ComponentNamesToObservations = {
     [ComponentNames.Presence]: ObservationTypes.Presence
 };
 
-export default function makeEmptyObservationFor(descriptor) {
+export default function(descriptor) {
     const observations = [];
 
     const emptyObservationData = {

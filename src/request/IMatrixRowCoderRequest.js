@@ -1,6 +1,6 @@
 const IllegalBaseClassCallError = `Illegal call to base class IMatrixRowCoderRequest`;
 
-class IMatrixRowCoderRequest {
+export default class IMatrixRowCoderRequest {
     setApi() {
         throw IllegalBaseClassCallError;
     }
@@ -53,5 +53,3 @@ class IMatrixRowCoderRequest {
         throw IllegalBaseClassCallError;
     }
 }
-
-module.exports = IMatrixRowCoderRequest;

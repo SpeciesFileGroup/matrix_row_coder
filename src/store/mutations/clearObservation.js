@@ -1,7 +1,7 @@
-const ComponentNames = require('../helpers/ComponentNames');
-const makeEmptyObservationsFor = require('../helpers/makeEmptyObservationsFor');
+import ComponentNames from '../helpers/ComponentNames';
+import makeEmptyObservationsFor from '../helpers/makeEmptyObservationsFor';
 
-module.exports = function(state, observationId) {
+export default function(state, observationId) {
     const observationIndex = state.observations.findIndex(o => o.id === observationId);
     const descriptorId = state.observations[observationIndex].descriptorId;
     const descriptor = state.descriptors.find(d => d.id === descriptorId);

@@ -1,7 +1,7 @@
-const expect = require('chai').expect;
-const ActionNames = require('../../../src/store/actions/actions').ActionNames;
-const ObservationTypes = require('../../../src/store/helpers/ObservationTypes');
-const TestHelpers = require('../../testHelpers');
+import { expect } from 'chai';
+import { ActionNames } from '../../../src/store/actions/actions';
+import ObservationTypes from '../../../src/store/helpers/ObservationTypes';
+import * as TestHelpers from '../../testHelpers';
 
 describe(`CreateObservation action`, () => {
     let store;
@@ -29,7 +29,7 @@ describe(`CreateObservation action`, () => {
         });
     }
 
-    before(done => {
+    beforeEach(done => {
         store = TestHelpers.newTestStore();
         TestHelpers.requestMatrixRowForStore(store)
             .then(_ => TestHelpers.requestAllObservationsForStore(store))

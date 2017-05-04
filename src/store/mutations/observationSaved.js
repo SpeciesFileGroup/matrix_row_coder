@@ -1,6 +1,6 @@
-const ComponentNames = require('../helpers/ComponentNames');
+import ComponentNames from '../helpers/ComponentNames';
 
-module.exports = function(state, args) {
+export default function(state, args) {
     const {
         descriptorId,
         characterStateId = null

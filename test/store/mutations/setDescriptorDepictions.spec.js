@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
-const MutationNames = require('../../../src/store/mutations/mutations').MutationNames;
-const TestHelpers = require('../../testHelpers');
+import { expect } from 'chai';
+import { MutationNames } from '../../../src/store/mutations/mutations';
+import * as TestHelpers from '../../testHelpers';
 const store = TestHelpers.newTestStore();
 
 describe(`SetDescriptorDepictions Mutation`, () => {

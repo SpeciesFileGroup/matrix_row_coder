@@ -1,6 +1,6 @@
-const makeBaseObservation = require('./makeBaseObservation');
+import makeBaseObservation from './makeBaseObservation';
 
-module.exports = function(observationData) {
+export default function(observationData) {
     const observation = makeBaseObservation(observationData);
     return Object.assign(observation, {
         continuousValue: attemptGetContinuousValueFromData(),

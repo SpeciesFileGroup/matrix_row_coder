@@ -1,6 +1,6 @@
-const makeBaseObservation = require('./makeBaseObservation');
+import makeBaseObservation from './makeBaseObservation';
 
-module.exports = function(observationData) {
+export default function(observationData) {
     const observation = makeBaseObservation(observationData);
     return Object.assign(observation, {
         n: observationData.sample_n || null,
@@ -12,4 +12,4 @@ module.exports = function(observationData) {
         standardDeviation: observationData.sample_standard_deviation || null,
         standardError: observationData.sample_standard_error || null,
     });
-};
+}

@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
+import { expect } from 'chai';
 const GetterNames = require('../../../src/store/getters/getters').GetterNames;
-const TestHelpers = require('../../testHelpers');
+import * as TestHelpers from '../../testHelpers';
 const ComponentNames = require('../../../src/store/helpers/ComponentNames');
 const store = TestHelpers.newTestStore();
 

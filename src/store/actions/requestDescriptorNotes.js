@@ -1,6 +1,6 @@
-const MutationNames = require('../mutations/mutations').MutationNames;
+import { MutationNames } from '../mutations/mutations';
 
-module.exports = function({ commit, state }, descriptorId) {
+export default function({ commit, state }, descriptorId) {
     return state.request.getDescriptorNotes(descriptorId)
         .then(descriptorNotes => {
             commit(MutationNames.SetDescriptorNotes, {

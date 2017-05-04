@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-const MatrixRowCoderRequest = require('../../src/request/MatrixRowCoderRequest');
+import { expect } from 'chai';
+import MatrixRowCoderRequest from '../../src/request/MatrixRowCoderRequest';
 
 describe(`MatrixRowCoderRequest class`, () => {
     it(`should be able to set api details`, () => {

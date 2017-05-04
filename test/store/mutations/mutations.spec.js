@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+import { expect } from 'chai';
 const mutations = require('../../../src/store/mutations/mutations');
 
 describe(`mutations`, () => {

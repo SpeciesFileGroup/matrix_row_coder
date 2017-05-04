@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-const actions = require('../../../src/store/actions/actions');
+import { expect } from 'chai';
+import * as actions from '../../../src/store/actions/actions';
 
 describe(`actions`, () => {
     it(`should export an object with ActionNames and ActionFunctions`, () => {

@@ -36,7 +36,7 @@
             "object_tag": "Big green spine",
             "description": null,
             "position": 2,
-            "type": "Descriptor::Presence",
+            "type": "Descriptor::PresenceAbsence",
             "url": "//api.com/otus/25.json"
         },
         {
@@ -95,7 +95,7 @@
             "id": 30,
             "object_tag": "Fast Expand",
             "description": "Fast Expand is also referred to as FE. It is used to describe when a player of any race takes their Natural Expansion fairly quickly, or in some rare cases taking their mineral only expansion.",
-            "type": "Descriptor::Presence",
+            "type": "Descriptor::PresenceAbsence",
             "position": 7
         },
         {

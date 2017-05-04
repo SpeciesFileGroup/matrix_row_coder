@@ -1,7 +1,7 @@
-const mergeIntoObservation = require('../helpers/mergeIntoObservation');
-const setDescriptorUnsaved = require('../helpers/setDescriptorUnsaved');
+import mergeIntoObservation from '../helpers/mergeIntoObservation';
+import setDescriptorUnsaved from '../helpers/setDescriptorUnsaved';
 
-module.exports = function(state, args) {
+export default function(state, args) {
     const {
         descriptorId,
         min

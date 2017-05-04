@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-const TestHelpers = require('../../testHelpers');
+import { expect } from 'chai';
+import * as TestHelpers from '../../testHelpers';
 const store = TestHelpers.newTestStore();
 const mutations = require('../../../src/store/mutations/mutations');
 
