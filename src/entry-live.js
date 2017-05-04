@@ -4,6 +4,7 @@ const MatrixRowCoderRequest = require('./request/MatrixRowCoderRequest');
 const store = require('./store/store').newStore( new MatrixRowCoderRequest() );
 const props = require('./props.json');
 
+
 new Vue({
     el: 'app',
     store,

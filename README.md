@@ -18,6 +18,10 @@ Each Vue component's stylesheet is written in Stylus and included in the Single 
 
 `npm install`
 
+To use the live version, you should copy `props.json.dist` and change the properties to match a TaxonWorks app.
+
+Quick copy: `cp src/props.json.dist src/props.json`.
+
 ## Commands
 
 `grunt test`: Runs the unit tests
