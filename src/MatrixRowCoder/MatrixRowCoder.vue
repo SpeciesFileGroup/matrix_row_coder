@@ -27,21 +27,21 @@
 <style lang="stylus" src="MatrixRowCoder.styl"></style>
 
 <script>
-    const vuex = require('vuex');
-    const MutationNames = require('../store/mutations/mutations').MutationNames;
-    const ActionNames = require('../store/actions/actions').ActionNames;
+    import { mapState } from 'vuex';
+    import { MutationNames } from '../store/mutations/mutations');
+    import { ActionNames } from '../store/actions/actions');
 
-    const computed = vuex.mapState({
+    const computed = mapState({
         title: state => state.taxonTitle,
         descriptors: state => state.descriptors
     });
 
-    const continuousDescriptor = require('./SingleObservationDescriptor/ContinuousDescriptor/ContinuousDescriptor.vue');
-    const presenceDescriptor = require('./SingleObservationDescriptor/PresenceDescriptor/PresenceDescriptor.vue');
-    const qualitativeDescriptor = require('./QualitativeDescriptor/QualitativeDescriptor.vue');
-    const sampleDescriptor = require('./SingleObservationDescriptor/SampleDescriptor/SampleDescriptor.vue');
+    import continuousDescriptor from './SingleObservationDescriptor/ContinuousDescriptor/ContinuousDescriptor.vue';
+    import presenceDescriptor from './SingleObservationDescriptor/PresenceDescriptor/PresenceDescriptor.vue';
+    import qualitativeDescriptor from './QualitativeDescriptor/QualitativeDescriptor.vue';
+    import sampleDescriptor from './SingleObservationDescriptor/SampleDescriptor/SampleDescriptor.vue';
 
-    module.exports = {
+    export default {
         created: function() {
             this.$store.state.request.setApi({
                 apiBase: this.$props.apiBase,
@@ -76,5 +76,5 @@
             qualitativeDescriptor,
             sampleDescriptor
         }
-    }
+    };
 </script>

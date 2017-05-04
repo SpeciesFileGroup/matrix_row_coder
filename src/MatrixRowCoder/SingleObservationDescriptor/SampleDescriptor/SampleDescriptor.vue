@@ -61,11 +61,11 @@
 <style src="SampleDescriptor.styl" lang="stylus"></style>
 
 <script>
-    const SingleObservationDescriptor = require('../SingleObservationDescriptor');
-    const GetterNames = require('../../../store/getters/getters').GetterNames;
-    const MutationNames = require('../../../store/mutations/mutations').MutationNames;
+    import SingleObservationDescriptor from '../SingleObservationDescriptor';
+    import { GetterNames } from '../../../store/getters/getters';
+    import { MutationNames } from '../../../store/mutations/mutations';
 
-    module.exports = {
+    export default {
         mixins: [SingleObservationDescriptor],
         name: 'sample-descriptor',
         computed: {

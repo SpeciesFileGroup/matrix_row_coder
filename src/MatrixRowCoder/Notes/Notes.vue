@@ -15,7 +15,7 @@
 <style src="Notes.styl" lang="stylus"></style>
 
 <script>
-    module.exports = {
+    export default {
         name: 'notes',
         props: ['notes']
     };

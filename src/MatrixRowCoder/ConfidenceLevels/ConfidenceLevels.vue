@@ -17,7 +17,7 @@
 <style src="ConfidenceLevels.styl" lang="stylus"></style>
 
 <script>
-    module.exports = {
+    export default {
         name: "confidence-levels",
         props: ['confidences']
     };

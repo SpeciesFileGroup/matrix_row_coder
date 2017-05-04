@@ -1,8 +1,9 @@
-const Vue = require('vue');
-const MatrixRowCoder = require('./MatrixRowCoder/MatrixRowCoder.vue');
-const MatrixRowCoderRequest = require('./request/MatrixRowCoderRequest');
-const store = require('./store/store').newStore( new MatrixRowCoderRequest() );
-const props = require('./props.json');
+import Vue from 'vue';
+import MatrixRowCoder from './MatrixRowCoder/MatrixRowCoder.vue';
+import MatrixRowCoderRequest from './request/MatrixRowCoderRequest';
+import { newStore } from './store/store';
+const store = newStore( new MatrixRowCoderRequest() );
+import props from './props';
 
 
 new Vue({

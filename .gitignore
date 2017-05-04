@@ -5,4 +5,4 @@ dist/
 *.tmp
 *~
 .DS_Store
-src/props.json
+src/props.js

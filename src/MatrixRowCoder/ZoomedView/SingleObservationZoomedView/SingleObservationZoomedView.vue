@@ -19,11 +19,11 @@
 <style src="SingleObservationZoomedView.styl" lang="stylus"></style>
 
 <script>
-    const observationDetails = require('../../ObservationDetails/ObservationDetails.vue');
-    const descriptorDetails = require('../../DescriptorDetails/DescriptorDetails.vue');
-    const zoomedView = require('../ZoomedView.vue');
+    import observationDetails from '../../ObservationDetails/ObservationDetails.vue';
+    import descriptorDetails from '../../DescriptorDetails/DescriptorDetails.vue';
+    import zoomedView from '../ZoomedView.vue';
 
-    module.exports = {
+    export default {
         name: 'single-observation-zoomed-view',
         props: ['descriptor', 'observation'],
         components: {

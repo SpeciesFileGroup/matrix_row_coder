@@ -21,12 +21,12 @@
 <style src="ObservationDetails.styl" lang="stylus"></style>
 
 <script>
-    const confidenceLevels = require('../ConfidenceLevels/ConfidenceLevels.vue');
-    const notes = require('../Notes/Notes.vue');
-    const depictions = require('../Depictions/Depictions.vue');
-    const citations = require('../Citations/Citations.vue');
+    import confidenceLevels from '../ConfidenceLevels/ConfidenceLevels.vue';
+    import notes from '../Notes/Notes.vue';
+    import depictions from '../Depictions/Depictions.vue';
+    import citations from '../Citations/Citations.vue';
 
-    module.exports = {
+    export default {
         name: "observation-details",
         props: ['observation'],
         components: {

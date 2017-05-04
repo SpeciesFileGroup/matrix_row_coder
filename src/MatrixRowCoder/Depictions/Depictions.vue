@@ -17,7 +17,7 @@
 <style src="Depictions.styl" lang="stylus"></style>
 
 <script>
-    module.exports = {
+    export default {
         name: 'depictions',
         props: ['depictions']
     };

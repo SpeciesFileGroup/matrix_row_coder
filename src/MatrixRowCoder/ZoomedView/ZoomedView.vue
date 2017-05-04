@@ -14,10 +14,10 @@
 <style src="ZoomedView.styl" lang="stylus"></style>
 
 <script>
-    const MutationNames = require('../../store/mutations/mutations').MutationNames;
-    const GetterNames = require('../../store/getters/getters').GetterNames;
+    import { MutationNames } from '../../store/mutations/mutations';
+    import { GetterNames } from '../../store/getters/getters';
 
-    module.exports = {
+    export default {
         name: "zoomed-view",
         props: ['descriptor'],
         computed: {

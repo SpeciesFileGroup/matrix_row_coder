@@ -1,4 +1,4 @@
-{
+export default {
   "matrixId": 1,
   "otuId": 1,
   "apiBase": "http://127.0.0.1:3000/api/v1",
@@ -6,4 +6,4 @@
     "project_id": 1,
     "token": "T2LDAEltkiZ27wqBgwPJ9w"
   }
-}
+};

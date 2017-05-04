@@ -47,17 +47,17 @@
 <style src="QualitativeDescriptor.styl" lang="stylus"></style>
 
 <script>
-    const ActionNames = require('../../store/actions/actions').ActionNames;
-    const MutationNames = require('../../store/mutations/mutations').MutationNames;
-    const GetterNames = require('../../store/getters/getters').GetterNames;
+    import { ActionNames } from '../../store/actions/actions';
+    import { MutationNames } from '../../store/mutations/mutations';
+    import { GetterNames } from '../../store/getters/getters';
 
-    const summaryView = require('../SummaryView/SummaryView.vue');
-    const zoomedView = require('../ZoomedView/ZoomedView.vue');
+    import summaryView from '../SummaryView/SummaryView.vue';
+    import zoomedView from '../ZoomedView/ZoomedView.vue';
 
-    const observationDetails = require('../ObservationDetails/ObservationDetails.vue');
-    const descriptorDetails = require('../DescriptorDetails/DescriptorDetails.vue');
+    import observationDetails from '../ObservationDetails/ObservationDetails.vue';
+    import descriptorDetails from '../DescriptorDetails/DescriptorDetails.vue';
 
-    module.exports = {
+    export default {
         name: 'qualitative-descriptor',
         props: ['descriptor'],
         created: function() {
