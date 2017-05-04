@@ -64,7 +64,7 @@ class MockRequest extends IMatrixRowCoderRequest {
     }
 
     createObservation(payload) {
-        return freezeAndPromisify({ success: true });
+        return freezeAndPromisify({ id: Math.ceil(Math.random() * 1000) + 1004 });
     }
 
     updateObservation(observationId, payload) {
