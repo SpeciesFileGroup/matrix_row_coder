@@ -61,7 +61,8 @@ module.exports = function(grunt) {
         mochaTest: {
             test: {
                 options: {
-                    bail: true
+                    bail: true,
+                    require: 'babel-register'
                 },
                 src: ['test/**/*.spec.js']
             }

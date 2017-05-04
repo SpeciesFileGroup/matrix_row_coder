@@ -1,4 +1,5 @@
 const IMatrixRowCoderRequest = require('./IMatrixRowCoderRequest');
+global['XMLHttpRequest'] = {};
 const browserRequest = require('browser-request');
 
 function getJSON(url) {
