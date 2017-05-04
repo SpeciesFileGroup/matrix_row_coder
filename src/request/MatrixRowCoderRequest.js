@@ -103,7 +103,7 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
     }
 
     createObservation(payload) {
-        const url = `${this.apiBase}/observations`;
+        const url = `${this.apiBase}/observations.json`;
         return postJSON(url, Object.assign(payload, this.apiParams));
     }
 
