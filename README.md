@@ -12,7 +12,9 @@ Testing framework used is Mocha. Assertion library is Chai. Nearly everything in
 
 Bundle is created using Browserify with the transform Vueify. The Vue components are in [Single File Components](https://vuejs.org/v2/guide/single-file-components.html). So you will have to transform them if you want to use the Matrix Row Coder component in your own Vue.
 
-Each Vue component's stylesheet is written in Stylus and included in the Single File Component (.vue). Make sure you've installed Stylus when transforming them.
+Each Vue component's stylesheet is written in Stylus and included in the Single File Component (.vue).
+
+Mocha and Browserify are using Babel to translate the ES2015 module style into something that Node and browsers can use. Using `require` will still work, but if we use a tree-shaking transform such as `rollup` you will lose that benefit on CommonJS modules.
 
 ## Setup
 
