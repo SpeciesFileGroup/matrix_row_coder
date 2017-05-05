@@ -28,8 +28,8 @@
 
 <script>
     import { mapState } from 'vuex';
-    import { MutationNames } from '../store/mutations/mutations');
-    import { ActionNames } from '../store/actions/actions');
+    import { MutationNames } from '../store/mutations/mutations';
+    import { ActionNames } from '../store/actions/actions';
 
     const computed = mapState({
         title: state => state.taxonTitle,

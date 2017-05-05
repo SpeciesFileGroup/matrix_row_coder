@@ -15,9 +15,9 @@
 <style src="SaveCountdown.styl" lang="stylus"></style>
 
 <script>
-    import { GetterNames } from '../../store/getters/getters');
-    import { MutationNames } from '../../store/mutations/mutations');
-    import { ActionNames } from '../../store/actions/actions');
+    import { GetterNames } from '../../store/getters/getters';
+    import { MutationNames } from '../../store/mutations/mutations';
+    import { ActionNames } from '../../store/actions/actions';
 
     export default {
         name: 'save-countdown',

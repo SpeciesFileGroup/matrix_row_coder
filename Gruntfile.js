@@ -11,25 +11,18 @@ module.exports = function(grunt) {
 
     const taskConfig = {
         browserify: {
+            options: {
+                transform: ['babelify', 'vueify'],
+                watch: true,
+                browserifyOptions: {
+                    debug: true
+                }
+            },
             buildMock: {
-                options: {
-                    transform: ['vueify'],
-                    watch: true,
-                    browserifyOptions: {
-                        debug: true
-                    }
-                },
                 src: [SRC_JS_MOCK],
                 dest: BUNDLED_JS
             },
             buildLive: {
-                options: {
-                    transform: ['vueify'],
-                    watch: true,
-                    browserifyOptions: {
-                        debug: true
-                    }
-                },
                 src: [SRC_JS_LIVE],
                 dest: BUNDLED_JS
             }
