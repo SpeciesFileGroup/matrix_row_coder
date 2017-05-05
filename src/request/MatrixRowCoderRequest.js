@@ -50,6 +50,11 @@ function deleteResource(url) {
 }
 
 export default class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
+    constructor() {
+        super();
+        this.getObservationQueue = Promise.resolve({});
+    }
+
     setApi({apiBase, apiParams}) {
         this.apiBase = apiBase;
         this.apiParams = apiParams;
@@ -88,11 +93,14 @@ export default class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
             descriptor_id: descriptorId
         };
         const url = this.buildGetUrl(`/observations.json`, extraParams);
-        return getJSON(url)
-            .then(data => {
-                console.log(`Observations for ${descriptorId}:`, data);
-                return data;
-            });
+        this.getObservationQueue = this.getObservationQueue.then(_ => {
+            return getJSON(url)
+                .then(data => {
+                    console.log(`Observations for ${descriptorId}:`, data);
+                    return data;
+                });
+        });
+        return this.getObservationQueue;
     }
 
     updateObservation(observationId, payload) {
