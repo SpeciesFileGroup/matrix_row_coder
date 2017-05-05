@@ -23,7 +23,8 @@ export const MutationNames = {
     ObservationSaved: `observationSaved`,
     CountdownStartedFor: `countdownStartedFor`,
     SetDescriptorSaving: `setDescriptorSaving`,
-    SetDescriptorSavedOnce: `setDescriptorSavedOnce`
+    SetDescriptorSavedOnce: `setDescriptorSavedOnce`,
+    SetObservationId: `setObservationId`
 };
 
 import setDescriptors from './setDescriptors';
@@ -51,6 +52,7 @@ import observationSaved from './observationSaved';
 import countdownStartedFor from './countdownStartedFor';
 import setDescriptorSaving from './setDescriptorSaving';
 import setDescriptorSavedOnce from './setDescriptorSavedOnce';
+import setObservationId from './setObservationId';
 
 export const MutationFunctions = {
     [MutationNames.SetDescriptors]: setDescriptors,
@@ -78,4 +80,5 @@ export const MutationFunctions = {
     [MutationNames.CountdownStartedFor]: countdownStartedFor,
     [MutationNames.SetDescriptorSaving]: setDescriptorSaving,
     [MutationNames.SetDescriptorSavedOnce]: setDescriptorSavedOnce,
+    [MutationNames.SetObservationId]: setObservationId
 };

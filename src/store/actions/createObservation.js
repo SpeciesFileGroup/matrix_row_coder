@@ -19,14 +19,25 @@ export default function({ commit, state }, args) {
         setupQualitativePayload(payload);
 
     return state.request.createObservation(payload)
-        .then(_ => {
+        .then(responseData => {
             commit(MutationNames.SetDescriptorSaving, {
                 descriptorId: args.descriptorId,
                 isSaving: false
             });
 
             commit(MutationNames.SetDescriptorSavedOnce, args.descriptorId);
+
+            if (isValidResponseData(responseData))
+                commit(MutationNames.SetObservationId, makeObservationIdArgs(responseData.id));
         });
+
+    function isValidResponseData(data) {
+        return data && data.id;
+    }
+
+    function makeObservationIdArgs(observationId) {
+        return Object.assign({}, args, { observationId });
+    }
 
     function setupQualitativePayload(payload) {
         return Object.assign(payload, { character_state_id: args.characterStateId });

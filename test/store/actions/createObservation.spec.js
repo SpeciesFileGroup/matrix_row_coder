@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { ActionNames } from '../../../src/store/actions/actions';
+import { MutationNames } from '../../../src/store/mutations/mutations';
 import ObservationTypes from '../../../src/store/helpers/ObservationTypes';
 import * as TestHelpers from '../../testHelpers';
 
@@ -123,6 +124,27 @@ describe(`CreateObservation action`, () => {
         });
 
         return makePromiseChainFromArgsAndAsserts(argsAndAsserts);
+    });
+
+    it(`should save the new id if successful`, () => {
+        const descriptorId = 24;
+        const characterStateId = 34;
+
+        store.commit(MutationNames.SetCharacterStateChecked, {
+            descriptorId,
+            characterStateId,
+            isChecked: true
+        });
+
+        return store.dispatch(ActionNames.CreateObservation, {
+            descriptorId,
+            characterStateId
+        }).then(_ => {
+            const id = store.state.observations
+                .find(o => o.characterStateId === characterStateId).id;
+
+            expect(id).to.be.a('number');
+        });
     });
 
     describe(`Qualitative observations`, () => {
