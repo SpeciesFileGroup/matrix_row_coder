@@ -1,10 +1,10 @@
-const ActionNames = require('../../store/actions/actions').ActionNames;
-const GetterNames = require('../../store/getters/getters').GetterNames;
+import { ActionNames } from '../../store/actions/actions';
+import { GetterNames } from '../../store/getters/getters';
 
-const summaryView = require('../SummaryView/SummaryView.vue');
-const singleObservationZoomedView = require('../ZoomedView/SingleObservationZoomedView/SingleObservationZoomedView.vue');
+import summaryView from '../SummaryView/SummaryView.vue';
+import singleObservationZoomedView from '../ZoomedView/SingleObservationZoomedView/SingleObservationZoomedView.vue';
 
-module.exports = {
+export default {
     created: function() {
         const descriptorId = this.$props.descriptor.id;
         const otuId = this.$store.state.taxonId;

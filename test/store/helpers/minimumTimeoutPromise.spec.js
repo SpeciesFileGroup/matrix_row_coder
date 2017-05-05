@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-const minimumTimeoutPromise = require('../../../src/store/helpers/minimumTimeoutPromise');
+import { expect } from 'chai';
+import minimumTimeoutPromise from '../../../src/store/helpers/minimumTimeoutPromise';
 
 describe(`minimumTimeoutPromise function`, () => {
     it(`should return a promise`, () => {

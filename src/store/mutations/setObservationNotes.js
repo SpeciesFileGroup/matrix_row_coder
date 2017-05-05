@@ -1,6 +1,6 @@
-const transformNoteForViewmodel = require('../helpers/transformNoteForViewmodel');
+import transformNoteForViewmodel from '../helpers/transformNoteForViewmodel';
 
-module.exports = function(state, args) {
+export default function(state, args) {
     const observation = state.observations.find(o => o.id === args.observationId);
     observation.notes = args.notes.map(transformNoteForViewmodel);
 };

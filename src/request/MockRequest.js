@@ -1,5 +1,5 @@
-const IMatrixRowCoderRequest = require('./IMatrixRowCoderRequest');
-const deepFreeze = require('deep-freeze');
+import IMatrixRowCoderRequest from './IMatrixRowCoderRequest';
+import deepFreeze from 'deep-freeze';
 
 const MOCK_REQUEST_DIR = `./mockRequests/`;
 
@@ -46,7 +46,11 @@ require('./mockRequests/observations-1002-notes.json');
 require('./mockRequests/observations-1003-notes.json');
 require('./mockRequests/observations-1004-notes.json');
 
-class MockRequest extends IMatrixRowCoderRequest {
+export default class MockRequest extends IMatrixRowCoderRequest {
+    constructor() {
+        super();
+    }
+
     setApi(args) {
         return null;
     }
@@ -103,5 +107,3 @@ class MockRequest extends IMatrixRowCoderRequest {
 function freezeAndPromisify(data) {
     return new Promise(resolve => resolve(deepFreeze(data)));
 }
-
-module.exports = MockRequest;

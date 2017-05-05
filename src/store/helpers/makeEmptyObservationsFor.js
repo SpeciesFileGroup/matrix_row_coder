@@ -1,6 +1,6 @@
-const ComponentNames = require('./ComponentNames');
-const ObservationTypes = require('./ObservationTypes');
-const makeObservation = require('./makeObservation');
+import ComponentNames from './ComponentNames';
+import ObservationTypes from './ObservationTypes';
+import makeObservation from './makeObservation';
 
 const ComponentNamesToObservations = {
     [ComponentNames.Qualitative]: ObservationTypes.Qualitative,
@@ -9,7 +9,7 @@ const ComponentNamesToObservations = {
     [ComponentNames.Presence]: ObservationTypes.Presence
 };
 
-module.exports = function(descriptor) {
+export default function(descriptor) {
     const observations = [];
 
     const emptyObservationData = {

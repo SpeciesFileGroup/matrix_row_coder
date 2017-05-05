@@ -14,12 +14,12 @@
 <style src="SummaryView.styl" lang="stylus"></style>
 
 <script>
-    const MutationNames = require('../../store/mutations/mutations').MutationNames;
-    const GetterNames = require('../../store/getters/getters').GetterNames;
+    import { MutationNames } from '../../store/mutations/mutations';
+    import { GetterNames } from '../../store/getters/getters';
 
-    const saveCountdown = require('../SaveCountdown/SaveCountdown.vue');
+    import saveCountdown from '../SaveCountdown/SaveCountdown.vue';
 
-    module.exports = {
+    export default {
         name: "summary-view",
         props: ['descriptor'],
         computed: {

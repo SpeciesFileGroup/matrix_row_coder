@@ -1,4 +1,4 @@
-module.exports = function(state, confidenceLevelPromise) {
+export default function(state, confidenceLevelPromise) {
     state.confidenceLevels = confidenceLevelPromise.then(confidenceLevels => {
         return confidenceLevels.map(transformConfidenceLevelForViewmodel)
     });

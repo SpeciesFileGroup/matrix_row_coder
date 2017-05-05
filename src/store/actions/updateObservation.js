@@ -1,8 +1,8 @@
-const ObservationTypes = require('../helpers/ObservationTypes');
-const ComponentNames = require('../helpers/ComponentNames');
-const MutationNames = require('../mutations/mutations').MutationNames;
+import ObservationTypes from '../helpers/ObservationTypes';
+import ComponentNames from '../helpers/ComponentNames';
+import { MutationNames } from '../mutations/mutations';
 
-module.exports = function({state, commit}, descriptorId) {
+export default function({state, commit}, descriptorId) {
     const descriptor = state.descriptors.find(d => d.id === descriptorId);
 
     if (isQualitativeOrPresence(descriptor.componentName))

@@ -1,7 +1,8 @@
-const expect = require('chai').expect;
-const GetterNames = require('../../../src/store/getters/getters').GetterNames;
-const TestHelpers = require('../../testHelpers');
-const ComponentNames = require('../../../src/store/helpers/ComponentNames');
+import { expect } from 'chai';
+import { GetterNames } from '../../../src/store/getters/getters';
+import * as TestHelpers from '../../testHelpers';
+import ComponentNames from '../../../src/store/helpers/ComponentNames';
+
 const store = TestHelpers.newTestStore();
 
 describe(`GetContinuousUnitFor getter`, () => {

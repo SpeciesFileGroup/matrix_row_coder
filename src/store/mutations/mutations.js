@@ -1,4 +1,4 @@
-const MutationNames = {
+export const MutationNames = {
     SetDescriptors: 'setDescriptors',
     SetTaxonTitle: 'setTaxonTitle',
     SetTaxonId: 'setTaxonId',
@@ -26,35 +26,56 @@ const MutationNames = {
     SetDescriptorSavedOnce: `setDescriptorSavedOnce`
 };
 
-const MutationFunctions = {
-    [MutationNames.SetDescriptors]: require('./setDescriptors'),
-    [MutationNames.SetTaxonTitle]: require('./setTaxonTitle'),
-    [MutationNames.SetTaxonId]: require('./setTaxonId'),
-    [MutationNames.SetConfidenceLevels]: require('./setConfidenceLevels'),
-    [MutationNames.SetObservation]: require('./setObservation'),
-    [MutationNames.SetDescriptorNotes]: require('./setDescriptorNotes'),
-    [MutationNames.SetDescriptorDepictions]: require('./setDescriptorDepictions'),
-    [MutationNames.SetObservationNotes]: require('./setObservationNotes'),
-    [MutationNames.SetObservationDepictions]: require('./setObservationDepictions'),
-    [MutationNames.SetObservationConfidences]: require('./setObservationConfidences'),
-    [MutationNames.SetObservationCitations]: require('./setObservationCitations'),
-    [MutationNames.SetDescriptorZoom]: require('./setDescriptorZoom'),
-    [MutationNames.SetContinuousValue]: require('./setContinuousValue'),
-    [MutationNames.SetContinuousUnit]: require('./setContinuousUnit'),
-    [MutationNames.SetPresence]: require('./setPresence'),
-    [MutationNames.SetCharacterStateChecked]: require('./setCharacterStateChecked'),
-    [MutationNames.SetSampleMaxFor]: require('./setSampleMaxFor'),
-    [MutationNames.SetSampleMinFor]: require('./setSampleMinFor'),
-    [MutationNames.SetSampleNFor]: require('./setSampleNFor'),
-    [MutationNames.SetSampleUnitFor]: require('./setSampleUnitFor'),
-    [MutationNames.ClearObservation]: require('./clearObservation'),
-    [MutationNames.ObservationSaved]: require('./observationSaved'),
-    [MutationNames.CountdownStartedFor]: require('./countdownStartedFor'),
-    [MutationNames.SetDescriptorSaving]: require('./setDescriptorSaving'),
-    [MutationNames.SetDescriptorSavedOnce]: require('./setDescriptorSavedOnce')
-};
+import setDescriptors from './setDescriptors';
+import setTaxonTitle from './setTaxonTitle';
+import setTaxonId from './setTaxonId';
+import setConfidenceLevels from './setConfidenceLevels';
+import setObservation from './setObservation';
+import setDescriptorNotes from './setDescriptorNotes';
+import setDescriptorDepictions from './setDescriptorDepictions';
+import setObservationNotes from './setObservationNotes';
+import setObservationDepictions from './setObservationDepictions';
+import setObservationConfidences from './setObservationConfidences';
+import setObservationCitations from './setObservationCitations';
+import setDescriptorZoom from './setDescriptorZoom';
+import setContinuousValue from './setContinuousValue';
+import setContinuousUnit from './setContinuousUnit';
+import setPresence from './setPresence';
+import setCharacterStateChecked from './setCharacterStateChecked';
+import setSampleMaxFor from './setSampleMaxFor';
+import setSampleMinFor from './setSampleMinFor';
+import setSampleNFor from './setSampleNFor';
+import setSampleUnitFor from './setSampleUnitFor';
+import clearObservation from './clearObservation';
+import observationSaved from './observationSaved';
+import countdownStartedFor from './countdownStartedFor';
+import setDescriptorSaving from './setDescriptorSaving';
+import setDescriptorSavedOnce from './setDescriptorSavedOnce';
 
-module.exports = {
-    MutationNames,
-    MutationFunctions
+export const MutationFunctions = {
+    [MutationNames.SetDescriptors]: setDescriptors,
+    [MutationNames.SetTaxonTitle]: setTaxonTitle,
+    [MutationNames.SetTaxonId]: setTaxonId,
+    [MutationNames.SetConfidenceLevels]: setConfidenceLevels,
+    [MutationNames.SetObservation]: setObservation,
+    [MutationNames.SetDescriptorNotes]: setDescriptorNotes,
+    [MutationNames.SetDescriptorDepictions]: setDescriptorDepictions,
+    [MutationNames.SetObservationNotes]: setObservationNotes,
+    [MutationNames.SetObservationDepictions]: setObservationDepictions,
+    [MutationNames.SetObservationConfidences]: setObservationConfidences,
+    [MutationNames.SetObservationCitations]: setObservationCitations,
+    [MutationNames.SetDescriptorZoom]: setDescriptorZoom,
+    [MutationNames.SetContinuousValue]: setContinuousValue,
+    [MutationNames.SetContinuousUnit]: setContinuousUnit,
+    [MutationNames.SetPresence]: setPresence,
+    [MutationNames.SetCharacterStateChecked]: setCharacterStateChecked,
+    [MutationNames.SetSampleMaxFor]: setSampleMaxFor,
+    [MutationNames.SetSampleMinFor]: setSampleMinFor,
+    [MutationNames.SetSampleNFor]: setSampleNFor,
+    [MutationNames.SetSampleUnitFor]: setSampleUnitFor,
+    [MutationNames.ClearObservation]: clearObservation,
+    [MutationNames.ObservationSaved]: observationSaved,
+    [MutationNames.CountdownStartedFor]: countdownStartedFor,
+    [MutationNames.SetDescriptorSaving]: setDescriptorSaving,
+    [MutationNames.SetDescriptorSavedOnce]: setDescriptorSavedOnce,
 };

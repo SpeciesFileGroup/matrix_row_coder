@@ -1,4 +1,4 @@
-const GetterNames = {
+export const GetterNames = {
     GetObservationsFor: 'getObservationsFor',
     GetContinuousValueFor: 'getContinuousValueFor',
     GetContinuousUnitFor: 'getContinuousUnitFor',
@@ -12,21 +12,29 @@ const GetterNames = {
     DoesDescriptorNeedCountdown: 'doesDescriptorNeedCountdown'
 };
 
-const GetterFunctions = {
-    [GetterNames.GetObservationsFor]: require('./getObservationsFor'),
-    [GetterNames.GetContinuousValueFor]: require('./getContinuousValueFor'),
-    [GetterNames.GetContinuousUnitFor]: require('./getContinuousUnitFor'),
-    [GetterNames.GetPresenceFor]: require('./getPresenceFor'),
-    [GetterNames.GetSampleMinFor]: require('./getSampleMinFor'),
-    [GetterNames.GetSampleMaxFor]: require('./getSampleMaxFor'),
-    [GetterNames.GetSampleUnitFor]: require('./getSampleUnitFor'),
-    [GetterNames.GetSampleNFor]: require('./getSampleNFor'),
-    [GetterNames.GetCharacterStateChecked]: require('./getCharacterStateChecked'),
-    [GetterNames.IsDescriptorUnsaved]: require('./isDescriptorUnsaved'),
-    [GetterNames.DoesDescriptorNeedCountdown]: require('./doesDescriptorNeedCountdown')
-};
 
-module.exports = {
-    GetterNames,
-    GetterFunctions
+import getObservationsFor from './getObservationsFor';
+import getContinuousValueFor from './getContinuousValueFor';
+import getContinuousUnitFor from './getContinuousUnitFor';
+import getPresenceFor from './getPresenceFor';
+import getSampleMinFor from './getSampleMinFor';
+import getSampleMaxFor from './getSampleMaxFor';
+import getSampleUnitFor from './getSampleUnitFor';
+import getSampleNFor from './getSampleNFor';
+import getCharacterStateChecked from './getCharacterStateChecked';
+import isDescriptorUnsaved from './isDescriptorUnsaved';
+import doesDescriptorNeedCountdown from './doesDescriptorNeedCountdown';
+
+export const GetterFunctions = {
+    [GetterNames.GetObservationsFor]: getObservationsFor,
+    [GetterNames.GetContinuousValueFor]: getContinuousValueFor,
+    [GetterNames.GetContinuousUnitFor]: getContinuousUnitFor,
+    [GetterNames.GetPresenceFor]: getPresenceFor,
+    [GetterNames.GetSampleMinFor]: getSampleMinFor,
+    [GetterNames.GetSampleMaxFor]: getSampleMaxFor,
+    [GetterNames.GetSampleUnitFor]: getSampleUnitFor,
+    [GetterNames.GetSampleNFor]: getSampleNFor,
+    [GetterNames.GetCharacterStateChecked]: getCharacterStateChecked,
+    [GetterNames.IsDescriptorUnsaved]: isDescriptorUnsaved,
+    [GetterNames.DoesDescriptorNeedCountdown]: doesDescriptorNeedCountdown,
 };

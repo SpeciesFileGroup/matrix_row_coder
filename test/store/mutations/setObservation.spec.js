@@ -1,7 +1,7 @@
-const expect = require('chai').expect;
-const MutationNames = require('../../../src/store/mutations/mutations').MutationNames;
-const ObservationTypes = require('../../../src/store/helpers/ObservationTypes');
-const TestHelpers = require('../../testHelpers');
+import { expect } from 'chai';
+import { MutationNames } from '../../../src/store/mutations/mutations';
+import ObservationTypes from '../../../src/store/helpers/ObservationTypes';
+import * as TestHelpers from '../../testHelpers';
 
 const mockDescriptors = [
     {

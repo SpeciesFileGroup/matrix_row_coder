@@ -1,6 +1,6 @@
-const ObservationTypes = require('../helpers/ObservationTypes');
+import ObservationTypes from '../helpers/ObservationTypes';
 
-module.exports = function(state, observation) {
+export default function(state, observation) {
     if (!observation.type)
         throw `Observations must have a type!`;
 

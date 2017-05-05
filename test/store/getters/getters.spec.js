@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-const getters = require('../../../src/store/getters/getters');
+import { expect } from 'chai';
+import * as getters from '../../../src/store/getters/getters';
 
 describe(`getters`, () => {
     it(`should expose GetterNames and GetterMethods`, () => {

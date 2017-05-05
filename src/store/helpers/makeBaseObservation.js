@@ -1,4 +1,4 @@
-module.exports = function makeBaseObservation(observationData) {
+export default function(observationData) {
     return {
         id: observationData.id || null,
         descriptorId: observationData.descriptorId || observationData.descriptor_id,

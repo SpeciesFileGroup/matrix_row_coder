@@ -1,34 +1,35 @@
-const TestDefines = require('./testDefines');
-const ActionNames = require('../src/store/actions/actions').ActionNames;
-const newStore = require('../src/store/store').newStore;
-const MockRequest = require('../src/request/MockRequest');
+import TestDefines from './testDefines';
+import { ActionNames } from '../src/store/actions/actions';
+import { newStore } from '../src/store/store';
+import MockRequest from '../src/request/MockRequest';
 
-module.exports = {
-    newTestStore() {
-        return newStore(new MockRequest());
-    },
-    requestMatrixRowForStore(store) {
-        return store.dispatch(ActionNames.RequestMatrixRow, {
-            matrixId: TestDefines.MatrixId,
-            otuId: TestDefines.OtuId
+export function newTestStore() {
+    return newStore(new MockRequest());
+}
+
+export function requestMatrixRowForStore(store) {
+    return store.dispatch(ActionNames.RequestMatrixRow, {
+        matrixId: TestDefines.MatrixId,
+        otuId: TestDefines.OtuId
+    });
+}
+
+export function requestConfidenceLevelsForStore(store) {
+    return store.dispatch(ActionNames.RequestConfidenceLevels);
+}
+
+export function requestAllObservationsForStore(store) {
+    const otuId = store.state.taxonId;
+    return Promise.all(store.state.descriptors.map(d => {
+        return store.dispatch(ActionNames.RequestObservations, {
+            descriptorId: d.id,
+            otuId
         });
-    },
-    requestConfidenceLevelsForStore(store) {
-        return store.dispatch(ActionNames.RequestConfidenceLevels);
-    },
-    requestAllObservationsForStore(store) {
-        const otuId = store.state.taxonId;
-        return Promise.all(store.state.descriptors.map(d => {
-            return store.dispatch(ActionNames.RequestObservations, {
-                descriptorId: d.id,
-                otuId
-            });
-        }));
-    },
-    spyOnMethod(object, methodName) {
-        return new Spy(object, methodName);
-    }
-};
+    }));
+}
+export function spyOnMethod(object, methodName) {
+    return new Spy(object, methodName);
+}
 
 class Spy {
     constructor(object, methodName) {

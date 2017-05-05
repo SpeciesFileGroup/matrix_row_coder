@@ -1,5 +1,5 @@
-const MutationNames = require('../mutations/mutations').MutationNames;
+import { MutationNames } from '../mutations/mutations';
 
-module.exports = function({ commit, state }) {
+export default function({ commit, state }) {
     commit(MutationNames.SetConfidenceLevels, state.request.getConfidenceLevels());
 };

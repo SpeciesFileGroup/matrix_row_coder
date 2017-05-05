@@ -1,6 +1,6 @@
 const CharacterStateObjectName = "CharacterState";
 
-module.exports = function transformDepiction(depictionData) {
+export default function transformDepiction(depictionData) {
     const depiction = {
         caption: depictionData.caption,
         normalSrc: depictionData.image.result.url,
@@ -12,4 +12,4 @@ module.exports = function transformDepiction(depictionData) {
         depiction.characterStateId = depictionData.depiction_object_id;
 
     return depiction;
-};
+}

@@ -3,7 +3,7 @@
         "id": 1004,
         "otu_id": 1,
         "descriptor_id": 25,
-        "type": "Observation::Presence",
+        "type": "Observation::PresenceAbsence",
         "presence": true
     }
 ]

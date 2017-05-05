@@ -1,7 +1,7 @@
-const expect = require('chai').expect;
-const TestHelpers = require('../../testHelpers');
-const ActionNames = require('../../../src/store/actions/actions').ActionNames;
-const MutationNames = require('../../../src/store/mutations/mutations').MutationNames;
+import { expect } from 'chai';
+import * as TestHelpers from '../../testHelpers';
+import { ActionNames } from '../../../src/store/actions/actions';
+import { MutationNames } from '../../../src/store/mutations/mutations';
 
 describe(`RemoveObservation action`, () => {
     let store;

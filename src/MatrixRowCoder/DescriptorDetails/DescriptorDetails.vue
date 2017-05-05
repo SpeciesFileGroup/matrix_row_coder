@@ -11,10 +11,10 @@
 </template>
 
 <script>
-    const notes = require('../Notes/Notes.vue');
-    const depictions = require('../Depictions/Depictions.vue');
+    import notes from '../Notes/Notes.vue';
+    import depictions from '../Depictions/Depictions.vue';
 
-    module.exports = {
+    export default {
         name: 'descriptor-details',
         props: ['descriptor'],
         components: {

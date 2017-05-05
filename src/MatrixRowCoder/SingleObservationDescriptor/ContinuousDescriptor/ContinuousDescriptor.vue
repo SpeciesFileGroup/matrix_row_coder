@@ -41,9 +41,9 @@
 <style lang="stylus" src="ContinuousDescriptor.styl"></style>
 
 <script>
-    const GetterNames = require('../../../store/getters/getters').GetterNames;
-    const MutationNames = require('../../../store/mutations/mutations').MutationNames;
-    const SingleObservationDescriptor = require('../SingleObservationDescriptor');
+    import { GetterNames } from '../../../store/getters/getters';
+    import { MutationNames } from '../../../store/mutations/mutations';
+    import SingleObservationDescriptor from '../SingleObservationDescriptor';
 
     module.exports = {
         mixins: [SingleObservationDescriptor],

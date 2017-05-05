@@ -1,4 +1,4 @@
-module.exports = function(state, args) {
+export default function(state, args) {
     const {
         descriptorId,
         isZoomed

@@ -1,7 +1,8 @@
-const Vue = require('vue');
-const MatrixRowCoder = require('./MatrixRowCoder/MatrixRowCoder.vue');
-const MockRequest = require('./request/MockRequest');
-const store = require('./store/store').newStore( new MockRequest() );
+import Vue from 'vue';
+import MatrixRowCoder from './MatrixRowCoder/MatrixRowCoder.vue';
+import MockRequest from './request/MockRequest';
+import { newStore } from './store/store';
+const store = newStore( new MockRequest() );
 
 new Vue({
     el: 'app',

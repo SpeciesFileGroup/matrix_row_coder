@@ -1,6 +1,6 @@
-const MutationNames = require('../mutations/mutations').MutationNames;
+import { MutationNames } from '../mutations/mutations';
 
-module.exports = function({ commit, state }, observationId) {
+export default function({ commit, state }, observationId) {
     return state.request.getObservationNotes(observationId)
         .then(notes => {
             commit(MutationNames.SetObservationNotes, {

@@ -16,7 +16,7 @@
 <style src="Citations.styl" lang="stylus"></style>
 
 <script>
-    module.exports = {
+    export default {
         name: 'citations',
         props: ['citations']
     };

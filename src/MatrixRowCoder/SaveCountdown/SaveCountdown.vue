@@ -15,11 +15,11 @@
 <style src="SaveCountdown.styl" lang="stylus"></style>
 
 <script>
-    const GetterNames = require('../../store/getters/getters').GetterNames;
-    const MutationNames = require('../../store/mutations/mutations').MutationNames;
-    const ActionNames = require('../../store/actions/actions').ActionNames;
+    import { GetterNames } from '../../store/getters/getters';
+    import { MutationNames } from '../../store/mutations/mutations';
+    import { ActionNames } from '../../store/actions/actions';
 
-    module.exports = {
+    export default {
         name: 'save-countdown',
         props: ['descriptor'],
         data: function() {

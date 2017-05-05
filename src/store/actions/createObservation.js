@@ -1,8 +1,8 @@
-const getObservationFromArgs = require('../helpers/getObservationFromArgs');
-const ObservationTypes = require('../helpers/ObservationTypes');
-const MutationNames = require('../mutations/mutations').MutationNames;
+import getObservationFromArgs from '../helpers/getObservationFromArgs';
+import ObservationTypes from '../helpers/ObservationTypes';
+import { MutationNames } from '../mutations/mutations';
 
-module.exports = function({ commit, state }, args) {
+export default function({ commit, state }, args) {
     const observation = getObservationFromArgs(state, args);
 
     if (observation.id)

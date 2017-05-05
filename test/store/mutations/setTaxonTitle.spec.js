@@ -1,7 +1,7 @@
-const expect = require('chai').expect;
-const TestHelpers = require('../../testHelpers');
+import { expect } from 'chai';
+import * as TestHelpers from '../../testHelpers';
 const store = TestHelpers.newTestStore();
-const MutationNames = require('../../../src/store/mutations/mutations').MutationNames;
+import { MutationNames } from '../../../src/store/mutations/mutations';
 
 describe(`setTaxonTitle mutation`, () => {
     it(`should set the title`, () => {

@@ -1,4 +1,4 @@
-module.exports = {
+const ActionNames = {
     RequestMatrixRow: 'requestMatrixRow',
     RequestConfidenceLevels: 'requestConfidenceLevels',
     RequestObservations: 'requestObservation',
@@ -13,3 +13,5 @@ module.exports = {
     CreateObservation: 'createObservation',
     SaveObservationsFor: `saveObservationsFor`
 };
+
+export default ActionNames;

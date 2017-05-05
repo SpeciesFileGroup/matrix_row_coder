@@ -1,5 +1,5 @@
-const IMatrixRowCoderRequest = require('./IMatrixRowCoderRequest');
-const browserRequest = require('browser-request');
+import IMatrixRowCoderRequest from './IMatrixRowCoderRequest';
+import browserRequest from 'browser-request';
 
 function getJSON(url) {
     return new Promise((resolve, reject) => {
@@ -49,7 +49,7 @@ function deleteResource(url) {
     });
 }
 
-class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
+export default class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
     setApi({apiBase, apiParams}) {
         this.apiBase = apiBase;
         this.apiParams = apiParams;
@@ -147,5 +147,3 @@ class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
         return getJSON(url);
     }
 }
-
-module.exports = MatrixRowCoderRequest;

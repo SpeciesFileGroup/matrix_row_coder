@@ -1,6 +1,6 @@
-module.exports = {
+export default {
     Qualitative: "Descriptor::Qualitative",
     Continuous: "Descriptor::Continuous",
     Sample: "Descriptor::Sample",
-    Presence: "Descriptor::Presence"
+    Presence: "Descriptor::PresenceAbsence"
 };
