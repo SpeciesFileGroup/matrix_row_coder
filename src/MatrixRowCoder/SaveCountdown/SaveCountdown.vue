@@ -6,9 +6,23 @@
 
             <div
                 v-if="isCountingDown"
-                class="save-countdown__duration-bar"
-                :class="{ 'save-countdown__duration-bar--saving': isSaving, 'save-countdown__duration-bar--saved-at-least-once': savedAtLeastOnce }"></div>
+                class="save-countdown__duration-bar"></div>
         </transition>
+
+        <div
+            v-if="!isCountingDown"
+            class="save-countdown__status-bar"
+            :class="{ 'save-countdown__status-bar--saving': isSaving, 'save-countdown__status-bar--saved-at-least-once': savedAtLeastOnce }">
+        </div>
+
+        <button
+            class="save-countdown__save-button"
+            :class="{ 'save-countdown__save-button--showing': isCountingDown }"
+            @click="doSave"
+            type="button">
+
+            Save Changes
+        </button>
     </div>
 </template>
 
@@ -40,6 +54,7 @@
         },
         methods: {
             doSave() {
+                this.isCountingDown = false;
                 this.$store.dispatch(ActionNames.SaveObservationsFor, this.$props.descriptor.id);
             }
         },
