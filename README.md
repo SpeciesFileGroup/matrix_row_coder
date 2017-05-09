@@ -20,9 +20,9 @@ Mocha and Browserify are using Babel to translate the ES2015 module style into s
 
 `npm install`
 
-To use the live version, you should copy `props.json.dist` and change the properties to match a TaxonWorks app.
+To use the live version, you should copy `props.js.dist` and change the properties to match a TaxonWorks app.
 
-Quick copy: `cp src/props.json.dist src/props.json`.
+Quick copy: `cp src/props.js.dist src/props.js`.
 
 ## Commands
 
