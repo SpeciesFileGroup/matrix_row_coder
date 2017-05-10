@@ -195,6 +195,17 @@ describe(`CreateObservation action`, () => {
 
             return store.dispatch(ActionNames.CreateObservation, { descriptorId });
         });
+
+        it(`should include the presence property`, () => {
+            const descriptorId = 30;
+
+            store.state.request.createObservation = function(payload) {
+                expect(payload.presence).to.equal(false);
+                return Promise.resolve({});
+            };
+
+            return store.dispatch(ActionNames.CreateObservation, { descriptorId });
+        });
     });
 
     describe(`Continuous observations`, () => {

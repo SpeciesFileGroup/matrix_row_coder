@@ -18,6 +18,9 @@ export default function({ commit, state }, args) {
     if (observation.type === ObservationTypes.Qualitative)
         setupQualitativePayload(payload);
 
+    if (observation.type === ObservationTypes.Presence)
+        setupPresencePayload(payload);
+
     return state.request.createObservation(payload)
         .then(responseData => {
             commit(MutationNames.SetDescriptorSaving, {
@@ -41,6 +44,10 @@ export default function({ commit, state }, args) {
 
     function setupQualitativePayload(payload) {
         return Object.assign(payload, { character_state_id: args.characterStateId });
+    }
+
+    function setupPresencePayload(payload) {
+        return Object.assign(payload, { presence: observation.isChecked });
     }
 
     function makeBasePayload() {
