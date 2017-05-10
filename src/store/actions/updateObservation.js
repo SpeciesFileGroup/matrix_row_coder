@@ -5,7 +5,7 @@ import { MutationNames } from '../mutations/mutations';
 export default function({state, commit}, descriptorId) {
     const descriptor = state.descriptors.find(d => d.id === descriptorId);
 
-    if (isQualitativeOrPresence(descriptor.componentName))
+    if (isNotUpdatable(descriptor.componentName))
         throw `You can't update a ${getDescriptorTypeName(descriptor.componentName)} descriptor. You can only delete or create them.`;
 
     const observation = state.observations.find(o => o.descriptorId === descriptorId);
@@ -26,8 +26,8 @@ export default function({state, commit}, descriptorId) {
         });
 };
 
-function isQualitativeOrPresence(componentName) {
-    return componentName === ComponentNames.Qualitative || componentName === ComponentNames.Presence;
+function isNotUpdatable(componentName) {
+    return componentName === ComponentNames.Qualitative;
 }
 
 function makePayload(observation) {
@@ -43,11 +43,13 @@ function makePayload(observation) {
             sample_max: observation.max,
             sample_units: observation.units
         };
+    else if (observation.type === ObservationTypes.Presence)
+        return {
+            presence: observation.isChecked
+        };
 }
 
 function getDescriptorTypeName(componentName) {
     if (componentName === ComponentNames.Qualitative)
         return `Qualitative`;
-    if (componentName === ComponentNames.Presence)
-        return `Presence`;
 }
