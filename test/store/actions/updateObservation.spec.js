@@ -129,7 +129,7 @@ describe(`UpdateObservation action`, () => {
         });
     });
 
-    describe(`Presence and Qualitative Observations`, () => {
+    describe(`Qualitative Observations`, () => {
         it(`should throw an error if a Qualitative observation is updated`, () => {
             const errorFn = _ => {
                 store.dispatch(ActionNames.UpdateObservation, 24);
@@ -137,13 +137,23 @@ describe(`UpdateObservation action`, () => {
 
             expect(errorFn).to.throw(`You can't update a Qualitative descriptor. You can only delete or create them.`);
         });
+    });
 
-        it(`should throw an error if a Presence observation is updated`, () => {
-            const errorFn = _ => {
-                store.dispatch(ActionNames.UpdateObservation, 25);
+    describe(`Presence Observations`, () => {
+        it(`should update the presence property to the checked state`, () => {
+            const descriptorId = 25;
+
+            store.commit(MutationNames.SetPresence, {
+                descriptorId,
+                isChecked: false
+            });
+
+            store.state.request.updateObservation = function(oIdArg, payload) {
+                expect(payload.presence).to.equal(false);
+                return Promise.resolve({});
             };
 
-            expect(errorFn).to.throw(`You can't update a Presence descriptor. You can only delete or create them.`);
+            store.dispatch(ActionNames.UpdateObservation, descriptorId);
         });
     });
 });

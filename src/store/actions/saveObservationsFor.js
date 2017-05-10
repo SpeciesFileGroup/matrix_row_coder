@@ -7,15 +7,15 @@ export default function({ dispatch, state, commit }, descriptorId) {
         .filter(o => o.descriptorId === descriptorId);
 
     return Promise.all( observations.map(o => {
-        if (isCheckableObservation(o))
-            saveCheckableObservation(o);
+        if (!isUpdatableObservation(o))
+            saveUnupdatableObservation(o);
         else if (o.id)
             return dispatch(ActionNames.UpdateObservation, descriptorId);
         else
             return dispatch(ActionNames.CreateObservation, { descriptorId });
     }) );
 
-    function saveCheckableObservation(observation) {
+    function saveUnupdatableObservation(observation) {
         if (observation.id && !observation.isChecked)
             return dispatch(ActionNames.RemoveObservation, makeObservationArgs(observation));
         else if (observation.isChecked)
@@ -25,8 +25,8 @@ export default function({ dispatch, state, commit }, descriptorId) {
     }
 };
 
-function isCheckableObservation(observation) {
-    return observation.type === ObservationTypes.Qualitative || observation.type === ObservationTypes.Presence;
+function isUpdatableObservation(observation) {
+    return observation.type !== ObservationTypes.Qualitative;
 }
 
 function makeObservationArgs(observation) {
