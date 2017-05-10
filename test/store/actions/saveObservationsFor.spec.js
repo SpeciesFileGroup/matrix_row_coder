@@ -80,7 +80,7 @@ describe(`SaveObservationsFor action`, () => {
     });
 
     describe(`Presence descriptors`, () => {
-        it(`should create a new observation if checked is true and there is no id`, () => {
+        it(`should create a new observation if there is no id`, () => {
             store.commit(MutationNames.SetPresence, {
                 descriptorId: 30,
                 isChecked: true
@@ -95,58 +95,18 @@ describe(`SaveObservationsFor action`, () => {
                 });
         });
 
-        it(`should remove the observation if checked is false and there is an id`, () => {
-            const descriptorId = 25;
-
-            store.commit(MutationNames.SetPresence, {
-                descriptorId,
+        it(`should update the observation if there is an id`, () => {
+            store.commit(MutationNames.SetPresence, {
+                descriptorId: 25,
                 isChecked: false
             });
 
-            const removeSpy = TestHelpers.spyOnMethod(store.state.request, 'removeObservation');
+            const updateSpy = TestHelpers.spyOnMethod(store.state.request, 'updateObservation');
 
-            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
+            return store.dispatch(ActionNames.SaveObservationsFor, 25)
                 .then(_ => {
-                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.be.false;
-                    expect(removeSpy.getTimesCalled(), 'remove').to.equal(1);
-                });
-        });
-
-        it(`should do nothing and revert isUnsaved if checked is false and there is no id`, () => {
-            const descriptorId = 30;
-
-            store.commit(MutationNames.SetPresence, {
-                descriptorId,
-                isChecked: false
-            });
-
-            const createSpy = TestHelpers.spyOnMethod(store.state.request, 'createObservation');
-            const removeSpy = TestHelpers.spyOnMethod(store.state.request, 'removeObservation');
-
-            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
-                .then(_ => {
-                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.be.false;
-                    expect(createSpy.getTimesCalled(), 'create').to.equal(0);
-                    expect(removeSpy.getTimesCalled(), 'remove').to.equal(0);
-                });
-        });
-
-        it(`should do nothing and revert isUnsaved if checked is true and there is an id`, () => {
-            const descriptorId = 25;
-
-            store.commit(MutationNames.SetPresence, {
-                descriptorId,
-                isChecked: true
-            });
-
-            const createSpy = TestHelpers.spyOnMethod(store.state.request, 'createObservation');
-            const removeSpy = TestHelpers.spyOnMethod(store.state.request, 'removeObservation');
-
-            return store.dispatch(ActionNames.SaveObservationsFor, descriptorId)
-                .then(_ => {
-                    expect(store.state.observations.find(o => o.descriptorId === descriptorId).isUnsaved).to.be.false;
-                    expect(createSpy.getTimesCalled(), 'create').to.equal(0);
-                    expect(removeSpy.getTimesCalled(), 'remove').to.equal(0);
+                    expect(store.state.observations.find(o => o.descriptorId === 25).isUnsaved).to.be.false;
+                    expect(updateSpy.getTimesCalled()).to.equal(1);
                 });
         });
     });
