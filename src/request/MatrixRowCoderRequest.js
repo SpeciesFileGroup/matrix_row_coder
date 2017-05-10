@@ -33,6 +33,22 @@ function postJSON(url, payload) {
     });
 }
 
+function putJSON(url, payload) {
+    return new Promise((resolve, reject) => {
+        const options = {
+            url,
+            json: payload
+        };
+
+        browserRequest.put(options, (error, response, body) => {
+            if (error)
+                reject(error);
+            else
+                resolve(body);
+        });
+    })
+}
+
 function deleteResource(url) {
     return new Promise((resolve, reject) => {
         const options = {
@@ -104,10 +120,8 @@ export default class MatrixRowCoderRequest extends IMatrixRowCoderRequest {
     }
 
     updateObservation(observationId, payload) {
-        const url = `/observations/${observationId}.json`;
-        // return postJSON(url, Object.assign(payload, this.apiParams));
-        console.error('updateObservation');
-        return Promise.resolve();
+        const url = `${this.apiBase}/observations/${observationId}.json${MatrixRowCoderRequest.stringifyApiParams(this.apiParams)}`;
+        return putJSON(url, payload);
     }
 
     createObservation(payload) {
