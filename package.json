@@ -25,6 +25,7 @@
     "grunt-contrib-watch": "1.0.0",
     "grunt-mocha-test": "0.13.2",
     "load-grunt-tasks": "3.5.2",
+    "mocha": "^3.4.2",
     "rollupify": "0.3.9",
     "stylus": "0.54.5",
     "vue": "2.3.2",
