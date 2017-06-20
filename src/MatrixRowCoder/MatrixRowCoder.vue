@@ -6,8 +6,9 @@
                 <div>
                     {{ descriptor.title }}
                     <button
-                            @click="zoomDescriptor(descriptor.id)"
-                            type="button">
+                        @click="zoomDescriptor(descriptor.id)"
+                        type="button">
+
                         Zoom
                     </button>
                 </div>
@@ -16,7 +17,8 @@
         <ul class="matrix-row-coder__descriptor-list">
             <li
                 class="matrix-row-coder__descriptor-container"
-                v-for="descriptor in descriptors">
+                v-for="descriptor in descriptors"
+                v-bind:data-descriptor-id="descriptor.id">
 
                 <div v-bind:is="descriptor.componentName" :descriptor="descriptor"></div>
             </li>
@@ -68,6 +70,8 @@
                     descriptorId,
                     isZoomed: true
                 });
+                const top = document.querySelector(`[data-descriptor-id="${descriptorId}"]`).getBoundingClientRect().top;
+                window.scrollTo(0, top);
             }
         },
         components: {
