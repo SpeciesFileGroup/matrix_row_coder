@@ -232,5 +232,43 @@ describe(`CreateObservation action`, () => {
 
             return store.dispatch(ActionNames.CreateObservation, { descriptorId });
         });
+
+        it(`should include all the important sample properties`, () => {
+            const descriptorId = 31;
+
+            store.commit(MutationNames.SetSampleNFor, {
+                descriptorId,
+                n: 50
+            });
+
+            store.commit(MutationNames.SetSampleUnitFor, {
+                descriptorId,
+                units: 'mm'
+            });
+
+            store.commit(MutationNames.SetSampleMaxFor, {
+                descriptorId,
+                max: 100
+            });
+
+            store.commit(MutationNames.SetSampleMinFor, {
+                descriptorId,
+                min: 0
+            });
+
+            store.state.request.createObservation = function(payload) {
+                expect(payload.sample_n).to.equal(50);
+                expect(payload.sample_min).to.equal(0);
+                expect(payload.sample_max).to.equal(100);
+                expect(payload.sample_median).to.equal(null);
+                expect(payload.sample_mean).to.equal(null);
+                expect(payload.sample_units).to.equal("mm");
+                expect(payload.sample_standard_deviation).to.equal(null);
+                expect(payload.sample_standard_error).to.equal(null);
+                return Promise.resolve({});
+            };
+
+            return store.dispatch(ActionNames.CreateObservation, { descriptorId });
+        });
     });
 });
