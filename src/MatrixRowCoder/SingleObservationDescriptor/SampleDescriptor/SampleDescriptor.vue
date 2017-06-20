@@ -10,10 +10,7 @@
                 Max:
                 <input type="number" :value="sampleMax" @input="updateSampleMax">
             </label>
-            <label>
-                Units:
-                <input type="text" :value="sampleUnit" @input="updateSampleUnit">
-            </label>
+            <unit-selector v-model="sampleUnit"></unit-selector>
 
             <label>
                 n:
@@ -41,10 +38,7 @@
                 </label>
             </p>
             <p>
-                <label>
-                    Units:
-                    <input type="text" :value="sampleUnit" @input="updateSampleUnit">
-                </label>
+                <unit-selector v-model="sampleUnit"></unit-selector>
             </p>
 
             <p>
@@ -64,6 +58,7 @@
     import SingleObservationDescriptor from '../SingleObservationDescriptor';
     import { GetterNames } from '../../../store/getters/getters';
     import { MutationNames } from '../../../store/mutations/mutations';
+    import UnitSelector from '../../UnitSelector/UnitSelector.vue';
 
     export default {
         mixins: [SingleObservationDescriptor],
@@ -78,8 +73,16 @@
             sampleN() {
                 return this.$store.getters[GetterNames.GetSampleNFor](this.$props.descriptor.id);
             },
-            sampleUnit() {
-                return this.$store.getters[GetterNames.GetSampleUnitFor](this.$props.descriptor.id);
+            sampleUnit: {
+                get() {
+                    return this.$store.getters[GetterNames.GetSampleUnitFor](this.$props.descriptor.id);
+                },
+                set(unit) {
+                    this.$store.commit(MutationNames.SetSampleUnitFor, {
+                        descriptorId: this.$props.descriptor.id,
+                        units: unit
+                    });
+                }
             }
         },
         methods: {
@@ -100,13 +103,10 @@
                     descriptorId: this.$props.descriptor.id,
                     n: event.target.value
                 });
-            },
-            updateSampleUnit(event) {
-                this.$store.commit(MutationNames.SetSampleUnitFor, {
-                    descriptorId: this.$props.descriptor.id,
-                    units: event.target.value
-                });
             }
+        },
+        components: {
+            UnitSelector
         }
     };
 </script>
