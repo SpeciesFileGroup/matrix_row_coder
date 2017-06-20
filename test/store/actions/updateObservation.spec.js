@@ -122,6 +122,10 @@ describe(`UpdateObservation action`, () => {
                 expect(payload.sample_max).to.equal(10);
                 expect(payload.sample_n).to.equal(200);
                 expect(payload.sample_units).to.equal(`feet`);
+                expect(payload.sample_median).to.equal(33);
+                expect(payload.sample_mean).to.equal(35.5);
+                expect(payload.sample_standard_deviation).to.equal(2.3);
+                expect(payload.sample_standard_error).to.equal(15.5);
                 return Promise.resolve({});
             };
 

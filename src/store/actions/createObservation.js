@@ -21,6 +21,9 @@ export default function({ commit, state }, args) {
     if (observation.type === ObservationTypes.Presence)
         setupPresencePayload(payload);
 
+    if (observation.type === ObservationTypes.Sample)
+        setupSamplePayload(payload);
+
     return state.request.createObservation(payload)
         .then(responseData => {
             commit(MutationNames.SetDescriptorSaving, {
@@ -48,6 +51,19 @@ export default function({ commit, state }, args) {
 
     function setupPresencePayload(payload) {
         return Object.assign(payload, { presence: observation.isChecked });
+    }
+
+    function setupSamplePayload(payload) {
+        return Object.assign(payload, {
+            sample_n: observation.n,
+            sample_min: observation.min,
+            sample_max: observation.max,
+            sample_median: null,
+            sample_mean: null,
+            sample_units: observation.units,
+            sample_standard_deviation: null,
+            sample_standard_error: null,
+        });
     }
 
     function makeBasePayload() {

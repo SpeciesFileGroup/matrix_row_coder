@@ -41,7 +41,11 @@ function makePayload(observation) {
             sample_n: observation.n,
             sample_min: observation.min,
             sample_max: observation.max,
-            sample_units: observation.units
+            sample_units: observation.units,
+            sample_median: observation.median,
+            sample_mean: observation.mean,
+            sample_standard_deviation: observation.standardDeviation,
+            sample_standard_error: observation.standardError
         };
     else if (observation.type === ObservationTypes.Presence)
         return {
