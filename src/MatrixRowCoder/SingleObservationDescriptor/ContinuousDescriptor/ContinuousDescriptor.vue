@@ -7,10 +7,7 @@
                 Amount:
                 <input type="number" :value="continuousValue" @input="updateContinuousValue">
             </label>
-            <label>
-                Unit:
-                <input type="text" :value="continuousUnit" @input="updateContinuousUnit">
-            </label>
+            <unit-selector v-model="continuousUnit"></unit-selector>
             <button
                 type="button"
                 @click="removeObservation">
@@ -29,10 +26,7 @@
                 </label>
             </p>
             <p>
-                <label>
-                    Unit:
-                    <input type="text" :value="continuousUnit" @input="updateContinuousUnit">
-                </label>
+                <unit-selector v-model="continuousUnit"></unit-selector>
             </p>
         </single-observation-zoomed-view>
     </div>
@@ -44,6 +38,7 @@
     import { GetterNames } from '../../../store/getters/getters';
     import { MutationNames } from '../../../store/mutations/mutations';
     import SingleObservationDescriptor from '../SingleObservationDescriptor';
+    import UnitSelector from '../../UnitSelector/UnitSelector.vue';
 
     module.exports = {
         mixins: [SingleObservationDescriptor],
@@ -52,8 +47,16 @@
             continuousValue: function() {
                 return this.$store.getters[GetterNames.GetContinuousValueFor](this.$props.descriptor.id);
             },
-            continuousUnit: function() {
-                return this.$store.getters[GetterNames.GetContinuousUnitFor](this.$props.descriptor.id);
+            continuousUnit: {
+                get() {
+                    return this.$store.getters[GetterNames.GetContinuousUnitFor](this.$props.descriptor.id);
+                },
+                set(unit) {
+                    this.$store.commit(MutationNames.SetContinuousUnit, {
+                        descriptorId: this.$props.descriptor.id,
+                        continuousUnit: unit
+                    });
+                }
             }
         },
         methods: {
@@ -63,15 +66,12 @@
                     continuousValue: event.target.value
                 })
             },
-            updateContinuousUnit(event) {
-                this.$store.commit(MutationNames.SetContinuousUnit, {
-                    descriptorId: this.$props.descriptor.id,
-                    continuousUnit: event.target.value
-                });
-            },
             removeObservation(event) {
                 console.log(`removeObservation`);
             }
+        },
+        components: {
+            UnitSelector
         }
     };
 </script>
