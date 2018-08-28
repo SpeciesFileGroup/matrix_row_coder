@@ -31,3 +31,8 @@ Quick copy: `cp src/props.js.dist src/props.js`.
 `grunt serve-mock`: Builds a sample page with the Matrix Row Coder using mock data. Starts a local webserver. Opens a browser window with the page. Will rebuild the bundle if source changes occur.
 
 `grunt serve-live`: The same as `serve-mock`, but uses a bundle with a request module that will make live requests to the api information given to the Matrix Row Coder component.
+
+
+# Support
+
+Support for this project came from NSF DEB 15-55053 with additional development in the TaxonWorks codebase supported by NSF DBI 1356515ABI-1356381.  Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. 
