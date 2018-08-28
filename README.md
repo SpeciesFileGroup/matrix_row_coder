@@ -35,4 +35,4 @@ Quick copy: `cp src/props.js.dist src/props.js`.
 
 # Support
 
-Support for this project came from NSF DEB 15-55053 with additional development in the TaxonWorks codebase supported by NSF DBI 1356515ABI-1356381.  Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. 
+Support for this project came from NSF DEB 15-55053 with additional development in the TaxonWorks codebase supported by NSF ABI-1356381.  Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. 
